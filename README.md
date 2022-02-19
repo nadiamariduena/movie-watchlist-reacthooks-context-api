@@ -62,4 +62,14 @@
 
 - Watchlist (will be the main page)
 
-##### Insid ethe WtachList page, type rafce to create a template
+##### Inside the WatchList page, type rafce to create a template, do the same with the next page: Add.jsx
+
+```javascript
+import React from "react";
+
+const WatchList = () => {
+  return <div>WatchList</div>;
+};
+
+export default WatchList;
+```
