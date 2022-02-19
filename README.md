@@ -30,17 +30,36 @@
 
 <br>
 
-#### 2. Install react-router-dom
+##### 2. Install react-router-dom
 
 > npm i react-router-dom ✋
 
 <br>
 
-#### 3. Copy and paste the css styles from the official repo, so that we dont waste time on it.
+##### 3. Copy and paste the css styles from the official repo, so that we dont waste time on it.
 
 ##### [styles](https://github.com/MattDobsonWeb/movie-watchlist-react/blob/master/src/App.css)
 
 <br>
+
+##### 4. Download the fontawesome "lib" folder from the official repo
+
+<br>
 <br>
 
-#### 4. Copy the fontawesome "lib" folder from the official repo
+---
+
+<br>
+<br>
+
+## Lets get started 👾
+
+<br>
+
+##### CReate the components folder
+
+##### Create some pages:
+
+- Watchlist (will be the main page)
+
+##### Insid ethe WtachList page, type rafce to create a template
