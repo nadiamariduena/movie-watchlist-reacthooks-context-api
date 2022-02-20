@@ -435,4 +435,12 @@ export const GlobalProvider = (props) => {
 
 <br>
 
-#### 8. Provide a value so
+#### 8. Provide a value so that they are available from our provider, so inside here we want to provide:
+
+- watchlist:
+
+```javascript
+ value={{ watchlist: state.watchlist }}
+```
+
+##### So its basically returning the <u>watchlist</u> from the staet and then we are also want to provide it with the <u>watched</u>
