@@ -26,7 +26,12 @@ const Add = () => {
   const [query, setQuery] = useState("");
 
   //
-  const onChange = () => {};
+  const onChange = (e) => {
+    e.preventDefault();
+    //
+    //
+    setQuery(e.target.value);
+  };
   //
   return (
     <>
@@ -34,7 +39,7 @@ const Add = () => {
         <Container>
           <AddContent>
             <InputWrapper>
-              <Input
+              <input
                 type="text"
                 placeholder="search for a movie"
                 value={query}
