@@ -314,3 +314,95 @@ REACT_APP_TMDB_KEY=long api code here
 <br>
 
 #### ⚠️ After you add the API, restart the app
+
+<br>
+<br>
+
+#### Now what we want is that every time we type something inside the search bar, we want to make a fetch request
+
+##### 21:00 [Create a Movie Watchlist with React Hooks, Context API and localStorage](https://youtu.be/1eO_hNYzaSc)
+
+<br>
+<br>
+
+# 🌈
+
+### Check the example of the API page to see how it should be implemented
+
+[get/search/movie](https://developers.themoviedb.org/3/search/search-movies)
+
+##### example:
+
+```javascript
+https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+```
+
+<br>
+
+### Use it in our project:
+
+#### 1 adding the api to be fetched
+
+```javascript
+    setQuery(e.target.value);
+    //
+    //API
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key= API * GOES * HERE`);
+  };
+  //
+  return (
+```
+
+<br>
+<br>
+
+#### 2 Use the variable you have inside the <u>.env.local</u>
+
+- You need to have your api code there (inside the variable)
+
+```javascript
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}`
+
+  };
+```
+
+<br>
+
+#### 3. Add the language to the end point of the api <u>&language=en-US</u>
+
+```javascript
+`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`;
+```
+
+<br>
+
+#### 4. Add how many pages, to the end point of the api <u>&page=1</u>
+
+```javascript
+`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`;
+```
+
+<br>
+
+#### ⚠️ 5. Prevent it to show adult movies <u>&include_adult=false</u>
+
+```javascript
+`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false`;
+```
+
+<br>
+<br>
+
+#### 🐖 6. And here we link it to our search input <u>&query=${e.target.value}</u>
+
+```javascript
+`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`;
+```
+
+<br>
+
+### the promise 💍
+
+> Since its data coming from an extern link, we need to have some sort of security in case something goes wrong (bad internet connection... etc)
+
+#### 7.
