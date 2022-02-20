@@ -529,3 +529,5 @@ const addMovieToWatchlist = (movie) => {
 ### Now lets go to the reducer
 
 - AppReducer.js
+
+#### in our reducer we will tell the reducer on how to 'store' the data
