@@ -1,6 +1,10 @@
 //1
 import React, { createContext, useReducer, useEffect } from "react";
 //
+import { AppReducer } from "./AppReducer";
+
+//
+//
 //2
 const initialState = {
   //1 at the beginning we have nothing, its an empty array

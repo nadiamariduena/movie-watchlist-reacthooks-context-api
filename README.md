@@ -393,3 +393,16 @@ export const GlobalProvider = (props) => {
 ##### The Reducer is basically a function that returns some state data, this basically describes how your state is transfered into the next state
 
 - In other words, the **reducer** will tell the **store** what to do with the data
+
+> Basically what is happening here is that, as we get more actions **(actions are objects that tells the reducer how to change the state)**
+
+<br>
+
+```javascript
+export default (state, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+```
