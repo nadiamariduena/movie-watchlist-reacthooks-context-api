@@ -296,3 +296,17 @@ export default Add;
 - Then click again in side bar, for **search the movie**
 
 ### get/search/movie
+
+<br>
+
+#### 🔴 Remember:
+
+> You need to request the API key, you will have to fill a form about why do and in what do you want to use, after that you will receive your api in your email, or just refresh the page
+
+<br>
+
+#### Once you have the API, Create a .env.local and store your API there like so:
+
+```javascript
+REACT_APP_TMDB_KEY=long api code here
+```
