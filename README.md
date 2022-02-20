@@ -337,9 +337,7 @@ export const GlobalProvider = (props) => {
 
 #### 5. Make the Provider Functional
 
-<br>
-
-##### 🔴 at this point we will have an error because we dont have yet the <u>AppReducer</u>
+##### 🔴 at this point we will have an error, because we don't have yet the <u>AppReducer</u>, thats why it will tell that AppReducer is undefined.
 
 ```javascript
 export const GlobalProvider = (props) => {
@@ -350,4 +348,6 @@ export const GlobalProvider = (props) => {
 
 <br>
 
-#### 6.
+#### 6. Create the AppReducer file inside the <context> folder
+
+- AppReducer.js
