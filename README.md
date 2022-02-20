@@ -798,3 +798,19 @@ export default ResultCards;
 ```javascript
 <H4>{movie.release_date.substring(0, 4)}</H4>
 ```
+
+<br>
+
+### 🔴
+
+#### But what is there is not a value in the movie.release_date, lets handle a possible error in case theres not a date
+
+<br>
+
+```javascript
+<H4>
+  {movie.release_date.substring(0, 4)}
+
+  {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
+</H4>
+```

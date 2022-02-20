@@ -54,7 +54,11 @@ const ResultCards = ({ movie }) => {
           )}
 
           <H3>{movie.title}</H3>
-          <H4>{movie.release_date.substring(0, 4)}</H4>
+          <H4>
+            {movie.release_date.substring(0, 4)}
+
+            {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
+          </H4>
         </ResultCard>
       </Grid>
     </Container>
