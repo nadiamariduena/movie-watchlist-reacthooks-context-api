@@ -666,7 +666,7 @@ import { GlobalContext } from "../context/GlobalState";
 
 <br>
 
-#### 18. With this we can grab our action, the action we created that adds the movie to the WATCHLIST
+#### 18. With this we can grab our action, the action we created that "adds the movie to the WATCHLIST"
 
 ```javascript
 const ResultCards = ({ movie }) => {
@@ -678,3 +678,21 @@ const ResultCards = ({ movie }) => {
   //
   return (
 ```
+
+<br>
+
+#### 19. Now that we have this we can use it in our button
+
+- So what is going to happen here, is that from the moment we click in the button, its going to trigger the **addMovieToWatchlist** and when this happens, it s going to send a movie to the **watchlist**
+
+```javascript
+<Button onClick={() => addMovieToWatchlist(movie)}>add to watchlist</Button>
+```
+
+<br>
+
+### Time to test it
+
+<br>
+
+[<img src="./src/img/contextAPI_success.gif"/>]()

@@ -91,7 +91,9 @@ const ResultCards = ({ movie }) => {
           </H4>
           {/* the button to add to the wtchlist */}
           <Controls>
-            <Button>add to watchlist</Button>
+            <Button onClick={() => addMovieToWatchlist(movie)}>
+              add to watchlist
+            </Button>
           </Controls>
         </ResultCard>
       </Grid>
