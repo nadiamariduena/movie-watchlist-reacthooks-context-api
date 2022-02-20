@@ -638,3 +638,16 @@ function App() {
   );
 }
 ```
+
+#### 🔴 the error
+
+- We are getting an error about the reducer file, just remove the curly brackets from the import in the GlobalState.js
+
+```javascript
+// before
+//6
+import { AppReducer } from "./AppReducer";
+// after
+//6
+import AppReducer from "./AppReducer";
+```

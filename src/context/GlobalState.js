@@ -1,7 +1,7 @@
 //1
 import React, { createContext, useReducer, useEffect } from "react";
 //6
-import { AppReducer } from "./AppReducer";
+import AppReducer from "./AppReducer";
 
 //
 //
