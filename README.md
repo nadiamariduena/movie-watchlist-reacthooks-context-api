@@ -42,3 +42,7 @@
 <br>
  
  #### Let's implement the watchList page and button, for this we are going to use the Context API so that we can reach this from everywhere in the project.
+
+<br>
+
+> We do this because the only way we can reach the data in all the components is through **props** but if we do it with it, it will take a lot of time, so that is why we are going to use **context api**
