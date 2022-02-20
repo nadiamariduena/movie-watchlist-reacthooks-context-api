@@ -528,7 +528,7 @@ const addMovieToWatchlist = (movie) => {
 
 ### Now lets go to the reducer
 
-- AppReducer.js
+- AppReducer.js ✋
 
 #### in our reducer we will tell the reducer on how to 'store' the data
 
@@ -548,4 +548,14 @@ export default (state, action) => {
       return state;
   }
 };
+```
+
+<br>
+
+#### Now the magic part
+
+- in the following lines, when we will click on the button its going to add the harry potter movie to the array of the existing watch list, because we ve the **...spread the existing watch list here**
+
+```javascript
+  watchlist: [action.payload, ✋...state.watchlist ✋],
 ```
