@@ -608,3 +608,33 @@ return (
 #### 15. Now we need to Wrap all the components in the App.js
 
 - import the GlobalProvider.js
+
+```javascript
+import { GlobalProvider } from "./context/GlobalState";
+```
+
+<br>
+
+#### 16. Now wrap the whole app with the the GlobalProvider
+
+```javascript
+function App() {
+  return (
+  ✋  <GlobalProvider>
+      {" "}
+      <Router>
+        <Navigation />
+        <div className="page">
+          <Switch>
+            {/* Watchlist is the Home page */}
+            <Route exact path="/" component={WatchList} />
+            <Route path="/watched" exact component={Watched} />
+            <Route path="/add" exact component={Add} />
+            <Route path="/*" component={WatchList} />
+          </Switch>
+        </div>
+      </Router>
+ ✋   </GlobalProvider>
+  );
+}
+```
