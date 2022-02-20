@@ -515,3 +515,7 @@ const addMovieToWatchlist = (movie) => {
   dispatch({ type: "ADD_MOVIE_TO_WATCHLIST", payload: movie });
 };
 ```
+
+<br>
+
+#### SO basically what happens when we dispatch this "dispatch({", is that we dispatch a type of movie "type: "ADD_MOVIE_TO_WATCHLIST" to watch, and inside that type, we provide the payload of movie "payload: movie"
