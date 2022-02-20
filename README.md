@@ -407,3 +407,11 @@ export default (state, action) => {
   }
 };
 ```
+
+<br>
+
+##### import the AppReducer.js inside the GlobalState.js
+
+```javascript
+import { AppReducer } from "./AppReducer";
+```
