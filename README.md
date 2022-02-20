@@ -34,5 +34,11 @@
 [<img src="./src/img/cards-grid.gif"/>]()
 
 <br>
+
+```javascript
+<H4>{movie.release_date ? movie.release_date.substring(0, 4) : "-"}</H4>
+```
+
+<br>
  
- #### Lets implement the watchList page and button
+ #### Let's implement the watchList page and button, for this we are going to use the Context API so that we can reach this from everywhere in the project.
