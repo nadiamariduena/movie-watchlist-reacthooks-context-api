@@ -54,15 +54,15 @@
 
 ## Lets get started 👾
 
-<br>
+#### Create the components folder
 
-##### CReate the components folder
+<br>
 
 ##### Create some pages:
 
 - Watchlist (will be the main page)
 
-##### Inside the WatchList page, type rafce to create a template, do the same with the next page: Add.jsx
+##### Inside the <u>WatchList</u> page, type rafce to create a template, do the same with the next pages: <u>Add.jsx, Watched.jsx</u>
 
 ```javascript
 import React from "react";
