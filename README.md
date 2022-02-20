@@ -60,7 +60,7 @@
 
 ##### Create some pages:
 
-- Watchlist (will be the main page)
+- **Watchlist** (will be the **main page**)
 
 ##### Inside the <u>WatchList</u> page, type rafce to create a template, do the same with the next pages: <u>Add.jsx, Watched.jsx, Header.jsx</u>
 
@@ -100,7 +100,9 @@ const Header = () => {
               <Link to="/watched">Watched</Link>
             </li>
             <li>
-              <Link to="/add">+ Add</Link>
+              <Link to="/add" className="btn">
+                + Add
+              </Link>
             </li>
           </ul>
         </div>
@@ -110,4 +112,70 @@ const Header = () => {
 };
 
 export default Header;
+```
+
+<br>
+<br>
+<br>
+
+## Routing
+
+<br>
+
+##### 🔴 With the updating of the **react-router-dom** you will have some errors when setting up the following, but if you remove all the react related dependencies and grab it from a project of 3 months ago, it will work fine, the reason for that is that this tutorial ways created before such update take place, therefore the errors
+
+<br>
+
+- So delete the old react related and add this one:
+
+```javascript
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-player": "^2.9.0",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+```
+
+<br>
+<br>
+
+## The Routes Setup ✋
+
+<br>
+
+```javascript
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import "./lib/font-awesome/css/all.min.css";
+//
+//
+//
+
+import Header from "./components/Header";
+import WatchList from "./components/WatchList";
+import Watched from "./components/Watched";
+import Add from "./components/Add";
+//
+//
+//
+function App() {
+  return (
+    <Router>
+      <Header />
+      <div className="page">
+        <Switch>
+          {/* Watchlist is the Home page */}
+          <Route exact path="/" component={WatchList} />
+          <Route path="/watched" exact component={Watched} />
+          <Route path="/add" exact component={Add} />
+          {/* <Route path="/product/:id" component={ProductScreen} /> */}
+          <Route path="/*" component={WatchList} />
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
 ```
