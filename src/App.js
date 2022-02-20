@@ -5,10 +5,10 @@ import "./lib/font-awesome/css/all.min.css";
 //
 //
 
-import Navigation from "./components/Navigation";
-import WatchList from "./components/WatchList";
-import Watched from "./components/Watched";
-import Add from "./components/Add";
+import { Navigation } from "./components/Navigation";
+import { WatchList } from "./components/WatchList";
+import { Watched } from "./components/Watched";
+import { Add } from "./components/Add";
 //
 //
 //

@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { mobile, mobileM, tablet } from "../responsive";
 
+//
+
+//
+//
+
 const AddPage = styled.div`
   width: 100vw;
   height: 100vh;
@@ -20,7 +25,7 @@ const Input = styled.input`
 
 //
 //
-const Add = () => {
+export const Add = () => {
   //
   //
   const [query, setQuery] = useState("");
@@ -35,7 +40,11 @@ const Add = () => {
     //API
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
-    );
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   //
   return (
@@ -44,7 +53,7 @@ const Add = () => {
         <Container>
           <AddContent>
             <InputWrapper>
-              <Input
+              <input
                 type="text"
                 placeholder="search for a movie"
                 value={query}
@@ -57,5 +66,3 @@ const Add = () => {
     </>
   );
 };
-
-export default Add;

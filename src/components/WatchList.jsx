@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const WatchList = () => {
+export const WatchList = () => {
   return (
     <>
       <Container>
@@ -19,5 +19,3 @@ const WatchList = () => {
     </>
   );
 };
-
-export default WatchList;

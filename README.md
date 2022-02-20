@@ -406,3 +406,95 @@ https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&pag
 > Since its data coming from an extern link, we need to have some sort of security in case something goes wrong (bad internet connection... etc)
 
 #### 7.
+
+```javascript
+  fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+    ).then(inside this promise we will return the result in format json);
+```
+
+<br>
+
+```javascript
+fetch(
+  `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+).then((res) => res.json());
+```
+
+<br>
+
+#### 8. return the data
+
+```javascript
+fetch(
+  `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+).then((res) => res.json()).then(return the data)
+```
+
+<br>
+
+```javascript
+fetch(
+  `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+  });
+```
+
+<br>
+
+# 🔴
+
+#### It gave me the following error when consologin to see the result of the movies
+
+```javascript
+Invalid API key: You must be granted a valid key
+
+```
+
+- I couldnt get any result when typing harry potter for example, instead i got that error.
+
+<br>
+
+#### I suspected the .env.local but first i wanted to try most of possibilities
+
+- looking for type errors
+
+- searching for the error in the official page
+
+<br>
+
+[The Movie Database Support](https://www.themoviedb.org/talk/5f93fc79ed28b90042b28c42)
+
+[Append To Response](https://developers.themoviedb.org/3/getting-started/append-to-response)
+
+<br>
+
+- searching for the error in the stack overflow page
+
+[the moviedb url ending point not working?](https://stackoverflow.com/questions/56775797/the-moviedb-url-ending-point-not-working)
+
+# 🌈
+
+#### BUt since its not the first time I have encountered issues when working with API's, I suspected the .env.local
+
+- So i removed the variable and I added the key directly then i got the results
+
+<br>
+
+```javascript
+//API
+fetch(
+  `https://api.themoviedb.org/3/search/movie?api_key= LONG CODE HERE&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+  });
+```
+
+<br>
+
+[<img src="./src/img/fetching-movies.gif"/>]()

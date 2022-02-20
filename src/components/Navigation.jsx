@@ -98,7 +98,7 @@ const Li = styled.li`
 `;
 //
 // -------------------------
-const Navigation = () => {
+export const Navigation = () => {
   return (
     <>
       <Header>
@@ -130,5 +130,3 @@ const Navigation = () => {
     </>
   );
 };
-
-export default Navigation;

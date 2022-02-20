@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Watched = () => {
+export const Watched = () => {
   return (
     <>
       <Container>
