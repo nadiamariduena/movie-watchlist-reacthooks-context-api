@@ -54,7 +54,7 @@ const ResultCards = ({ movie }) => {
           )}
 
           <H3>{movie.title}</H3>
-          <H4>{movie.vote_average}</H4>
+          <H4>{movie.release_date.substring(0, 4)}</H4>
         </ResultCard>
       </Grid>
     </Container>

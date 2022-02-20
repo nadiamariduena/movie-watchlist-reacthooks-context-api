@@ -788,3 +788,13 @@ export default ResultCards;
 <br>
 
 [<img src="./src/img/cards-grid.gif"/>]()
+
+<br>
+
+#### Add the info about the movie
+
+- this will format the date_release to only 4 characters of what we had before , something like 11.05.2051 to 2051
+
+```javascript
+<H4>{movie.release_date.substring(0, 4)}</H4>
+```
