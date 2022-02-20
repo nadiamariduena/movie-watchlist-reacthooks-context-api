@@ -14,3 +14,4 @@ const initialState = {
 //
 //
 //3 CREATE CONTEXT
+export const GlobalContext = createContext(initialState);

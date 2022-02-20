@@ -314,4 +314,13 @@ const initialState = {
 
 <br>
 
-#### 3 CREATE CONTEXT
+#### 3. Create Context
+
+```javascript
+//c. CREATE CONTEXT
+export const GlobalContext = createContext(initialState);
+```
+
+<br>
+
+#### 4. Now in order to provide this context we need to use something called <u>Provider</u> , which basically allow us to access this global context from other variables
