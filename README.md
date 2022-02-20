@@ -484,3 +484,19 @@ return (
 <br>
 
 - So what we want to do with this action, is to create a function here and we're gonna call it **addMovieToWatchlist**
+
+```javascript
+//  ACTION
+//   this is going to be provided with the movie data here: (movie) =>
+const addMovieToWatchlist = (movie) => {};
+```
+
+<br>
+
+#### 10. Then we are going to dispatch an "action". we are going to dispatch a type
+
+```javascript
+const addMovieToWatchlist = (movie) => {
+  dispatch({ type: "ADD_MOVIE_TO_WATCHLIST" });
+};
+```
