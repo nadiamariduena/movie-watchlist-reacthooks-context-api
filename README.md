@@ -394,12 +394,13 @@ export const GlobalProvider = (props) => {
 
 - In other words, the **reducer** will tell the **store** what to do with the data
 
-> Basically what is happening here is that, as we get more actions **(actions are objects that tells the reducer how to change the state)**
+> **(actions are objects that tells the reducer how to change the state)**
 
 <br>
 
 ```javascript
 export default (state, action) => {
+  // here we are dispatching a type, that then passes it to the reducer here
   switch (action.type) {
     default:
       return state;
