@@ -25,7 +25,14 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = (props) => {
   // 5
   const [state, dispatch] = useReducer(AppReducer, initialState);
+  //
+  // 8 ACTION
+  //   this is going to be provided with the movie data here: (movie) =>
+  const addMovieToWatchlist = (movie) => {};
 
+  //
+  //
+  //
   // 7 wrap with the GlobalContext.Provider all of the elements of the application
   // so that we can access the global context from every component
   return (
