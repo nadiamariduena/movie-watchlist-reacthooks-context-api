@@ -450,7 +450,9 @@ export const GlobalProvider = (props) => {
 ```javascript
 // 7 wrap with the GlobalContext.Provider all of the elements of the application so that we can access the global context from every component
 return (
-  <GlobalContext.Provider value={{ watchlist: state.watchlist }}>
+  <GlobalContext.Provider
+    value={{ watchlist: state.watchlist ✋ , watched: state.watched ✋}}
+  >
     {props.children}
   </GlobalContext.Provider>
 );
