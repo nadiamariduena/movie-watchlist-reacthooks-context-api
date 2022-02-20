@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { mobile, mobileM, tablet } from "../responsive";
 
 //
-
+const { REACT_APP_TMDB_KEY } = process.env;
 //
 //
 
@@ -39,7 +39,7 @@ export const Add = () => {
     //
     //API
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
     )
       .then((res) => res.json())
       .then((data) => {
