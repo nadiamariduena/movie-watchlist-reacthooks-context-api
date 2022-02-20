@@ -415,3 +415,24 @@ export default (state, action) => {
 ```javascript
 import { AppReducer } from "./AppReducer";
 ```
+
+<br>
+
+#### 7. With the GlobalContext.Provider, we will wrapp all of the elements of the application, so that we can access the global context from every component
+
+```javascript
+export const GlobalProvider = (props) => {
+  // 5
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  // 7 wrap with the GlobalContext.Provider all of the elements of the application
+  // so that we can access the global context from every component
+  return <GlobalContext.Provider>{props.children}</GlobalContext.Provider>;
+  //
+  //
+};
+```
+
+<br>
+
+#### 8. Provide a value so

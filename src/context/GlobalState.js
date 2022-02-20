@@ -1,6 +1,6 @@
 //1
 import React, { createContext, useReducer, useEffect } from "react";
-//
+//6
 import { AppReducer } from "./AppReducer";
 
 //
@@ -23,5 +23,12 @@ export const GlobalContext = createContext(initialState);
 //4 provider is going to allow us to access this global context from other variables
 
 export const GlobalProvider = (props) => {
+  // 5
   const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  // 7 wrap with the GlobalContext.Provider all of the elements of the application
+  // so that we can access the global context from every component
+  return <GlobalContext.Provider>{props.children}</GlobalContext.Provider>;
+  //
+  //
 };
