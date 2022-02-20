@@ -631,3 +631,22 @@ const [results, setResults] = useState([]); //array of results ([])
       });
   };
 ```
+
+<br>
+<br>
+
+### If we the results are more than zero, show the results:
+
+```javascript
+        </InputWrapper>
+        //
+            {results.length > 0 && (
+              <ul>
+                <li>here we will map the results</li>
+              </ul>
+            )}
+          </AddContent>
+```
+
+<br>
+<br>

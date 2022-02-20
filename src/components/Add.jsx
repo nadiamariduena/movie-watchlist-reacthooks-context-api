@@ -66,6 +66,15 @@ export const Add = () => {
                 onChange={onChange}
               />
             </InputWrapper>
+            {/* 
+            
+            
+            */}
+            {results.length > 0 && (
+              <ul>
+                <li></li>
+              </ul>
+            )}
           </AddContent>
         </Container>
       </AddPage>
