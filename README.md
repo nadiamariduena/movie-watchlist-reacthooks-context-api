@@ -310,3 +310,7 @@ export default Add;
 ```javascript
 REACT_APP_TMDB_KEY=long api code here
 ```
+
+<br>
+
+#### ⚠️ After you add the API, restart the app
