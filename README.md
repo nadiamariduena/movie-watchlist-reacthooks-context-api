@@ -678,7 +678,7 @@ const [results, setResults] = useState([]); //array of results ([])
 
 ### Creating the card
 
--
+- So here I am reaching the img through the poster
 
 ```javascript
 import React from "react";
