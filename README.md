@@ -722,6 +722,8 @@ const ResultCards = ({ movie }) => {
 export default ResultCards;
 ```
 
+[<img src="./src/img/img-card.gif"/>]()
+
 <br>
 
 #### Here you control the size of the img here w200
@@ -782,3 +784,7 @@ const ResultCards = ({ movie }) => {
 
 export default ResultCards;
 ```
+
+<br>
+
+[<img src="./src/img/cards-grid.gif"/>]()
