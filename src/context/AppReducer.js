@@ -6,7 +6,8 @@ export default (state, action) => {
         ...state,
         //2 and then we want to make some changes to the state
         watchlist: [action.payload],
-        // 3 the act
+        // 3 the action.payload here above,
+        // is the one containing the movie data in the GlobalState.js
       };
     default:
       return state;
