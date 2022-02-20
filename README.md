@@ -635,7 +635,9 @@ const [results, setResults] = useState([]); //array of results ([])
 <br>
 <br>
 
-### If we the results are more than zero, show the results:
+## .map results
+
+##### If we the results are more than zero, show the results:
 
 ```javascript
         </InputWrapper>
@@ -650,3 +652,23 @@ const [results, setResults] = useState([]); //array of results ([])
 
 <br>
 <br>
+
+#### lets map the movie and then lets create another component, this new component will nest the "card" for the movies
+
+```javascript
+{
+  results.length > 0 && (
+    <ul className="results">
+      {results.map((movie) => (
+        <li>{movie.title}</li> ✋
+      ))}
+    </ul>
+  );
+}
+```
+
+<br>
+
+<br>
+
+[<img src="./src/img/mapping-fetched-results.gif"/>]()

@@ -71,8 +71,10 @@ export const Add = () => {
             
             */}
             {results.length > 0 && (
-              <ul>
-                <li></li>
+              <ul className="results">
+                {results.map((movie) => (
+                  <li>{movie.title}</li>
+                ))}
               </ul>
             )}
           </AddContent>
