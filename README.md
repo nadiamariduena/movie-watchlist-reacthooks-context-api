@@ -284,3 +284,11 @@ export const Add = () => {
 - context
 
 - inside the context folder, create a new file and call it: **GlobalState.js**
+
+<br>
+
+#### import the following:
+
+```javascript
+import React, { createContext, useReducer, useEffect } from "react";
+```
