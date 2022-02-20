@@ -5,6 +5,8 @@ export default (state, action) => {
         // 1  here we will return the existing state "...state"
         ...state,
         //2 and then we want to make some changes to the state
+        watchlist: [action.payload],
+        // 3 the act
       };
     default:
       return state;
