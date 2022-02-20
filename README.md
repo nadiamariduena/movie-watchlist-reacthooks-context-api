@@ -336,3 +336,18 @@ export const GlobalProvider = (props) => {
 <br>
 
 #### 5. Make the Provider Functional
+
+<br>
+
+##### 🔴 at this point we will have an error because we dont have yet the <u>AppReducer</u>
+
+```javascript
+export const GlobalProvider = (props) => {
+  //
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+};
+```
+
+<br>
+
+#### 6.

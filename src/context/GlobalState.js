@@ -19,4 +19,6 @@ export const GlobalContext = createContext(initialState);
 //
 //4 provider is going to allow us to access this global context from other variables
 
-export const GlobalProvider = (props) => {};
+export const GlobalProvider = (props) => {
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+};
