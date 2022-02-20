@@ -443,4 +443,15 @@ export const GlobalProvider = (props) => {
  value={{ watchlist: state.watchlist }}
 ```
 
-##### So its basically returning the <u>watchlist</u> from the staet and then we are also want to provide it with the <u>watched</u>
+<br>
+
+#### So its basically returning the <u>watchlist</u> from the state, and then we will also want to provide it with the <u>watched:</u>
+
+```javascript
+// 7 wrap with the GlobalContext.Provider all of the elements of the application so that we can access the global context from every component
+return (
+  <GlobalContext.Provider value={{ watchlist: state.watchlist }}>
+    {props.children}
+  </GlobalContext.Provider>
+);
+```
