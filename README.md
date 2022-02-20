@@ -389,3 +389,7 @@ export const GlobalProvider = (props) => {
 #### 6. Create the AppReducer file inside the <context> folder
 
 - AppReducer.js
+
+##### The Reducer is basically a function that returns some state data, this basically describes how your state is transfered into the next state
+
+- In other words, the **reducer** will tell the **store** what to do with the data
