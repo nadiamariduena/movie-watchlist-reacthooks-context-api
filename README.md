@@ -386,6 +386,12 @@ export const GlobalProvider = (props) => {
 
 ## The Reducer
 
+#### How do actions and reducers Work?
+
+> In Redux, a reducer is a pure function that takes an action and the previous state of the application and returns the new state. The action describes what happened and it is the reducer's job to return the new state based on that action. It may seem simple, but it does have to be a pure function with no side effects.
+
+<br>
+
 #### 6. Create the AppReducer file inside the <context> folder
 
 - AppReducer.js
@@ -468,3 +474,7 @@ return (
 <br>
 
 ## Actions
+
+> The action describes what happened and it is the reducer's job to return the new state based on that action. It may seem simple, but it does have to be a pure function with no side effects.
+
+<br>
