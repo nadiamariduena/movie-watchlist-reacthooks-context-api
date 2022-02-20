@@ -271,6 +271,10 @@ export const Add = () => {
 
 ## CONTEXT API 🍌
 
+- What we are going to build now is called the **store** , the **store** will hold all the state data, **the store holds the object which holds the application state data**
+
+- After that we will need the **reducer**
+
 <br>
 
 #### Let's implement the watchList page and button, for this we are going to use the Context API so that we can reach this from everywhere in the project.
@@ -347,6 +351,40 @@ export const GlobalProvider = (props) => {
 ```
 
 <br>
+<br>
+
+#### This is what we have until now:
+
+```javascript
+//1
+import React, { createContext, useReducer, useEffect } from "react";
+//
+//2
+const initialState = {
+  //1 at the beginning we have nothing, its an empty array
+  watchlist: [],
+  //
+  // 2. then we will make the 'watched' component
+  // its also going to be empty
+  watched: [],
+};
+//
+//
+//3 CREATE CONTEXT
+export const GlobalContext = createContext(initialState);
+
+//
+//4 provider is going to allow us to access this global context from other variables
+
+export const GlobalProvider = (props) => {
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+};
+```
+
+<br>
+<br>
+
+## The Reducer
 
 #### 6. Create the AppReducer file inside the <context> folder
 
