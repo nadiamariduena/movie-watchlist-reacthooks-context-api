@@ -276,3 +276,11 @@ export const Add = () => {
 <br>
 
 > We do this because the only way we can reach the data in all the components is through **props** but if we do it with it, it will take a lot of time, so that is why we are going to use **context api**
+
+<br>
+
+### Create a new folder (inside the src) and call it
+
+- context
+
+- inside the context folder, create a new file and call it: **GlobalState.js**
