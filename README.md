@@ -672,3 +672,113 @@ const [results, setResults] = useState([]); //array of results ([])
 <br>
 
 [<img src="./src/img/mapping-fetched-results.gif"/>]()
+
+<br>
+<br>
+
+### Creating the card
+
+-
+
+```javascript
+import React from "react";
+import styled from "styled-components";
+import { mobile, mobileM, tablet } from "../responsive";
+
+const Container = styled.div`
+  background: red;
+`;
+
+const Grid = styled.div`
+  background: green;
+`;
+const ResultCard = styled.div`
+  padding: 20px;
+  background: pink;
+  padding: 20px;
+`;
+
+//
+//
+const ResultCards = ({ movie }) => {
+  return (
+    <Container>
+      <Grid>
+        <ResultCard>
+          {movie.poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+              alt={`${movie.title} Poster`}
+            />
+          ) : (
+            <div className="filler-poster"></div>
+          )}
+        </ResultCard>
+      </Grid>
+    </Container>
+  );
+};
+
+export default ResultCards;
+```
+
+<br>
+
+#### Here you control the size of the img here w200
+
+```javascript
+{
+  movie.poster_path ? (
+    <img
+      src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+      alt={`${movie.title} Poster`}
+    />
+  ) : (
+    <div className="filler-poster"></div>
+  );
+}
+```
+
+<br>
+
+#### But if you want more control add a div so to nest the img{}
+
+```javascript
+const ImgBox = styled.div`
+  width: 100%;
+
+  img {
+    width: 70%;
+    min-height: auto;
+    object-fit: cover;
+    border-radius: 5rem;
+  }
+`;
+
+//
+//
+//
+const ResultCards = ({ movie }) => {
+  return (
+    <Container>
+      <Grid>
+        <ResultCard>
+          {movie.poster_path ? (
+            <ImgBox>
+              {" "}
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={`${movie.title} Poster`}
+              />
+            </ImgBox>
+          ) : (
+            <div className="filler-poster"></div>
+          )}
+        </ResultCard>
+      </Grid>
+    </Container>
+  );
+};
+
+export default ResultCards;
+```
