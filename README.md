@@ -651,3 +651,19 @@ import { AppReducer } from "./AppReducer";
 //6
 import AppReducer from "./AppReducer";
 ```
+
+<br>
+<br>
+
+### 17. Import the context and the GlobalContext inside the ResultCards.js
+
+<br>
+
+```javascript
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+```
+
+<br>
+
+#### 18. With this we can grab our action, the action we created that adds the movie to the WATCHLIST
