@@ -29,7 +29,7 @@ export const GlobalProvider = (props) => {
   // 8 ACTION
   //   this is going to be provided with the movie data here: (movie) =>
   const addMovieToWatchlist = (movie) => {
-    dispatch({ type: "ADD_MOVIE_TO_WATCHLIST" });
+    dispatch({ type: "ADD_MOVIE_TO_WATCHLIST", payload: movie });
   };
 
   //

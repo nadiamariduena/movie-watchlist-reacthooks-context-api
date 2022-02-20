@@ -502,3 +502,16 @@ const addMovieToWatchlist = (movie) => {
 ```
 
 ##### Its a good practice to use UPPERCASE for reducer types action types
+
+<br>
+<br>
+
+## PAYLOAD
+
+#### 11. The payload of our dispatch is going to be the <u>movie data</u>
+
+```javascript
+const addMovieToWatchlist = (movie) => {
+  dispatch({ type: "ADD_MOVIE_TO_WATCHLIST", payload: movie });
+};
+```
