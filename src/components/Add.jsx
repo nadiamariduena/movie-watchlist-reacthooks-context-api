@@ -43,7 +43,13 @@ export const Add = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // if there is not errors, then show results
+        if (!data.errors) {
+          setResults(data.results);
+        } else {
+          // if there are errors, show empty array
+          setResults([]);
+        }
       });
   };
   //

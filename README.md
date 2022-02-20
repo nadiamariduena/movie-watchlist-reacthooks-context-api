@@ -609,3 +609,25 @@ export const Add = () => {
 ```javascript
 const [results, setResults] = useState([]); //array of results ([])
 ```
+
+<br>
+
+##### 2. Now lets check if there is any errors inside the promise when fetching the data
+
+```javascript
+    //API
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // if there is not errors, then show results ✋
+        if (!data.errors) {
+          setResults(data.results);
+        } else {
+          // if there are errors, show empty array ✋
+          setResults([]);
+        }
+      });
+  };
+```
