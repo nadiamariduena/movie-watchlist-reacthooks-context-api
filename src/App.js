@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
+
 import "./lib/font-awesome/css/all.min.css";
 //
 //
 //
 
-import Header from "./components/Header";
+import Navigation from "./components/Navigation";
 import WatchList from "./components/WatchList";
 import Watched from "./components/Watched";
 import Add from "./components/Add";
@@ -15,7 +15,7 @@ import Add from "./components/Add";
 function App() {
   return (
     <Router>
-      <Header />
+      <Navigation />
       <div className="page">
         <Switch>
           {/* Watchlist is the Home page */}
