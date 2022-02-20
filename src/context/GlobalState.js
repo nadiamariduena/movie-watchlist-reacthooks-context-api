@@ -15,3 +15,8 @@ const initialState = {
 //
 //3 CREATE CONTEXT
 export const GlobalContext = createContext(initialState);
+
+//
+//4 provider is going to allow us to access this global context from other variables
+
+export const GlobalProvider = (props) => {};

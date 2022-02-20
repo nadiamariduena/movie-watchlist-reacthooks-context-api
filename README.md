@@ -324,3 +324,15 @@ export const GlobalContext = createContext(initialState);
 <br>
 
 #### 4. Now in order to provide this context we need to use something called <u>Provider</u> , which basically allow us to access this global context from other variables
+
+<br>
+
+```javascript
+export const GlobalProvider = (props) => {
+  // 5 here we will set up the stuff to make it functional
+};
+```
+
+<br>
+
+#### 5. Make the Provider Functional
