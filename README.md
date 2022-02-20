@@ -530,7 +530,7 @@ const addMovieToWatchlist = (movie) => {
 
 - AppReducer.js ✋
 
-#### in our reducer we will tell the reducer on how to 'store' the data
+#### 12. in our reducer we will tell the reducer on how to 'store' the data
 
 ```javascript
 export default (state, action) => {
@@ -552,10 +552,59 @@ export default (state, action) => {
 
 <br>
 
-#### Now the magic part
+#### 13. Now the magic part
 
 - in the following lines, when we will click on the button its going to add the harry potter movie to the array of the existing watch list, because we ve the **...spread the existing watch list here**
 
 ```javascript
   watchlist: [action.payload, ✋...state.watchlist ✋],
 ```
+
+<br>
+
+##### like so
+
+```javascript
+export default (state, action) => {
+  switch (action.type) {
+    case "ADD_MOVIE_TO_WATCHLIST":
+      return {
+        // 1  here we will return the existing state "...state"
+        ...state,
+        //2 and then we want to make some changes to the state
+        watchlist: [action.payload, ...state.watchlist],
+        // 3 the action.payload here above,
+        // is the one containing the movie data in the GlobalState.js
+      };
+    default:
+      return state;
+  }
+};
+```
+
+<br>
+
+### 14. Back to the GlobalState.js
+
+#### insert the function of actions "addMovieToWatchlist", to the GlobalContext.Provider
+
+```javascript
+return (
+  <GlobalContext.Provider
+    value={{
+      watchlist: state.watchlist,
+      watched: state.watched,
+      addMovieToWatchlist,
+    }}
+  >
+    {props.children}
+  </GlobalContext.Provider>
+);
+```
+
+<br>
+<br>
+
+#### 15. Now we need to Wrap all the components in the App.js
+
+- import the GlobalProvider.js

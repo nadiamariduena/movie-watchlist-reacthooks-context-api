@@ -39,7 +39,11 @@ export const GlobalProvider = (props) => {
   // so that we can access the global context from every component
   return (
     <GlobalContext.Provider
-      value={{ watchlist: state.watchlist, watched: state.watched }}
+      value={{
+        watchlist: state.watchlist,
+        watched: state.watched,
+        addMovieToWatchlist,
+      }}
     >
       {props.children}
     </GlobalContext.Provider>
