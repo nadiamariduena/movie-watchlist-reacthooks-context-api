@@ -418,7 +418,13 @@ import { AppReducer } from "./AppReducer";
 
 <br>
 
-#### 7. With the GlobalContext.Provider, we will wrapp all of the elements of the application, so that we can access the global context from every component
+## [Provider](https://react-redux.js.org/api/provider)
+
+> The **< Provider >** component makes the Redux store available to any nested components that need to access the Redux store.
+
+<br>
+
+#### 7. With the GlobalContext.Provider, we will wrap all of the elements of the application, so that we can access the global context from every component
 
 ```javascript
 export const GlobalProvider = (props) => {
@@ -457,3 +463,8 @@ return (
   </GlobalContext.Provider>
 );
 ```
+
+<br>
+<br>
+
+## Actions
