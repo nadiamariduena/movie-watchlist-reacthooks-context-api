@@ -63,6 +63,12 @@ const Button = styled.button`
 `;
 
 const ResultCards = ({ movie }) => {
+  //
+  //
+  const { addMovieToWatchlist } = useContext(GlobalContext);
+
+  //
+  //
   return (
     <Container>
       <Grid>

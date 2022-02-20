@@ -667,3 +667,14 @@ import { GlobalContext } from "../context/GlobalState";
 <br>
 
 #### 18. With this we can grab our action, the action we created that adds the movie to the WATCHLIST
+
+```javascript
+const ResultCards = ({ movie }) => {
+  //
+  //
+  const { addMovieToWatchlist } = useContext(GlobalContext);
+
+  //
+  //
+  return (
+```
