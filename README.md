@@ -429,6 +429,8 @@ fetch(
 
 #### 8. return the data
 
+- how to
+
 ```javascript
 fetch(
   `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
@@ -436,6 +438,8 @@ fetch(
 ```
 
 <br>
+
+- implemented
 
 ```javascript
 fetch(
@@ -458,7 +462,7 @@ Invalid API key: You must be granted a valid key
 
 ```
 
-- I couldnt get any result when typing harry potter for example, instead i got that error.
+- I couldnt get any result when typing harry potter for example, instead i got that error above
 
 <br>
 
@@ -578,7 +582,7 @@ export const Add = () => {
         <Container>
           <AddContent>
             <InputWrapper>
-              <input
+              <Input
                 type="text"
                 placeholder="search for a movie"
                 value={query}
@@ -591,4 +595,17 @@ export const Add = () => {
     </>
   );
 };
+```
+
+<br>
+<br>
+
+### Now we need to store our results, and for that we need to create another state
+
+<br>
+
+##### 1. for initial state, we will have an array of results and it will be an empty array []
+
+```javascript
+const [results, setResults] = useState([]); //array of results ([])
 ```

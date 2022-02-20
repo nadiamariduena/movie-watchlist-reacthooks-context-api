@@ -29,7 +29,7 @@ export const Add = () => {
   //
   //
   const [query, setQuery] = useState("");
-
+  const [results, setResults] = useState([]);
   //
   const onChange = (e) => {
     e.preventDefault();
@@ -53,7 +53,7 @@ export const Add = () => {
         <Container>
           <AddContent>
             <InputWrapper>
-              <input
+              <Input
                 type="text"
                 placeholder="search for a movie"
                 value={query}
