@@ -500,3 +500,5 @@ const addMovieToWatchlist = (movie) => {
   dispatch({ type: "ADD_MOVIE_TO_WATCHLIST" });
 };
 ```
+
+##### Its a good practice to use UPPERCASE for reducer types action types
