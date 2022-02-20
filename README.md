@@ -478,3 +478,9 @@ return (
 > The action describes what happened and it is the reducer's job to return the new state based on that action. It may seem simple, but it does have to be a pure function with no side effects.
 
 <br>
+
+#### 9. 🍍 When we will click this <u>Add to watchlist</u> button, we need to tell the provider, to use an action "to tell it what to do with it once we click the button"
+
+<br>
+
+- So what we want to do with this action, is to create a function here and we're gonna call it **addMovieToWatchlist**
