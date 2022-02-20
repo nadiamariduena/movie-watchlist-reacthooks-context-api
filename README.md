@@ -269,7 +269,9 @@ export const Add = () => {
 <br>
 <br>
 
-# 🥭
+## CONTEXT API 🍌
+
+<br>
 
 #### Let's implement the watchList page and button, for this we are going to use the Context API so that we can reach this from everywhere in the project.
 
@@ -287,8 +289,29 @@ export const Add = () => {
 
 <br>
 
-#### import the following:
+#### 1. Import the following:
 
 ```javascript
 import React, { createContext, useReducer, useEffect } from "react";
 ```
+
+<br>
+
+#### 2. Handle the initial state
+
+- the first thing you have to do when working with context api, is making an **initial value**
+
+```javascript
+const initialState = {
+  //a. at the beginning we have nothing, its an empty array
+  watchlist: [],
+  //
+  // b. then we will make the 'watched' component
+  // its also going to be empty
+  watched: [],
+};
+```
+
+<br>
+
+#### 3 CREATE CONTEXT
