@@ -77,7 +77,11 @@ export default WatchList;
 <br>
 <br>
 
-#### The header
+### The header
+
+- This will be the basic form the tutorial, soon I will adapt it with styled components.
+
+<br>
 
 ```javascript
 import React from "react";
@@ -178,4 +182,44 @@ function App() {
 }
 
 export default App;
+```
+
+<br>
+<br>
+
+### Setting up the Add page
+
+- Here is where we will handle the state and also where we will fetch the data coming from the api
+
+<br>
+
+###### the state
+
+```javascript
+// 1
+import React, { useState } from "react";
+//
+const Add = () => {
+  //
+  //2
+  const [query, setQuery] = useState("");
+  //
+ //5
+  const onChange = () => {};
+  //
+  //
+  //
+  // 3 add the value
+   value={query}
+//
+// 4 add the function on change
+  onChange={onChange}
+  //
+  //like so
+   <Input
+                type="text"
+                placeholder="search for a movie"
+                value={query}
+                onChange={onChange}
+              />
 ```

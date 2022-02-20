@@ -106,7 +106,7 @@ const Navigation = () => {
           <Left>
             <Brand>
               {" "}
-              <Link to="/">Watch</Link>
+              <Link to="/">WatchList</Link>
             </Brand>
           </Left>
           {/* ---------------- */}
