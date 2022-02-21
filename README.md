@@ -101,3 +101,35 @@ useEffect(() => {
 <br>
 
 [<img src="./src/img/localstorage-saving-movie-to-watchlist.gif"/>]()
+
+<br>
+<br>
+
+### At this moment if we refresh the page, we are not making use of that localStorage yet, so what we are doing next, is that we are going to make that <u>initial state</u> take the value when it first loads from out localStorage items
+
+```javascript
+//      BEFORE
+//
+
+const initialState = {
+  //1 at the beginning we have nothing, its an empty array
+  watchlist: [],
+  // 2. then we will make the 'watched' component
+  // its also going to be empty
+  watched: [],
+};
+
+//
+//
+//      AFTER
+const initialState = {
+  watchlist: localStorage.setItem("watchlist")
+    ? JSON.parse(localStorage.getItem("watchlist"))
+    : [],
+  //
+
+  watched: localStorage.setItem("watched")
+    ? JSON.parse(localStorage.getItem("watched"))
+    : [],
+};
+```

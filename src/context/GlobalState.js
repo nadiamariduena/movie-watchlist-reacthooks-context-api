@@ -8,11 +8,15 @@ import AppReducer from "./AppReducer";
 //2
 const initialState = {
   //1 at the beginning we have nothing, its an empty array
-  watchlist: [],
+  watchlist: localStorage.setItem("watchlist")
+    ? JSON.parse(localStorage.getItem("watchlist"))
+    : [],
   //
   // 2. then we will make the 'watched' component
   // its also going to be empty
-  watched: [],
+  watched: localStorage.setItem("watched")
+    ? JSON.parse(localStorage.getItem("watched"))
+    : [],
 };
 //
 //
