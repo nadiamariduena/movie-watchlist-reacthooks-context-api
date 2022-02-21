@@ -65,9 +65,13 @@ const Button = styled.button`
 const ResultCards = ({ movie }) => {
   //
   //
-  const { addMovieToWatchlist } = useContext(GlobalContext);
+  const { addMovieToWatchlist, watchlist } = useContext(GlobalContext);
 
-  //
+  //here we will search if there is any object that has an idential object id o.id === movie.id
+  let storedMovie = watchlist.find(
+    (objectMovie) => objectMovie.id === movie.id
+  );
+
   //
   return (
     <Container>

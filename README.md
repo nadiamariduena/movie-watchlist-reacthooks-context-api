@@ -700,6 +700,14 @@ const ResultCards = ({ movie }) => {
 [<img src="./src/img/contextAPI_success.gif"/>]()
 
 <br>
+<br>
+
+---
+
+<br>
+<br>
+
+# 🌈 2
 
 #### Now lets add the functionality to prevent adding a movie twice
 
@@ -710,3 +718,30 @@ const ResultCards = ({ movie }) => {
 <br>
 
 > Imagine that when you are saving something, why would you want tp save the same movie twice.
+
+<br>
+
+#### 1 So from our context we want to access the watchlist
+
+```javascript
+//        before
+const { addMovieToWatchlist } = useContext(GlobalContext);
+//        after
+const { addMovieToWatchlist, watchlist } = useContext(GlobalContext);
+```
+
+#### 2 now we will dive inside the watchlist to see if we have identical results
+
+<br>
+
+```javascript
+let storedMovie = watchlist.find((objectMovie) => objectMovie.id === movie.id);
+```
+
+<br>
+
+##### 3. We dont want the user to be able to store another movie similar
+
+```javascript
+
+```
