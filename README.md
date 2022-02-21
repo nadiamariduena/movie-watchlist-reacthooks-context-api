@@ -167,3 +167,5 @@ useEffect(() => {
 <br>
 
 #### 7. Now with this when we go back and search for a movie and then save, we will notice that when we save a movie, its impossible to re save it and also when we refresh the same movie is disabled, so that we cannot save it again.
+
+[<img src="./src/img/localstorage-saved-movie-even-after-refresh.gif"/>]()
