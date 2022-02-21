@@ -681,6 +681,8 @@ const ResultCards = ({ movie }) => {
 
 <br>
 
+# 🌈
+
 #### 19. Now that we have this we can use it in our button
 
 - So what is going to happen here, is that from the moment we click in the button, its going to trigger the **addMovieToWatchlist** and when this happens, it s going to send a movie to the **watchlist**
@@ -691,8 +693,20 @@ const ResultCards = ({ movie }) => {
 
 <br>
 
-### Time to test it
+#### Time to test it, lets see the result:
 
 <br>
 
 [<img src="./src/img/contextAPI_success.gif"/>]()
+
+<br>
+
+#### Now lets add the functionality to prevent adding a movie twice
+
+<br>
+
+- At the top the ResultCard.jsx we will define a variable, this variable is going to **search** inside the **addMovieToWatchlist** , then once there its going verify if we already have the same movie.
+
+<br>
+
+> Imagine that when you are saving something, why would you want tp save the same movie twice.
