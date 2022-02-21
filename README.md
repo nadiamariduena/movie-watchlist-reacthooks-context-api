@@ -48,12 +48,11 @@
 > The useEffect is triggered whenever the **state** is changed inside our provider, so whenever a movie is added to our watchlist, this **useEffect** function here is triggered.
 
 <br>
-
 <br>
 
 ## LocalStorage
 
-<br>
+#### Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
 
 ```javascript
 useEffect(() => {
@@ -61,9 +60,5 @@ useEffect(() => {
 });
 //
 ```
-
-##### Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
-
-<br>
 
 #### ⚠️ local storage has to be a string, so what we are going to do is to convert this array json array to a string.
