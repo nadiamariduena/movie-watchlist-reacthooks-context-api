@@ -107,6 +107,10 @@ useEffect(() => {
 
 ### At this moment if we refresh the page, we are not making use of that localStorage yet, so what we are doing next, is that we are going to make that <u>initial state</u> take the value when it first loads from out localStorage items
 
+<br>
+
+- Here **watchlist: [],** we are going to check if there is anything stored in our local storage, so if there is something we are going to return a parsed array, this one: **JSON.parse(localStorage.getItem("watchlist")**, but if there isnt, we are going to return an empty array **: [],**
+
 ```javascript
 //      BEFORE
 //
