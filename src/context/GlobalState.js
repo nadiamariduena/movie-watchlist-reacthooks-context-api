@@ -26,6 +26,14 @@ export const GlobalProvider = (props) => {
   // 5
   const [state, dispatch] = useReducer(AppReducer, initialState);
   //
+  // 9 useEffect , we will use this to save our search, so that we refresh
+  // we dont lose the saved movie in the watchlist
+  useEffect(() => {
+    // Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
+    localStorage.setItem("watchlist");
+  });
+  //
+  //
   // 8 ACTION
   //   this is going to be provided with the movie data here: (movie) =>
   const addMovieToWatchlist = (movie) => {

@@ -27,7 +27,35 @@
 [<img src="./src/img/disabled-button-workin.gif"/>]()
 
 <br>
+<br>
 
-## SAVING THE SEARCH
+## Saving the Search 🥭
 
-##### Right now when we search for a movie and then we save it, we see that when we refresh it, we lose everything.
+##### Right now when we search for a movie and then we save it, we see that when we refresh it, we lose that watchlist
+
+<br>
+
+- So what we want to do now is that every time we refresh the page, we want our **watchlist** to stay where it is.
+
+<br>
+
+- Go to the context inside the **GlobalState.js** , there use the **useEffect**
+
+<br>
+
+#### useEffect
+
+> The useEffect is triggered whenever the **state** is changed inside our provider, so whenever a movie is added to our watchlist, this **useEffect** function here is triggered.
+
+<br>
+
+###### Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
+
+<br>
+
+```javascript
+useEffect(() => {
+  localStorage.setItem("watchlist");
+});
+//
+```
