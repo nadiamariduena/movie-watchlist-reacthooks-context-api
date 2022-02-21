@@ -8,13 +8,13 @@ import AppReducer from "./AppReducer";
 //2
 const initialState = {
   //1 at the beginning we have nothing, its an empty array
-  watchlist: localStorage.setItem("watchlist")
+  watchlist: localStorage.getItem("watchlist")
     ? JSON.parse(localStorage.getItem("watchlist"))
     : [],
   //
   // 2. then we will make the 'watched' component
   // its also going to be empty
-  watched: localStorage.setItem("watched")
+  watched: localStorage.getItem("watched")
     ? JSON.parse(localStorage.getItem("watched"))
     : [],
 };
@@ -32,11 +32,18 @@ export const GlobalProvider = (props) => {
   //
   // 9 useEffect , we will use this to save our search, so that we refresh
   // we dont lose the saved movie in the watchlist
+
   useEffect(() => {
     // Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
+
     localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
+
+    //
+    localStorage.setItem("watched", JSON.stringify(state.watched));
+
+    //
+    //
   }, [state]);
-  //
   //
   // 8 ACTION
   //   this is going to be provided with the movie data here: (movie) =>

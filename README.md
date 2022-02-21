@@ -105,11 +105,11 @@ useEffect(() => {
 <br>
 <br>
 
-### At this moment if we refresh the page, we are not making use of that localStorage yet, so what we are doing next, is that we are going to make that <u>initial state</u> take the value when it first loads from out localStorage items
+### 5. At this moment if we refresh the page, we are not making use of that localStorage yet, so what we are doing next, is that we are going to make that <u>initial state</u> take the value when it first loads from out localStorage items
 
 <br>
 
-- Here **watchlist: [],** we are going to check if there is anything stored in our local storage, so if there is something we are going to return a parsed array, this one: **JSON.parse(localStorage.getItem("watchlist")**, but if there isnt, we are going to return an empty array **: [],**
+- Here **watchlist: [],** we are going to check if there is anything stored in our local storage, so if there is something we are going to return a parsed array, this one: **JSON.parse(localStorage.getItem("watchlist")**, but if there isnt, we are going to return an empty array **: [],** , repeat the same for the **watched**
 
 ```javascript
 //      BEFORE
@@ -127,13 +127,43 @@ const initialState = {
 //
 //      AFTER
 const initialState = {
-  watchlist: localStorage.setItem("watchlist")
+  /*
+  
+  
+  Here **watchlist: [],** we are going to check if there is anything stored in our local storage, so if there is something we are going to return a parsed array, this one: **JSON.parse(localStorage.getItem("watchlist")**, but if there isnt, we are going to return an empty array **: [],** , repeat the same for the **watched**
+  
+  
+  */
+  watchlist: localStorage.getItem("watchlist")
     ? JSON.parse(localStorage.getItem("watchlist"))
     : [],
   //
 
-  watched: localStorage.setItem("watched")
+  watched: localStorage.getItem("watched")
     ? JSON.parse(localStorage.getItem("watched"))
     : [],
 };
 ```
+
+<br>
+<br>
+
+#### 6. Go back to the useEffect and duplicate the line inside and modify it like so:
+
+```javascript
+useEffect(() => {
+  localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
+  //
+  //
+  localStorage.setItem("watched", JSON.stringify(state.watched));
+
+  //
+}, [state]);
+//
+//
+```
+
+<br>
+<br>
+
+#### 7. Now with this when we go back and search for a movie and then save, we will notice that when we save a movie, its impossible to re save it and also when we refresh the same movie is disabled, so that we cannot save it again.
