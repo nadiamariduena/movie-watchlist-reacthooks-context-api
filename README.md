@@ -168,4 +168,36 @@ useEffect(() => {
 
 #### 7. Now with this when we go back and search for a movie and then save, we will notice that when we save a movie, its impossible to re save it and also when we refresh the same movie is disabled, so that we cannot save it again.
 
+<br>
+
 [<img src="./src/img/localstorage-saved-movie-even-after-refresh.gif"/>]()
+
+<br>
+<br>
+<br>
+
+---
+
+<br>
+<br>
+
+# 🍰
+
+## Display the Watchlist
+
+<br>
+
+#### Go to the Watchlist.jsx
+
+> To access the Logic of our **movie Context** inside the **GlobalState.js**, we have to first import the **context**
+
+<br>
+
+## 1. Access the Context ✋
+
+```javascript
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+```
+
+##### 2. Access the watchlist using Context ✋
