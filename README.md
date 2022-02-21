@@ -201,3 +201,13 @@ import { GlobalContext } from "../context/GlobalState";
 ```
 
 ##### 2. Access the watchlist using Context ✋
+
+```javascript
+export const WatchList = () => {
+
+  // Accessing the context here:
+  const { watchlist } = useContext(GlobalContext);
+
+
+  return (
+```

@@ -13,6 +13,12 @@ const Container = styled.div`
 `;
 
 export const WatchList = () => {
+  //
+  // Accessing the context here:
+  const { watchlist } = useContext(GlobalContext);
+
+  //
+  //
   return (
     <>
       <Container>
