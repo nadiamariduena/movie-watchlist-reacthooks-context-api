@@ -758,7 +758,7 @@ const watchlistDisabled = storedMovie ? true : false;
 
 <br>
 
-# 🐖
+### [DISABLED](https://www.w3schools.com/cssref/sel_disabled.asp)
 
 #### Now go to the button "add to watchlist"
 
