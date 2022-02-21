@@ -90,7 +90,7 @@ useEffect(() => {
 
 <br>
 
-#### Then we pass here the state, since we are accessing that state
+#### 4. Then we pass here the state here: }, [state]);, since we are accessing that state
 
 ```javascript
 useEffect(() => {
