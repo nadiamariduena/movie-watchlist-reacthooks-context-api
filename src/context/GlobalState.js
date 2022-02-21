@@ -30,7 +30,7 @@ export const GlobalProvider = (props) => {
   // we dont lose the saved movie in the watchlist
   useEffect(() => {
     // Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
-    localStorage.setItem("watchlist");
+    localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
   });
   //
   //

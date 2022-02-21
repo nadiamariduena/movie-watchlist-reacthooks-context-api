@@ -52,7 +52,11 @@
 
 ## LocalStorage
 
-#### Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
+> We use LocalStorage because we are not using DATABASE
+
+<br>
+
+#### 1. Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
 
 ```javascript
 useEffect(() => {
@@ -61,4 +65,25 @@ useEffect(() => {
 //
 ```
 
-#### ⚠️ local storage has to be a string, so what we are going to do is to convert this array json array to a string.
+#### ⚠️ 2. local storage has to be a string, so what we are going to do, is to convert this array into a json string, with this: JSON.stringify()
+
+<br>
+
+```javascript
+useEffect(() => {
+  localStorage.setItem("watchlist", JSON.stringify());
+});
+//
+```
+
+<br>
+
+##### 3. Now inside the JSON.stringify() , we are going to pass what we want actually to convert to a string, in this case, the state.watchlist
+
+<br>
+
+```javascript
+useEffect(() => {
+  localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
+});
+```
