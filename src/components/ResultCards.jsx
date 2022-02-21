@@ -56,10 +56,14 @@ const Button = styled.button`
   font-size: calc(8px + 1vmin);
   transition: all 0.3s ease;
   line-height: 1.1;
-  &:hover {
+  &:disabled {
     background-color: #9db6ac7b;
     color: #b6b6b6;
   }
+  /* &:hover {
+    background-color: #9db6ac7b;
+    color: #b6b6b6;
+  } */
 `;
 
 const ResultCards = ({ movie }) => {
@@ -100,7 +104,10 @@ const ResultCards = ({ movie }) => {
           </H4>
           {/* the button to add to the wtchlist */}
           <Controls>
-            <Button onClick={() => addMovieToWatchlist(movie)}>
+            <Button
+              disabled={watchlistDisabled}
+              onClick={() => addMovieToWatchlist(movie)}
+            >
               add to watchlist
             </Button>
           </Controls>

@@ -758,4 +758,62 @@ const watchlistDisabled = storedMovie ? true : false;
 
 <br>
 
-#### Now go to the button to "add to watchlist"
+# 🐖
+
+#### Now go to the button "add to watchlist"
+
+<br>
+
+- add the **disabled** selector, this is going to be linked to the variable **const watchlistDisabled**
+
+<br>
+
+```javascript
+<Button disabled={watchlistDisabled} ✋   onClick={() => addMovieToWatchlist(movie)}>
+  add to watchlist
+</Button>
+```
+
+<br>
+
+##### 🔴 If you already have css styles on the button, you will not see the button working unless you already have selector css
+
+<br>
+
+- this is my button style
+
+```javascript
+//
+const Button = styled.button`
+  margin-top: 10px;
+  padding: 10px 26px;
+  background-color: #9dcebb55;
+  color: #a17cc444;
+
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  border: none;
+  font-size: calc(8px + 1vmin);
+  transition: all 0.3s ease;
+  line-height: 1.1;
+
+  //
+  &:disabled {
+    background-color: #9db6ac7b;
+    color: #b6b6b6;
+  }
+  /* &:hover {
+    background-color: #9db6ac7b;
+    color: #b6b6b6;
+  } */
+`;
+```
+
+<br>
+<br>
+
+#### As you can see, from the moment i click on the button, the background of the color changes because i triggered the disabling logic
+
+[<img src="./src/img/disabled-button-workin.gif"/>]()
