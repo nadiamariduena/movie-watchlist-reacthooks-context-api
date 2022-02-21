@@ -740,8 +740,12 @@ let storedMovie = watchlist.find((objectMovie) => objectMovie.id === movie.id);
 
 <br>
 
-##### 3. We dont want the user to be able to store another movie similar
+#### 3. We dont want the user to be able to store another similar movie
+
+<br>
+
+- Create a variable, we will call it **watchlistDisabled**, this is going to be disabled if we have a movie inside the watchlist, so if we have a similar movie in the watchlist it s going to be **true**, which means it s going to disabled the options, but if it s **false**, meaning that we dont have a similar movie then it s going to show the option to save the movie
 
 ```javascript
-
+const watchlistDisabled = storedMovie ? true : false;
 ```

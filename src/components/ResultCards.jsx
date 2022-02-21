@@ -64,14 +64,19 @@ const Button = styled.button`
 
 const ResultCards = ({ movie }) => {
   //
-  //
+  //1 not duplication
   const { addMovieToWatchlist, watchlist } = useContext(GlobalContext);
 
-  //here we will search if there is any object that has an idential object id o.id === movie.id
+  //2 here we will search if there is any object that has an idential object id o.id === movie.id
   let storedMovie = watchlist.find(
     (objectMovie) => objectMovie.id === movie.id
   );
 
+  //3 disabled the possiblity to duplicate a movie in the watchlist
+  // if this is not equal to null
+  const watchlistDisabled = storedMovie ? true : false;
+
+  //
   //
   return (
     <Container>
