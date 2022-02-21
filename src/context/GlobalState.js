@@ -31,7 +31,7 @@ export const GlobalProvider = (props) => {
   useEffect(() => {
     // Whenever this useEffect is triggered, we want to save this watchlist to our localStorage
     localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
-  });
+  }, [state]);
   //
   //
   // 8 ACTION

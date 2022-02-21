@@ -87,3 +87,17 @@ useEffect(() => {
   localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
 });
 ```
+
+<br>
+
+#### Then we pass here the state, since we are accessing that state
+
+```javascript
+useEffect(() => {
+  localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
+}, [state]);
+```
+
+<br>
+
+[<img src="./src/img/localstorage-saving-movie-to-watchlist.gif"/>]()
