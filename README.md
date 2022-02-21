@@ -755,3 +755,7 @@ this is going to be disabled if we have a movie inside the watchlist, so if we h
 ```javascript
 const watchlistDisabled = storedMovie ? true : false;
 ```
+
+<br>
+
+#### Now go to the button to "add to watchlist"

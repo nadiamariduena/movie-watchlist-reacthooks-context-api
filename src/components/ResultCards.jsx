@@ -76,7 +76,7 @@ const ResultCards = ({ movie }) => {
   // if this is not equal to null
   const watchlistDisabled = storedMovie ? true : false;
 
-  //
+  //4 now go to the button "add to watchlist"
   //
   return (
     <Container>
