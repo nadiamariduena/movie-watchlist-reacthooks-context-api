@@ -687,7 +687,7 @@ const addMovieToWatched = (movie) => {
 <br>
 <br>
 
-#### Now handle the case inside the AppReducer.js
+#### 5. Now handle the case inside the AppReducer.js
 
 - READ THE COMMENTs
 
@@ -713,3 +713,7 @@ const addMovieToWatched = (movie) => {
         //
       };
 ```
+
+<br>
+
+#### 6. Go back to the MovieControls.jsx
