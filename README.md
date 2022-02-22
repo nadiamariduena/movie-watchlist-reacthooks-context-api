@@ -580,6 +580,10 @@ const { removeMovieFromWarchlist } = useContext(GlobalContext);
 
 ## Watch component
 
+#### In this section we will create another action in our global state, this action will handle the moving of a movie from our watchlist to our watched component
+
+<br>
+
 - 1. Import the following inside the **Watched.jsx** component
 
 <br>
@@ -629,3 +633,6 @@ import WatchedMovieCard from "./WatchedMovieCard";
 };
 </>
 ```
+
+<br>
+<br>
