@@ -8,13 +8,13 @@
 
 <br>
 
-## Useful links: 🐖
+#### Useful links: 🐖
 
 [fontawesome](https://fontawesome.com/docs/web/use-with/react/)
 
 <br>
 
-#### READ MORE ABOUT .env [Using environment variables in a React applicatio](https://adostes.medium.com/using-environment-variables-in-a-react-application-ac3b6c307373)
+##### READ MORE ABOUT .env [Using environment variables in a React applicatio](https://adostes.medium.com/using-environment-variables-in-a-react-application-ac3b6c307373)
 
 <br>
 <br>
@@ -105,7 +105,7 @@ useEffect(() => {
 <br>
 <br>
 
-### 5. At this moment if we refresh the page, we are not making use of that localStorage yet, so what we are doing next, is that we are going to make that <u>initial state</u> take the value when it first loads from out localStorage items
+#### 5. At this moment if we refresh the page, we are not making use of that localStorage yet, so what we are doing next, is that we are going to make that <u>initial state</u> take the value when it first loads from out localStorage items
 
 <br>
 
