@@ -6,13 +6,13 @@
 
 ##### the tutorial: [Movie Watchlist](https://youtu.be/1eO_hNYzaSc)
 
+[<img src="./src/img/disabled-button-workin.gif"/>]()
+
 <br>
 
 #### Useful links: 🐖
 
 [fontawesome](https://fontawesome.com/docs/web/use-with/react/)
-
-<br>
 
 ##### READ MORE ABOUT .env [Using environment variables in a React applicatio](https://adostes.medium.com/using-environment-variables-in-a-react-application-ac3b6c307373)
 
@@ -23,8 +23,6 @@
 
 <br>
 <br>
-
-[<img src="./src/img/disabled-button-workin.gif"/>]()
 
 <br>
 <br>
