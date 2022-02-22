@@ -301,6 +301,8 @@ export default WatchedMovieCard;
 <br>
 <br>
 
+## .map 👍
+
 #### 4. Now lets import the above component and map the card we just created
 
 ```javascript
@@ -411,6 +413,10 @@ export const WatchList = () => {
 
 # 🌵
 
-## Controls
+# Controls
 
 #### In this section we will be handling the controls that will take care of the removing movies or adding to the watchlist
+
+<br>
+
+- Create a new component for the controls, call it: **MovieControls.jsx**
