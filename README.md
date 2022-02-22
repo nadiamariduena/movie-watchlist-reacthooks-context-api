@@ -284,11 +284,6 @@ const WatchedMovieCard = ({ movie, type }) => {
           ) : (
             <div className="filler-poster"></div>
           )}
-          <H3>{movie.title}</H3>
-          <H4>
-            {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
-          </H4>
-          {/* the button to add to the watchlist */}
         </ResultCard>
       </Grid>
     </Container>
@@ -415,7 +410,7 @@ export const WatchList = () => {
 
 # Controls
 
-#### In this section we will be handling the controls that will take care of the removing movies or adding to the watchlist
+#### 1. In this section we will be handling the controls that will take care of the removing movies or adding to the watchlist
 
 <br>
 
@@ -453,3 +448,8 @@ const MovieControls = ({ movie, type }) => {
   );
 };
 ```
+
+<br>
+<br>
+
+#### 2. Import the component inside the

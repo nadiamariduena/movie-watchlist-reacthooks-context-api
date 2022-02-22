@@ -61,11 +61,6 @@ const WatchedMovieCard = ({ movie, type }) => {
           ) : (
             <div className="filler-poster"></div>
           )}
-          <H3>{movie.title}</H3>
-          <H4>
-            {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
-          </H4>
-          {/* the button to add to the watchlist */}
         </ResultCard>
       </Grid>
     </Container>
