@@ -546,3 +546,14 @@ const removeMovieFromWarchlist = (id) => {
 <br>
 
 #### 6. now that we have the action in both 'the appReducer and the GlobalState', we can add it inside the MovieControl.js
+
+<br>
+
+- import react contex
+
+```javascript
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+```
+
+<br>
