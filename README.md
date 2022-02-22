@@ -476,8 +476,12 @@ import MovieControls from "./MovieControls";
 #### Before implementing the removing functionality, this is what we have [button data](./button.md) ✋
 
 <br>
+<br>
+<br>
 
-## Removing button
+## Removing movie
+
+<br>
 
 - To remove the movie we will need to make an **action**, so lets go back to the **GlobalState.js**
 
