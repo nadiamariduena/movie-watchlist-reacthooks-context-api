@@ -569,3 +569,63 @@ const { removeMovieFromWarchlist } = useContext(GlobalContext);
 <br>
 
 [<img src="./src/img/removing-movie.gif"/>]()
+
+<br>
+<br>
+
+---
+
+<br>
+<br>
+
+## Watch component
+
+- 1. Import the following inside the **Watched.jsx** component
+
+<br>
+
+```javascript
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+import WatchedMovieCard from "./WatchedMovieCard";
+```
+
+<br>
+
+#### 2. Add the following from the Watchlist.jsx
+
+```javascript
+<>
+  export const Watched = () => {
+  //
+  //
+  const { watched } = useContext(GlobalContext); ✋
+
+  //
+  //
+  return (
+    <>
+      <WrapperContainer>
+        <Container>
+          <Content>
+            <h1>Watched Movies</h1>
+
+         ✋   {watched.length > 0 ? (
+              <Ul className="results">
+              ✋  {watched.map((movie) => (
+                  <li key={movie.id}>
+                    <WatchedMovieCard movie={movie} type="watched" />
+                  </li>
+                ))}
+              </Ul>
+            ) : (
+              <div>No Movies, in your List</div>
+            )}
+          </Content>{" "}
+        </Container>
+      </WrapperContainer>
+    </>
+  );
+};
+</>
+```
