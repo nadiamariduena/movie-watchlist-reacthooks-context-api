@@ -762,4 +762,8 @@ const MovieControls = ({ movie, type }) => {
 <br>
 <br>
 
+#### result of 'add movie to watched'
+
+<br>
+
 [<img src="./src/img/add-to-watched-movie.gif"/>]()
