@@ -498,7 +498,9 @@ const removeMovieFromWarchlist = (id) => {
 
 <br>
 
-#### 4. now we need to bring this function: removeMovieFromWarchlist, to be exported in the GlobalContext.Provider
+#### 4. now we need to bring this function: removeMovieFromWarchlist, to be exported in the GlobalContext.Provider, so that this too can be accessed from other components
+
+<br>
 
 ```javascript
  return (
@@ -514,3 +516,8 @@ const removeMovieFromWarchlist = (id) => {
     </GlobalContext.Provider>
   );
 ```
+
+<br>
+<br>
+
+#### 5. Once this is done we need to tell the Reducer what to do, so lets go to the AppReducer.js
