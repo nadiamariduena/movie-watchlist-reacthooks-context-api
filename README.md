@@ -683,3 +683,33 @@ const addMovieToWatched = (movie) => {
   );
   //
 ```
+
+<br>
+<br>
+
+#### Now handle the case inside the AppReducer.js
+
+- READ THE COMMENTs
+
+```javascript
+    case "ADD_MOVIE_TO_WATCHED":
+      return {
+        // 1
+        ...state,
+        //2
+        //here we need to remove a movie from the watchlist
+        //and then we need to add it to the watch component
+        watchlist: state.watchlist.filter(
+          //action.payload.id this is going to return the movies,
+          //that  arent equal to the new movies we are adding.
+          //so its removing it from the watchlist
+          (movie) => movie.id !== action.payload.id
+        ),
+        //3 then after removing from the watchlist in step 2, we want to add it
+        //to the watched list, as you notice, the line
+        //below is similar to the one in the case "ADD_MOVIE_TO_WATCHLIST":
+        watched: [action.payload, ...state.watched],
+        //
+        //
+      };
+```
