@@ -479,8 +479,15 @@ import MovieControls from "./MovieControls";
 
 ## Removing button
 
+- To remove the movie we will need to make an **action**, so lets go back to the **GlobalState.js**
+
 #### 3.
 
 ```javascript
-
+// ------- actions ----------
+//10 action related to the removal of the movie in the watchlist
+//here we dont need the full movie , we just need the id
+const removeMovieFromWarchlist = (id) => {
+  dispatch({ type: "REMOVE_MOVIE_TO_WATCHLIST", payload: id });
+};
 ```

@@ -45,10 +45,20 @@ export const GlobalProvider = (props) => {
     //
   }, [state]);
   //
+  //
+  // ------- actions ----------
+  //
+  //
   // 8 ACTION
   //   this is going to be provided with the movie data here: (movie) =>
   const addMovieToWatchlist = (movie) => {
     dispatch({ type: "ADD_MOVIE_TO_WATCHLIST", payload: movie });
+  };
+  //
+  //10 action related to the removal of the movie in the watchlist
+  //here we dont need the full movie , we just need the id
+  const removeMovieFromWarchlist = (id) => {
+    dispatch({ type: "REMOVE_MOVIE_TO_WATCHLIST", payload: id });
   };
 
   //
