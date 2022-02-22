@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { mobile, mobileM, tablet } from "../responsive";
-
+import MovieControls from "./MovieControls";
 //
 //
 // ** This is the Card linked to Watchlist **
@@ -61,6 +61,8 @@ const WatchedMovieCard = ({ movie, type }) => {
           ) : (
             <div className="filler-poster"></div>
           )}
+          {/* controls */}
+          <MovieControls type={type} movie={movie} />
         </ResultCard>
       </Grid>
     </Container>

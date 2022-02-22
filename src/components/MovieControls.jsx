@@ -9,7 +9,20 @@ const Container = styled.div``;
 
 //
 //
-const Content = styled.div``;
+const Content = styled.div`
+  color: rgb(189, 212, 197);
+
+  .ctrl-btn {
+    padding: 5px 5px;
+    margin: 1px;
+    border-radius: 5rem;
+    border: 0;
+    background: rgba(189, 212, 197, 0.418);
+    &:hover {
+      background: rgba(238, 241, 239, 0.418);
+    }
+  }
+`;
 
 //
 //

@@ -452,4 +452,25 @@ const MovieControls = ({ movie, type }) => {
 <br>
 <br>
 
-#### 2. Import the component inside the
+#### 2. Import the component above inside the WatchedMovieCard.jsx
+
+<br>
+
+```javascript
+import MovieControls from "./MovieControls";
+```
+
+- Use it here:
+
+```javascript
+
+          <MovieControls type={type} movie={movie} />
+        </ResultCard>
+```
+
+[<img src="./src/img/buttons-1.gif"/>]()
+
+<br>
+<br>
+
+#### Before implementing the removing functionality, this is what we have [button data](./button.md)
