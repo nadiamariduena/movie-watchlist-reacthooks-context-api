@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { GlobalContext } from "../context/GlobalState";
 import { mobile, mobileM, tablet } from "../responsive";
 
 //
@@ -27,6 +28,12 @@ const Content = styled.div`
 //
 //
 const MovieControls = ({ movie, type }) => {
+  //
+  //
+
+  const { removeMovieFromWarchlist } = useContext(GlobalContext);
+  //
+  //
   return (
     <>
       <WrapperContainer>
@@ -38,7 +45,10 @@ const MovieControls = ({ movie, type }) => {
                   <i className="fa-fw far fa-eye"></i>
                 </button>
                 {/*  */}
-                <button className="ctrl-btn">
+                <button
+                  className="ctrl-btn"
+                  onClick={() => removeMovieFromWarchlist(movie.id)}
+                >
                   <i className="fa-fw fa fa-times"></i>
                 </button>
               </>

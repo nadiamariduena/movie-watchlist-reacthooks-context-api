@@ -557,3 +557,17 @@ import { GlobalContext } from "../context/GlobalState";
 ```
 
 <br>
+
+##### 7. now we need to grab that action from the context
+
+```javascript
+const { removeMovieFromWarchlist } = useContext(GlobalContext);
+```
+
+<br>
+
+- Now use the **removeMovieFromWarchlist** on the button
+
+<br>
+
+[<img src="./src/img/removing-movie.gif"/>]()
