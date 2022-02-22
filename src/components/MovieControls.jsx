@@ -60,16 +60,22 @@ const MovieControls = ({ movie, type }) => {
             )}
             {/* 
             
+
+            here below we will implement a control that will move the movie
+            back to the watchlist
             
             */}
 
-            {/* {type === "watched" && (
+            {type === "watched" && (
               <>
                 <button className="ctrl-btn">
                   <i className="fa-fw far fa-eye-slash"></i>
                 </button>
+                <button className="ctrl-btn">
+                  <i className="fa-fw fa fa-times"></i>
+                </button>
               </>
-            )} */}
+            )}
           </Content>
         </Container>
       </WrapperContainer>

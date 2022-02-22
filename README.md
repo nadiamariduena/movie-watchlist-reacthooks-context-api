@@ -774,3 +774,20 @@ const MovieControls = ({ movie, type }) => {
 ## Watched Controls
 
 ##### 7. Now we want to be able to move it back to our watchlist
+
+- For this to work we will need to work on 2 more actions as we have 2 buttons
+
+```javascript
+{
+  type === "watched" && (
+    <>
+      <button className="ctrl-btn">
+        <i className="fa-fw far fa-eye-slash"></i>
+      </button>
+      <button className="ctrl-btn">
+        <i className="fa-fw fa fa-times"></i>
+      </button>
+    </>
+  );
+}
+```
