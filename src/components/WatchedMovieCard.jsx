@@ -12,7 +12,7 @@ const Container = styled.div``;
 const Grid = styled.div``;
 const ResultCard = styled.div`
   padding: 20px;
-  background: #f8f8f8c5;
+  /* background: #f8f8f8c5; */
   padding: 20px;
 `;
 const ImgBox = styled.div`

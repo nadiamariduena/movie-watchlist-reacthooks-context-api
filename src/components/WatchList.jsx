@@ -25,6 +25,13 @@ const Content = styled.div`
   min-height: 4vh;
   padding: 0px 0 20px 0;
   text-align: center;
+  h1 {
+    padding: 20vh 0 0 0;
+    font-weight: 600;
+    font-size: calc(20px + 2vmin);
+    font-family: "Poppins-Light";
+    color: rgb(189, 212, 197);
+  }
 `;
 
 const Ul = styled.ul`
@@ -50,13 +57,19 @@ export const WatchList = () => {
       <WrapperContainer>
         <Container>
           <Content>
-            <Ul className="results">
-              {watchlist.map((movie) => (
-                <li key={movie.id}>
-                  <WatchedMovieCard movie={movie} type="watchlist" />
-                </li>
-              ))}
-            </Ul>
+            <h1>My Watchlist</h1>
+
+            {watchlist.length > 0 ? (
+              <Ul className="results">
+                {watchlist.map((movie) => (
+                  <li key={movie.id}>
+                    <WatchedMovieCard movie={movie} type="watchlist" />
+                  </li>
+                ))}
+              </Ul>
+            ) : (
+              <div>No Movies, in your List</div>
+            )}
           </Content>{" "}
         </Container>
       </WrapperContainer>
