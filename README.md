@@ -375,6 +375,8 @@ export const WatchList = () => {
 <br>
 <br>
 
+# Conditional ? () :
+
 # 🌞
 
 #### 5. Return a message "no movies in the watchlist" using a conditional
@@ -398,3 +400,17 @@ export const WatchList = () => {
   );
 }
 ```
+
+<br>
+<br>
+
+---
+
+<br>
+<br>
+
+# 🌵
+
+## Controls
+
+#### In this section we will be handling the controls that will take care of the removing movies or adding to the watchlist
