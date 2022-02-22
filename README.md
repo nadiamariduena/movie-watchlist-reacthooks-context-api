@@ -217,3 +217,157 @@ export const WatchList = () => {
 ##### 3. mapping the watchlist from the context
 
 - We can either start the **mapping** inside the **WatchList.jsx** or proceed to create first the **Card** for the WatchList, In my case i will create the card first (I just have to copy the styles and the content of the ResultCard.jsx, then modify it accordingly).
+
+<br>
+
+```javascript
+import React from "react";
+import styled from "styled-components";
+import { mobile, mobileM, tablet } from "../responsive";
+
+//
+//
+// ** This is the Card linked to Watchlist **
+//
+
+const Container = styled.div``;
+
+const Grid = styled.div``;
+const ResultCard = styled.div`
+  padding: 20px;
+  background: #f8f8f8c5;
+  padding: 20px;
+`;
+const ImgBox = styled.div`
+  width: 100%;
+
+  img {
+    margin: 10px 0 10px 0;
+    width: 70%;
+    min-height: auto;
+    object-fit: cover;
+    /* border-radius: 5rem; */
+  }
+`;
+//
+const H3 = styled.h3`
+  padding: 10px 0 10px 0;
+  font-weight: 100;
+  font-size: calc(10px + 1.1vmin);
+  font-family: "RobotoBlack";
+  color: rgb(189, 212, 197);
+`;
+const H4 = styled.h3`
+  font-weight: 100;
+  font-size: calc(10px + 1vmin);
+  font-family: "Poppins-Light";
+  color: rgb(189, 212, 197);
+`;
+//
+
+//
+//
+//
+const WatchedMovieCard = ({ movie, type }) => {
+  return (
+    <Container>
+      <Grid>
+        <ResultCard>
+          {movie.poster_path ? (
+            <ImgBox>
+              {" "}
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={`${movie.title} Poster`}
+              />
+            </ImgBox>
+          ) : (
+            <div className="filler-poster"></div>
+          )}
+          <H3>{movie.title}</H3>
+          <H4>
+            {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
+          </H4>
+          {/* the button to add to the watchlist */}
+        </ResultCard>
+      </Grid>
+    </Container>
+  );
+};
+
+export default WatchedMovieCard;
+```
+
+<br>
+<br>
+
+##### 4. Now lets import the above component and map the card we just created
+
+```javascript
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+import WatchedMovieCard from "./WatchedMovieCard";
+import styled from "styled-components";
+import { mobile, mobileM, tablet } from "../responsive";
+
+//
+//
+//
+//
+const WrapperContainer = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0 0 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Container = styled.div``;
+
+//
+//
+const Content = styled.div`
+  width: 100vw;
+  min-height: 4vh;
+  padding: 0px 0 20px 0;
+  text-align: center;
+`;
+
+const Ul = styled.ul`
+  padding: 5em 7.5em;
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+`;
+//
+
+//
+//
+
+export const WatchList = () => {
+  //
+  // Accessing the context here:
+  const { watchlist } = useContext(GlobalContext);
+
+  //
+  //
+  return (
+    <>
+      <WrapperContainer>
+        <Container>
+          <Content>
+            <Ul className="results">
+              ✋{" "}
+              {watchlist.map((movie) => (
+                <li key={movie.id}>
+                  <WatchedMovieCard movie={movie} type="watchlist" />
+                </li>
+              ))}
+            </Ul>
+          </Content>{" "}
+        </Container>
+      </WrapperContainer>
+    </>
+  );
+};
+```
