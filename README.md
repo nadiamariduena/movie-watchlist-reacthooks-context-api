@@ -716,4 +716,45 @@ const addMovieToWatched = (movie) => {
 
 <br>
 
-#### 6. Go back to the MovieControls.jsx
+#### 6. Go back to the MovieControls.jsx and add the function _addMovieToWatched_
+
+<br>
+
+```javascript
+const MovieControls = ({ movie, type }) => {
+  //
+  //
+
+  const { removeMovieFromWarchlist, addMovieToWatched ✋ } =
+    useContext(GlobalContext);
+  //
+  //
+  return (
+    <>
+      <WrapperContainer>
+        <Container>
+          <Content>
+            {type === "watchlist" && (
+              <>
+                <button
+                  className="ctrl-btn"
+                  onClick={() => ✋ addMovieToWatched(movie)}
+                >
+                  <i className="fa-fw far fa-eye"></i>
+                </button>
+                {/*  */}
+                <button
+                  className="ctrl-btn"
+                  onClick={() => removeMovieFromWarchlist(movie.id)}
+                >
+                  <i className="fa-fw fa fa-times"></i>
+                </button>
+              </>
+            )}
+          </Content>
+        </Container>
+      </WrapperContainer>
+    </>
+  );
+};
+```
