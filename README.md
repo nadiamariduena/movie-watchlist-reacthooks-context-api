@@ -420,3 +420,36 @@ export const WatchList = () => {
 <br>
 
 - Create a new component for the controls, call it: **MovieControls.jsx**
+
+<br>
+
+- Pass the props: **movie and type** , just like we did with the card above
+
+<br>
+
+```javascript
+//
+const MovieControls = ({ movie, type }) => {
+  return (
+    <>
+      <WrapperContainer>
+        <Container>
+          <Content>
+            {type === "watchlist" && (
+              <>
+                <button className="ctrl-btn">
+                  <i className="fa-fw far fa-eye"></i>
+                </button>
+                {/*  */}
+                <button className="ctrl-btn">
+                  <i className="fa-fw fa fa-times"></i>
+                </button>
+              </>
+            )}
+          </Content>
+        </Container>
+      </WrapperContainer>
+    </>
+  );
+};
+```
