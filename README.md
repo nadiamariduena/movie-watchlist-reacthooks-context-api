@@ -578,6 +578,8 @@ const { removeMovieFromWarchlist } = useContext(GlobalContext);
 <br>
 <br>
 
+# 🌈
+
 ## Watch component
 
 #### In this section we will create another action in our global state, this action will handle the moving of a movie from our watchlist to our watched component
@@ -636,3 +638,48 @@ import WatchedMovieCard from "./WatchedMovieCard";
 
 <br>
 <br>
+
+#### 3. Go to the GlobalState.jsx
+
+👍 check the **action 11** , this is the one we are implementing now
+
+```javascript
+// 8 ACTION
+//   this is going to be provided with the movie data here: (movie) =>
+const addMovieToWatchlist = (movie) => {
+  dispatch({ type: "ADD_MOVIE_TO_WATCHLIST", payload: movie });
+};
+//
+//10 action related to the removal of the movie in the watchlist
+//here we dont need the full movie , we just need the id
+const removeMovieFromWarchlist = (id) => {
+  dispatch({ type: "REMOVE_MOVIE_TO_WATCHLIST", payload: id });
+};
+
+//11 action to move the movie from watchlist to watched
+const addMovieToWatched = (movie) => {
+  dispatch({ type: "ADD_MOVIE_TO_WATCHED", payload: movie });
+};
+//
+```
+
+<br>
+
+#### 4. Now pass it inside the Global Context to expost it everywhere else
+
+```javascript
+  return (
+    <GlobalContext.Provider
+      value={{
+        watchlist: state.watchlist,
+        watched: state.watched,
+        addMovieToWatchlist,
+        removeMovieFromWarchlist,
+        addMovieToWatched, ✋
+      }}
+    >
+      {props.children}
+    </GlobalContext.Provider>
+  );
+  //
+```
