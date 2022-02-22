@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { mobile, mobileM, tablet } from "../responsive";
 
+//
+//
 // ** This is the Card linked to Watchlist **
 //
 
@@ -59,12 +61,11 @@ const WatchedMovieCard = ({ movie, type }) => {
           ) : (
             <div className="filler-poster"></div>
           )}
-
           <H3>{movie.title}</H3>
           <H4>
             {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
           </H4>
-          {/* the button to add to the wtchlist */}
+          {/* the button to add to the watchlist */}
         </ResultCard>
       </Grid>
     </Container>

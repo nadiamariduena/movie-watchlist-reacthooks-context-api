@@ -4,6 +4,10 @@ import WatchedMovieCard from "./WatchedMovieCard";
 import styled from "styled-components";
 import { mobile, mobileM, tablet } from "../responsive";
 
+//
+//
+//
+//
 const WrapperContainer = styled.div`
   width: 100vw;
   min-height: 100vh;

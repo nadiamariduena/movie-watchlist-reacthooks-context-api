@@ -215,3 +215,5 @@ export const WatchList = () => {
 <br>
 
 ##### 3. mapping the watchlist from the context
+
+- We can either start the **mapping** inside the **WatchList.jsx** or proceed to create first the **Card** for the WatchList, In my case i will create the card first (I just have to copy the styles and the content of the ResultCard.jsx, then modify it accordingly).
