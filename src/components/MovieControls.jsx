@@ -58,6 +58,18 @@ const MovieControls = ({ movie, type }) => {
                 </button>
               </>
             )}
+            {/* 
+            
+            
+            */}
+
+            {/* {type === "watched" && (
+              <>
+                <button className="ctrl-btn">
+                  <i className="fa-fw far fa-eye-slash"></i>
+                </button>
+              </>
+            )} */}
           </Content>
         </Container>
       </WrapperContainer>

@@ -580,7 +580,7 @@ const { removeMovieFromWarchlist } = useContext(GlobalContext);
 
 # 🌈
 
-## Watch component
+## Watched component 👁️
 
 #### In this section we will create another action in our global state, this action will handle the moving of a movie from our watchlist to our watched component
 
@@ -716,7 +716,7 @@ const addMovieToWatched = (movie) => {
 
 <br>
 
-#### 6. Go back to the MovieControls.jsx and add the function _addMovieToWatched_
+#### 6. Go back to the MovieControls.jsx and add the function _addMovieToWatched_ (where the yellow hands are)
 
 <br>
 
@@ -758,3 +758,8 @@ const MovieControls = ({ movie, type }) => {
   );
 };
 ```
+
+<br>
+<br>
+
+[<img src="./src/img/add-to-watched-movie.gif"/>]()
