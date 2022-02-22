@@ -767,3 +767,10 @@ const MovieControls = ({ movie, type }) => {
 <br>
 
 [<img src="./src/img/add-to-watched-movie.gif"/>]()
+
+<br>
+<br>
+
+## Watched Controls
+
+##### 7. Now we want to be able to move it back to our watchlist
