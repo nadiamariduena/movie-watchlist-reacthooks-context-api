@@ -200,7 +200,9 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 ```
 
-##### 2. Access the watchlist using Context ✋
+<br>
+
+#### 2. Access the watchlist using Context
 
 ```javascript
 export const WatchList = () => {
@@ -208,6 +210,8 @@ export const WatchList = () => {
   // Accessing the context here:
   const { watchlist } = useContext(GlobalContext);
 
-
-  return (
 ```
+
+<br>
+
+##### 3. mapping the watchlist from the context
