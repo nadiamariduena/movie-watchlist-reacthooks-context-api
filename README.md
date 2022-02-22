@@ -481,7 +481,7 @@ import MovieControls from "./MovieControls";
 
 - To remove the movie we will need to make an **action**, so lets go back to the **GlobalState.js**
 
-#### 3.
+#### 3. create a new dispatch type, as we did in step 8 of the GlobalState.js file
 
 ```javascript
 // ------- actions ----------
@@ -490,4 +490,23 @@ import MovieControls from "./MovieControls";
 const removeMovieFromWarchlist = (id) => {
   dispatch({ type: "REMOVE_MOVIE_TO_WATCHLIST", payload: id });
 };
+```
+
+<br>
+
+#### 4. now we need to bring this function: removeMovieFromWarchlist, to be exported in the GlobalContext.Provider
+
+```javascript
+ return (
+    <GlobalContext.Provider
+      value={{
+        watchlist: state.watchlist,
+        watched: state.watched,
+        addMovieToWatchlist,
+        removeMovieFromWarchlist, ✋
+      }}
+    >
+      {props.children}
+    </GlobalContext.Provider>
+  );
 ```

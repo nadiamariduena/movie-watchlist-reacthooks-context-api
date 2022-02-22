@@ -72,6 +72,7 @@ export const GlobalProvider = (props) => {
         watchlist: state.watchlist,
         watched: state.watched,
         addMovieToWatchlist,
+        removeMovieFromWarchlist,
       }}
     >
       {props.children}
