@@ -521,3 +521,28 @@ const removeMovieFromWarchlist = (id) => {
 <br>
 
 #### 5. Once this is done we need to tell the Reducer what to do, so lets go to the AppReducer.js
+
+- this is going to return all of the movies that are not equal to the id we are passing here below from the state
+
+```javascript
+✋
+ // related to movie removal btn
+    case "REMOVE_MOVIE_TO_WATCHLIST":
+      return {
+        // 1
+        ...state,
+        //2
+        // this is going to return all of the movies that are not equal
+        // to the id we are passing here below from the state
+        watchlist: state.watchlist.filter(
+          (movie) => movie.id !== action.payload
+        ),
+      };
+
+    //
+```
+
+<br>
+<br>
+
+#### 6. now that we have the action in both 'the appReducer and the GlobalState', we can add it inside the MovieControl.js
