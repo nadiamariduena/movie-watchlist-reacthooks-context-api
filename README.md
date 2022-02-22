@@ -379,8 +379,22 @@ export const WatchList = () => {
 
 #### 5. Return a message "no movies in the watchlist" using a conditional
 
+- **WatchList.jsx**
+
 <br>
 
 ```javascript
-
+{
+   ✋ watchlist.length > 0 ? (
+    <Ul className="results">
+      {watchlist.map((movie) => (
+        <li key={movie.id}>
+          <WatchedMovieCard movie={movie} type="watchlist" />
+        </li>
+      ))}
+    </Ul>
+  ) : (
+    <div>No Movies, in your List 👍 </div>
+  );
+}
 ```
