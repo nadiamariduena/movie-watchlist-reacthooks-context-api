@@ -473,4 +473,14 @@ import MovieControls from "./MovieControls";
 <br>
 <br>
 
-#### Before implementing the removing functionality, this is what we have [button data](./button.md)
+#### Before implementing the removing functionality, this is what we have [button data](./button.md) ✋
+
+<br>
+
+## Removing button
+
+#### 3.
+
+```javascript
+
+```
