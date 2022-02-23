@@ -58,6 +58,12 @@ export const WatchList = () => {
         <Container>
           <Content>
             <h1>My Watchlist</h1>
+            {/* ---------  */}
+            <span className="count-pill">
+              {watchlist.length} {watchlist.length === 1 ? "movie" : "movies"}
+            </span>
+
+            {/* -------- */}
 
             {watchlist.length > 0 ? (
               <Ul className="results">
@@ -70,7 +76,7 @@ export const WatchList = () => {
             ) : (
               <div>No Movies, in your List</div>
             )}
-          </Content>{" "}
+          </Content>
         </Container>
       </WrapperContainer>
     </>

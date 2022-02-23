@@ -29,8 +29,20 @@
 <br>
 <br>
 
-## The counter
+## The counter 🧺
 
 #### This is the last part of the tutorial, here we will be adding a counter, so that the user can see how many movies he has on the counter.
 
 <br>
+
+- Go to the **WatchList.jsx**
+
+```javascript
+<h1>My Watchlist</h1>;
+
+<span className="count-pill">{watchlist.length}movies</span>;
+```
+
+<br>
+
+##### Now lets add an operator here that will show a plural or singular "movie or movies", depending of how many movies we have on the counter
