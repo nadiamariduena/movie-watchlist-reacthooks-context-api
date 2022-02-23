@@ -1089,10 +1089,35 @@ const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
 
 <br>
 
-#### Now we will have both buttons, but as you can see in the gif, there is something worng when we click in either button.
+#### Now we will have both buttons, but as you can see in the gif, there is something wrong when we click in either button.
 
 - So if you notice both buttons get clicked , when i only want one at the same time
 
 <br>
 
 [<img src="./src/img/bug-when-saving-to-list-.gif"/>]()
+
+<br>
+
+#### Create this variable
+
+```javascript
+//7 related to the 2 buttons
+const watchedDisabled = storedMovieWatched ? true : false;
+```
+
+<br>
+
+##### then use it here: disabled={watchedDisabled}
+
+```javascript
+<Button disabled={watchedDisabled} onClick={() => addMovieToWatched(movie)}>
+  add to watched
+</Button>
+```
+
+### now test it ✋
+
+<br>
+
+[<img src="./src/img/2prevent-addng-same-movie-to-the-options-once-added-to-watched.gif"/>]()

@@ -84,7 +84,7 @@ const ResultCards = ({ movie }) => {
   
   
   */
-  //3 disabled the possibility to duplicate a movie in the watchlist
+  //3 and 6 disabled the possibility to duplicate a movie in the watchlist
 
   const watchlistDisabled = storedMovie
     ? true
@@ -98,14 +98,14 @@ const ResultCards = ({ movie }) => {
   the option to save it the same for the storedMovieWatched, but if it s false, meaning that we 
   dont have a similar movie in the watched list, then it s going
   to show the option to save the movie as it will mean its false
-
-
-  
-
-
   
  */
 
+  //7 related to the 2 buttons
+  const watchedDisabled = storedMovieWatched ? true : false;
+
+  //
+  //
   //4 now go to the button "add to watchlist"
   //
   return (
@@ -138,7 +138,7 @@ const ResultCards = ({ movie }) => {
             </Button>
             {/*  */}
             <Button
-              disabled={watchlistDisabled}
+              disabled={watchedDisabled}
               onClick={() => addMovieToWatched(movie)}
             >
               add to watched
