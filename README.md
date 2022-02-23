@@ -8,4 +8,4 @@
 
 <br>
 
-[<img src="./src/img/preview-app.gif"/>]()
+[<img src="./src/img/preview-app.gif"/>](https://movie-search-exercise-mariduena.netlify.app/)
