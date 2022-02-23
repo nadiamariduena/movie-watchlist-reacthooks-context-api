@@ -933,6 +933,8 @@ const MovieControls = ({ movie, type }) => {
 
 #### why should we add twice the same movie in our lists?
 
+<br>
+
 [<img src="./src/img/prevent-addng-same-movie-to-the-options-once-added-to-watched.gif"/>]()
 
 <br>
@@ -994,3 +996,7 @@ let storedMovieWatched = watched.find((o) => o.id === movie.id);
 //1 not duplication
 const { addMovieToWatchlist, watchlist, watched ✋ } = useContext(GlobalContext);
 ```
+
+<br>
+
+#### 13. Now we want to disabled the button if its inside the the watchlist but we also want to check if it s stored in the watched list
