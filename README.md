@@ -999,4 +999,49 @@ const { addMovieToWatchlist, watchlist, watched ✋ } = useContext(GlobalContext
 
 <br>
 
-#### 13. Now we want to disabled the button if its inside the the watchlist but we also want to check if it s stored in the watched list
+#### 13. Now we want to disabled the button if its inside the the watchlist but we also want to check if it s stored in the watched list so to disabled it as well!.
+
+<br>
+
+- Lets add another if statement here
+
+##### make some changes to the following line in the ResultCards.jsx:
+
+```javascript
+  //3 disabled the possibility to duplicate a movie in the watchlist
+
+  const watchlistDisabled = storedMovie ? true : false;
+  /*
+ this is going to be disabled if we have a movie inside the
+  watchlist, so if we have a similar movie in the watchlist
+  it s going to be true, which means it s going to disabled
+  the option to save it, but if it s false, meaning that we
+  dont have a similar movie in the watchlist, then it s going
+  to show the option to save the movie.
+
+
+```
+
+<br>
+
+#### Change it like so:
+
+<br>
+
+```javascript
+  //3 disabled the possibility to duplicate a movie in the watchlist
+
+  const watchlistDisabled = storedMovie
+    ? true
+    : storedMovieWatched
+    ? true
+    : false;
+  /*
+ this is going to be disabled if we have a movie inside the
+  watchlist, so if we have a similar movie in the watchlist
+  it s going to be true, which means it s going to disabled
+  the option to save it the same for the storedMovieWatched, but if it s false, meaning that we
+  dont have a similar movie in the watched list, then it s going
+  to show the option to save the movie as it will mean its false
+
+```

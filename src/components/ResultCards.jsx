@@ -85,14 +85,18 @@ const ResultCards = ({ movie }) => {
   */
   //3 disabled the possibility to duplicate a movie in the watchlist
 
-  const watchlistDisabled = storedMovie ? true : false;
+  const watchlistDisabled = storedMovie
+    ? true
+    : storedMovieWatched
+    ? true
+    : false;
   /*
  this is going to be disabled if we have a movie inside the
   watchlist, so if we have a similar movie in the watchlist 
   it s going to be true, which means it s going to disabled
-  the option to save it, but if it s false, meaning that we 
-  dont have a similar movie in the watchlist, then it s going
-  to show the option to save the movie.
+  the option to save it the same for the storedMovieWatched, but if it s false, meaning that we 
+  dont have a similar movie in the watched list, then it s going
+  to show the option to save the movie as it will mean its false
 
 
   
