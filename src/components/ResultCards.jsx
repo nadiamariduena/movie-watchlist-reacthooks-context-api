@@ -69,16 +69,37 @@ const Button = styled.button`
 const ResultCards = ({ movie }) => {
   //
   //1 not duplication
-  const { addMovieToWatchlist, watchlist } = useContext(GlobalContext);
+  const { addMovieToWatchlist, watchlist, watched } = useContext(GlobalContext);
 
   //2 here we will search if there is any object that has an idential object id o.id === movie.id
   let storedMovie = watchlist.find(
     (objectMovie) => objectMovie.id === movie.id
   );
 
-  //3 disabled the possiblity to duplicate a movie in the watchlist
-  // if this is not equal to null
+  //5
+  let storedMovieWatched = watched.find((o) => o.id === movie.id);
+
+  /*
+  
+  
+  */
+  //3 disabled the possibility to duplicate a movie in the watchlist
+
   const watchlistDisabled = storedMovie ? true : false;
+  /*
+ this is going to be disabled if we have a movie inside the
+  watchlist, so if we have a similar movie in the watchlist 
+  it s going to be true, which means it s going to disabled
+  the option to save it, but if it s false, meaning that we 
+  dont have a similar movie in the watchlist, then it s going
+  to show the option to save the movie.
+
+
+  
+
+
+  
+ */
 
   //4 now go to the button "add to watchlist"
   //
@@ -102,7 +123,7 @@ const ResultCards = ({ movie }) => {
           <H4>
             {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
           </H4>
-          {/* the button to add to the wtchlist */}
+          {/*4 the button to add to the watchlist */}
           <Controls>
             <Button
               disabled={watchlistDisabled}

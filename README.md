@@ -938,8 +938,59 @@ const MovieControls = ({ movie, type }) => {
 <br>
 <br>
 
-#### Lets prevent that!
-
-> Go to the App.js and add some rules there ✋, we need to give it some specification to not only look for the watchlist but the other lists as well.
+### Lets prevent that!
 
 <br>
+
+> Go to the **ResultCard.js** and add some rules there ✋, we need to give it some specification to not only look for the watchlist, but the other lists as well.
+
+<br>
+
+##### Before
+
+```javascript
+//3 disabled the possibility to duplicate a movie in the watchlist
+
+const watchlistDisabled = storedMovie ? true : false;
+/*
+ this is going to be disabled if we have a movie inside the
+  watchlist, so if we have a similar movie in the watchlist 
+  it s going to be true, which means it s going to disabled
+  the option to save it, but if it s false, meaning that we 
+  dont have a similar movie in the watchlist, then it s going
+  to show the option to save the movie.
+ */
+```
+
+<br>
+
+##### after ✋
+
+- So as the comment above describe it, this is disabling the button whether or not its appearing in **the watchlist but we also want to check if its in the watched list as well**
+
+<br>
+
+#### ResultCards.jsx
+
+<br>
+
+#### 12. Create a another variable to handle that
+
+- Here we will look inside the **watched array** to look for the movie: **watched.find()**
+
+```javascript
+let storedMovieWatched = watched.find((o) => o.id === movie.id);
+```
+
+<br>
+
+##### 🔴 you will see that _watched_ is undefined
+
+- To solve it: Just import the **watched array** here:
+
+<br>
+
+```javascript
+//1 not duplication
+const { addMovieToWatchlist, watchlist, watched ✋ } = useContext(GlobalContext);
+```
