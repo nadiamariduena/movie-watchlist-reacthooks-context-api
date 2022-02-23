@@ -9,3 +9,23 @@
 <br>
 
 [<img src="./src/img/preview-app.gif"/>](https://movie-search-exercise-mariduena.netlify.app/)
+
+<br>
+<br>
+
+---
+
+<br>
+<br>
+
+#### Branches
+
+<br>
+
+##### [ 1-setup-router-api-configuration](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/1-setup-router-api-configuration)
+
+##### [2-context-api-setup-button-disabled-when-saving](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/2-context-api-setup-button-disabled-when-saving)
+
+##### [3-saving-to-localstorage-access-context-buttons-disbled](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/3-saving-to-localstorage-access-context-buttons-disbled)
+
+##### [4-counter](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/4-counter)
