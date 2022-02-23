@@ -22,11 +22,12 @@ const Container = styled.div``;
 //
 const Content = styled.div`
   width: 100vw;
-  min-height: 4vh;
-  padding: 0px 0 20px 0;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   h1 {
-    padding: 20vh 0 0 0;
+    padding: 20vh 0 60px 0;
     font-weight: 600;
     font-size: calc(20px + 2vmin);
     font-family: "Poppins-Light";
@@ -35,10 +36,22 @@ const Content = styled.div`
 `;
 
 const Ul = styled.ul`
-  padding: 5em 7.5em;
-  display: grid;
-  grid-gap: 2em;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  ${mobile({
+    justifyContent: "center",
+    flexDirection: "column",
+    width: "100%",
+  })}
+  ${mobileM({
+    flexDirection: "column",
+    width: "100%",
+  })}
+  ${tablet({
+    width: "100%",
+  })}
 `;
 //
 

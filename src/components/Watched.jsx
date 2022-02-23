@@ -3,7 +3,6 @@ import { GlobalContext } from "../context/GlobalState";
 import WatchedMovieCard from "./WatchedMovieCard";
 //
 import styled from "styled-components";
-import { mobile, mobileM, tablet } from "../responsive";
 
 const WrapperContainer = styled.div`
   width: 100vw;
@@ -19,23 +18,32 @@ const Container = styled.div``;
 //
 const Content = styled.div`
   width: 100vw;
-  min-height: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   padding: 0px 0 20px 0;
-  text-align: center;
+
   h1 {
-    padding: 20vh 0 0 0;
+    padding: 20vh 0 60px 0;
     font-weight: 600;
     font-size: calc(20px + 2vmin);
     font-family: "Poppins-Light";
     color: rgb(189, 212, 197);
+    text-align: center;
   }
 `;
 
 const Ul = styled.ul`
-  padding: 5em 7.5em;
+  /* padding: 5em 7.5em;
   display: grid;
   grid-gap: 2em;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
 `;
 
 export const Watched = () => {

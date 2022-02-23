@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { mobile, mobileM, tablet } from "../responsive";
 import ResultCards from "./ResultCards";
 
 //

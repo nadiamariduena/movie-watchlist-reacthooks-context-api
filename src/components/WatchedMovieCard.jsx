@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { mobile, mobileM, tablet } from "../responsive";
+import { mobile } from "../responsive";
 import MovieControls from "./MovieControls";
 //
 //
@@ -11,34 +11,22 @@ const Container = styled.div``;
 
 const Grid = styled.div``;
 const ResultCard = styled.div`
-  padding: 20px;
+  padding: 10px;
   /* background: #f8f8f8c5; */
-  padding: 20px;
+  ${mobile({
+    padding: "5px",
+  })}
 `;
 const ImgBox = styled.div`
   width: 100%;
 
   img {
     margin: 10px 0 10px 0;
-    width: 70%;
+    width: 100%;
     min-height: auto;
     object-fit: cover;
     /* border-radius: 5rem; */
   }
-`;
-//
-const H3 = styled.h3`
-  padding: 10px 0 10px 0;
-  font-weight: 100;
-  font-size: calc(10px + 1.1vmin);
-  font-family: "RobotoBlack";
-  color: rgb(189, 212, 197);
-`;
-const H4 = styled.h3`
-  font-weight: 100;
-  font-size: calc(10px + 1vmin);
-  font-family: "Poppins-Light";
-  color: rgb(189, 212, 197);
 `;
 //
 

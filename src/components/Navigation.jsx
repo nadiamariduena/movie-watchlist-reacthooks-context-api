@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { mobile, mobileM, tablet } from "../responsive";
+import { mobile } from "../responsive";
 
 const Header = styled.div`
   width: 100%;
@@ -16,25 +16,12 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  background-color: white;
+  background-color: #000000;
   //
   position: fixed;
   top: 0;
   z-index: 3;
   //
-
-  .linkos {
-    padding: 0;
-    margin: 0;
-    color: #87411238;
-    text-decoration: none;
-    font-size: 1.5em;
-    font-weight: 100;
-    font-family: "KenokyLight";
-    text-transform: lowercase;
-    letter-spacing: 5px;
-    transition: all 0.6s ease-in-out;
-  }
 `;
 
 // LEFT
@@ -48,9 +35,11 @@ const Left = styled.div`
 `;
 
 const Brand = styled.h3`
-  color: #874012;
-  opacity: 0.3;
   margin: 0 0 0 30px;
+  .logo {
+    color: #ffffffd6;
+    letter-spacing: 3px;
+  }
 `;
 //----------------------
 //
@@ -65,9 +54,9 @@ const Right = styled.div`
   justify-content: flex-end;
   flex-direction: row;
   margin: 0 20px;
-  color: #8741125e;
+  color: #ffffff5e;
   text-transform: uppercase;
-  ${mobile({ justifyContent: "flex-start" })}
+  ${mobile({ justifyContent: "space-between" })}
 `;
 //
 const Ul = styled.ul``;
@@ -75,24 +64,70 @@ const Li = styled.li`
   display: inline;
   list-style: none;
   margin: 0 30px 0 0;
-  color: #874012;
-  opacity: 0.3;
+  color: #f7f7f7;
+
   text-decoration: none;
   ${mobile({ margin: "0 10px 0 0" })}
+   .btn-header {
+      padding: 10px 26px;
+      background-color: #ffffffa7;
+      
+      text-transform: uppercase;
+      font-weight: 700;
+      display: inline-block;
+      border: none;
+      font-size: "calc(9px + 1vmin)",
+      transition: all 0.3s ease;
+      line-height: 1.1;
+      &:hover {
+        background-color: #b4cec4;
+      }
+    }
+    //
+    .linkos {
+      color: #ffffffc3;
 
-  .btn-header {
-    padding: 10px 26px;
-    background-color: #9dcebb;
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-weight: 700;
-    display: inline-block;
-    border: none;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    line-height: 1.1;
-    &:hover {
-      background-color: #b4cec4;
+      font-size: 1em;
+      font-weight: 100;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      transition: all 0.6s ease-in-out;
+    }
+
+  @media screen and (min-width: 868px) {
+ 
+    /* 
+    
+    
+    */
+    .btn-header {
+      padding: 10px 26px;
+      background-color: #9dcebba7;
+      border-radius: 50px;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: inline-block;
+      border: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      line-height: 1.1;
+      &:hover {
+        background-color: #b4cec4;
+      }
+    }
+    //
+    .linkos {
+      color: #dfdfdfc3;
+
+      font-size: 1em;
+      font-weight: 100;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      transition: all 0.6s ease-in-out;
     }
   }
 `;
@@ -106,17 +141,23 @@ export const Navigation = () => {
           <Left>
             <Brand>
               {" "}
-              <Link to="/">WatchList</Link>
+              <Link to="/" className="logo">
+                GHDH
+              </Link>
             </Brand>
           </Left>
           {/* ---------------- */}
           <Right>
             <Ul className="nav-links">
               <Li>
-                <Link to="/">Watch list</Link>
+                <Link to="/watchlist" className="linkos">
+                  Watch list
+                </Link>
               </Li>
               <Li>
-                <Link to="/watched">Watched</Link>
+                <Link to="/watched" className="linkos">
+                  Watched
+                </Link>
               </Li>
               <Li>
                 <Link to="/add" className="btn-header">

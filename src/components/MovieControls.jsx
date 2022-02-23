@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 //
 import styled from "styled-components";
-import { mobile, mobileM, tablet } from "../responsive";
 
 //
 //
