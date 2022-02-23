@@ -1008,6 +1008,7 @@ const { addMovieToWatchlist, watchlist, watched ✋ } = useContext(GlobalContext
 ##### make some changes to the following line in the ResultCards.jsx:
 
 ```javascript
+//                BEFORE
   //3 disabled the possibility to duplicate a movie in the watchlist
 
   const watchlistDisabled = storedMovie ? true : false;
@@ -1029,6 +1030,7 @@ const { addMovieToWatchlist, watchlist, watched ✋ } = useContext(GlobalContext
 <br>
 
 ```javascript
+//                AFTER
   //3 disabled the possibility to duplicate a movie in the watchlist
 
   const watchlistDisabled = storedMovie
