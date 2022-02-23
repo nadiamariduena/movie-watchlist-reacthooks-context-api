@@ -923,7 +923,7 @@ const MovieControls = ({ movie, type }) => {
 
 # 🍰
 
-### Prevent having the same movie inside the options when looking for movies
+### 11. Prevent having the same movie inside the options when looking for movies
 
 <br>
 
@@ -936,7 +936,10 @@ const MovieControls = ({ movie, type }) => {
 [<img src="./src/img/prevent-addng-same-movie-to-the-options-once-added-to-watched.gif"/>]()
 
 <br>
+<br>
 
 #### Lets prevent that!
+
+> Go to the App.js and add some rules there ✋, we need to give it some specification to not only look for the watchlist but the other lists as well.
 
 <br>
