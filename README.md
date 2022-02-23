@@ -46,3 +46,15 @@
 <br>
 
 ##### Now lets add an operator here that will show a plural or singular "movie or movies", depending of how many movies we have on the counter
+
+```javascript
+<span className="count-pill">
+  {watchlist.length} {watchlist.length === 1 ? "movie" : "movies"}
+</span>
+```
+
+<br>
+
+##### Result
+
+[<img src="./src/img/result-counter.gif"/>]()
