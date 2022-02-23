@@ -927,7 +927,13 @@ const MovieControls = ({ movie, type }) => {
 
 <br>
 
-- As you can see it in the image below, we have the **bandits movie** in the watchlist, then I click on the eye to put it inside the **watched** BUT then when I look for movies starting with **B** , I see the option of the bandits movie again, so **why should we add twice the same movie in our lists?**
+> Here I add all the movies inside the watchlist into the watched, then at the end of the gif sequence, I go the search bar to add more movies, So when I look for all movies starting with **B**, I can still see I have the **Bandits movie** in the options, even if I already have it saved in the watched.
+
+<br>
+
+#### why should we add twice the same movie in our lists?
+
+[<img src="./src/img/prevent-addng-same-movie-to-the-options-once-added-to-watched.gif"/>]()
 
 <br>
 
