@@ -4,7 +4,7 @@
 
 <br>
 
-##### ⚠️ This app isnt reponsive as the main interest goal was to refresh my knowledge in react context
+##### ⚠️ This app isn't responsive, as the main goal was to refresh my knowledge in react context & API's
 
 <br>
 
