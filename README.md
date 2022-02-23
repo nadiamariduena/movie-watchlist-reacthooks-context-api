@@ -22,6 +22,10 @@
 
 <br>
 
+> I tried to comment each step I considered necessary! I hope it can be useful for anyone.
+
+<br>
+
 ##### [ 1-setup-router-api-configuration](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/1-setup-router-api-configuration)
 
 ##### [2-context-api-setup-button-disabled-when-saving](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/2-context-api-setup-button-disabled-when-saving)
