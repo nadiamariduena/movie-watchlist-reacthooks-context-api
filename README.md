@@ -796,7 +796,7 @@ const MovieControls = ({ movie, type }) => {
 <br>
 <br>
 
-#### Actions for the buttons above
+#### 8. Add the Actions for the buttons from above
 
 - Here we will repeat the same procedure for the actions, so the actions here below (the 12 and 13) are the ones I am focusing.
 
@@ -810,8 +810,7 @@ const movieToWatchlist = (movie) => {
 const removeFromWatched = (id) => {
   dispatch({ type: "REMOVE_FROM_WATCHED", payload: id });
 };
-// 7 wrap with the GlobalContext.Provider all of the elements of the application
-// so that we can access the global context from every component
+// 7 wrap with the GlobalContext.Provider, so that we can access the global context from every component
 return (
   <GlobalContext.Provider
     value={{
@@ -831,3 +830,107 @@ return (
 //
 //
 ```
+
+<br>
+<br>
+
+#### 9. Now lets go to the AppReducer.js
+
+```javascript
+  //
+    //------------------------------------
+    //
+    case "MOVE_TO_WATCHLIST":
+      return {
+        // 1
+        ...state,
+        //2
+
+        watched: state.watched.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+        //  this will add the movie back to our front of the watchlist
+        watchlist: [action.payload, ...state.watchlist],
+        //
+        //
+      };
+    //
+    //
+
+    case "REMOVE_FROM_WATCHED":
+      return {
+        // 1
+        ...state,
+        //2
+        watched: state.watched.filter((movie) => movie.id !== action.payload),
+
+        //
+        //
+      };
+    //
+    //
+```
+
+<br>
+<br>
+
+#### 10. We can now use it inside the MovieControls.jsx
+
+- import it
+
+```javascript
+const MovieControls = ({ movie, type }) => {
+  //
+  //
+
+  const {
+    removeMovieFromWarchlist,
+    addMovieToWatched,
+    movieToWatchlist,
+    removeFromWatched,
+  } = useContext(GlobalContext);
+  //
+  //
+  return (
+```
+
+<br>
+
+- And implement it here:
+
+```javascript
+{
+  type === "watched" && (
+    <>
+      <button className="ctrl-btn" onClick={() => movieToWatchlist(movie)}>
+        <i className="fa-fw far fa-eye-slash"></i>
+      </button>
+      <button className="ctrl-btn" onClick={() => removeFromWatched(movie.id)}>
+        <i className="fa-fw fa fa-times"></i>
+      </button>
+    </>
+  );
+}
+```
+
+<br>
+<br>
+
+---
+
+<br>
+<br>
+
+# 🍰
+
+### Prevent having the same movie inside the options when looking for movies
+
+<br>
+
+- As you can see it in the image below, we have the **bandits movie** in the watchlist, then I click on the eye to put it inside the **watched** BUT then when I look for movies starting with **B** , I see the option of the bandits movie again, so **why should we add twice the same movie in our lists?**
+
+<br>
+
+#### Lets prevent that!
+
+<br>

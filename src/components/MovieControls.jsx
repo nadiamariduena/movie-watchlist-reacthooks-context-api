@@ -32,8 +32,12 @@ const MovieControls = ({ movie, type }) => {
   //
   //
 
-  const { removeMovieFromWarchlist, addMovieToWatched } =
-    useContext(GlobalContext);
+  const {
+    removeMovieFromWarchlist,
+    addMovieToWatched,
+    movieToWatchlist,
+    removeFromWatched,
+  } = useContext(GlobalContext);
   //
   //
   return (
@@ -68,10 +72,16 @@ const MovieControls = ({ movie, type }) => {
 
             {type === "watched" && (
               <>
-                <button className="ctrl-btn">
+                <button
+                  className="ctrl-btn"
+                  onClick={() => movieToWatchlist(movie)}
+                >
                   <i className="fa-fw far fa-eye-slash"></i>
                 </button>
-                <button className="ctrl-btn">
+                <button
+                  className="ctrl-btn"
+                  onClick={() => removeFromWatched(movie.id)}
+                >
                   <i className="fa-fw fa fa-times"></i>
                 </button>
               </>

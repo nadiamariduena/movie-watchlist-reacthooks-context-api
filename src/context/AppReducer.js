@@ -46,6 +46,36 @@ export default (state, action) => {
         //
       };
     //
+    //------------------------------------
+    //
+    case "MOVE_TO_WATCHLIST":
+      return {
+        // 1
+        ...state,
+        //2
+
+        watched: state.watched.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+        //  this will add the movie back to our front of the watchlist
+        watchlist: [action.payload, ...state.watchlist],
+        //
+        //
+      };
+    //
+    //
+
+    case "REMOVE_FROM_WATCHED":
+      return {
+        // 1
+        ...state,
+        //2
+        watched: state.watched.filter((movie) => movie.id !== action.payload),
+
+        //
+        //
+      };
+    //
     //
     default:
       return state;
