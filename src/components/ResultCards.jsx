@@ -69,7 +69,8 @@ const Button = styled.button`
 const ResultCards = ({ movie }) => {
   //
   //1 not duplication
-  const { addMovieToWatchlist, watchlist, watched } = useContext(GlobalContext);
+  const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
+    useContext(GlobalContext);
 
   //2 here we will search if there is any object that has an idential object id o.id === movie.id
   let storedMovie = watchlist.find(
@@ -134,6 +135,13 @@ const ResultCards = ({ movie }) => {
               onClick={() => addMovieToWatchlist(movie)}
             >
               add to watchlist
+            </Button>
+            {/*  */}
+            <Button
+              disabled={watchlistDisabled}
+              onClick={() => addMovieToWatched(movie)}
+            >
+              add to watched
             </Button>
           </Controls>
         </ResultCard>

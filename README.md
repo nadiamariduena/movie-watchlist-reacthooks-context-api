@@ -1055,3 +1055,44 @@ const { addMovieToWatchlist, watchlist, watched ✋ } = useContext(GlobalContext
 <br>
 
 [<img src="./src/img/disabling_watched-and_watchlist-from-clicked-after-saved.gif"/>]()
+
+<br>
+<br>
+
+---
+
+<br>
+
+# 🍰
+
+### Now lets implement one more button
+
+- This button will show the button to add to the watchlist and the button to add to watched, so that you can choose to which list you want it to be added from the beginning
+
+#### 1 import the action: addMovieToWatched
+
+```javascript
+//1 not duplication
+const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
+  useContext(GlobalContext);
+```
+
+<br>
+
+#### 2. so to use it in the new button here below:
+
+```javascript
+<Button disabled={watchlistDisabled} onClick={() => addMovieToWatched(movie)}>
+  add to watched
+</Button>
+```
+
+<br>
+
+#### Now we will have both buttons, but as you can see in the gif, there is something worng when we click in either button.
+
+- So if you notice both buttons get clicked , when i only want one at the same time
+
+<br>
+
+[<img src="./src/img/bug-when-saving-to-list-.gif"/>]()
