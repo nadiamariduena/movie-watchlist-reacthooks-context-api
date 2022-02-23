@@ -66,7 +66,16 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "ADD_MOVIE_TO_WATCHED", payload: movie });
   };
   //
+
+  //12 action: move to watchlist
+  const movieToWatchlist = (movie) => {
+    dispatch({ type: "MOVE_TO_WATCHLIST", payload: movie });
+  };
   //
+  //13 action: remove from watched
+  const removeFromWatched = (id) => {
+    dispatch({ type: "REMOVE_FROM_WATCHED", payload: id });
+  };
   // 7 wrap with the GlobalContext.Provider all of the elements of the application
   // so that we can access the global context from every component
   return (
@@ -77,6 +86,9 @@ export const GlobalProvider = (props) => {
         addMovieToWatchlist,
         removeMovieFromWarchlist,
         addMovieToWatched,
+        //
+        movieToWatchlist,
+        removeFromWatched,
       }}
     >
       {props.children}

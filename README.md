@@ -784,10 +784,50 @@ const MovieControls = ({ movie, type }) => {
       <button className="ctrl-btn">
         <i className="fa-fw far fa-eye-slash"></i>
       </button>
+      // ------------------ //
       <button className="ctrl-btn">
         <i className="fa-fw fa fa-times"></i>
       </button>
     </>
   );
 }
+```
+
+<br>
+<br>
+
+#### Actions for the buttons above
+
+- Here we will repeat the same procedure for the actions, so the actions here below (the 12 and 13) are the ones I am focusing.
+
+```javascript
+//12 action: move to watchlist ✋
+const movieToWatchlist = (movie) => {
+  dispatch({ type: "MOVE_TO_WATCHLIST", payload: movie });
+};
+//
+//13 action: remove from watched ✋
+const removeFromWatched = (id) => {
+  dispatch({ type: "REMOVE_FROM_WATCHED", payload: id });
+};
+// 7 wrap with the GlobalContext.Provider all of the elements of the application
+// so that we can access the global context from every component
+return (
+  <GlobalContext.Provider
+    value={{
+      watchlist: state.watchlist,
+      watched: state.watched,
+      addMovieToWatchlist,
+      removeMovieFromWarchlist,
+      addMovieToWatched,
+      //
+      movieToWatchlist, ✋
+      removeFromWatched, ✋
+    }}
+  >
+    {props.children}
+  </GlobalContext.Provider>
+);
+//
+//
 ```
