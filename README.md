@@ -1047,3 +1047,11 @@ const { addMovieToWatchlist, watchlist, watched ✋ } = useContext(GlobalContext
   to show the option to save the movie as it will mean its false
 
 ```
+
+<br>
+
+##### Here below you can see, that when I added the 3 new movies at the end it s impossible to add it again.
+
+<br>
+
+[<img src="./src/img/disabling_watched-and_watchlist-from-clicked-after-saved.gif"/>]()
