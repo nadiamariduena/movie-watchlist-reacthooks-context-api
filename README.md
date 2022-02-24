@@ -303,6 +303,10 @@ export default Add;
 
 <br>
 
+[<img src="./src/img/endPoint-api.gif"/>]()
+
+<br>
+
 #### 🔴 Remember:
 
 > You need to request the API key, you will have to fill a form about why do and in what do you want to use, after that you will receive your api in your email, or just refresh the page
