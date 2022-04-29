@@ -1,4 +1,4 @@
-### Create a Movie Watchlist with React Hooks, Context API and localStorage
+### Create a Movie Watchlist with React Hooks, Context API and localStorage ✋
 
 > In this tutorial I will be creating a movie watchlist using React, **React Hooks**, **Context API**, **storing data in localStorage** and **fetching data** from an external **API** (The Movie Database).
 
