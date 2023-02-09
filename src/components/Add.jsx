@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ResultCards from "./ResultCards";
-import { CiSearch } from "react-icons/ci";
-import { TiDelete } from "react-icons/ti";
+import { mobile, mobileM, tablet, laptop } from "../responsive";
+import { CgClose } from "react-icons/cg";
 
 //
 const { REACT_APP_TMDB_KEY } = process.env;
 
-const AddPage = styled.div`
-  width: 100%;
-`;
+const AddPage = styled.div``;
 
 const ClickableOverlay = styled.div`
   width: 100vw;
-  min-height: 100vh;
-  padding: 0 0 100px 0;
+  min-height: 150vh;
 
   //
   position: fixed;
@@ -35,9 +32,9 @@ const ClickableOverlay = styled.div`
 
 //
 const Ul = styled.ul`
-  margin: 150px auto 0 auto;
+  padding: 100px 100px 0px 100px;
+  margin: 30px auto 0 auto;
   width: 80%;
-  padding: 100px 100px 0 100px;
 
   grid-template-columns: repeat(4, 1fr);
   display: grid;
@@ -48,12 +45,37 @@ const Ul = styled.ul`
   border-radius: 50px;
 
   position: absolute;
-  top: 1%;
+  top: 12%;
   left: 10.5%;
   z-index: 10;
 
-  //
-  // ** squared pattern
+  ${mobile({
+    left: "0",
+    width: "100%",
+    gridTemplateColumns: `repeat(1, 1fr)`,
+    padding: "100px 0px 180px 0px",
+    gridGap: "0.9em",
+    // background: "red",
+  })}
+  ${mobileM({
+    left: "5%",
+    width: "90%",
+    gridTemplateColumns: `repeat(2, 1fr)`,
+    padding: "100px 15px 180px 15px",
+    gridGap: "0.9em",
+  })}
+  ${tablet({
+    width: "85%",
+    gridTemplateColumns: `repeat(3, 1fr)`,
+    padding: "100px 20px 180px 20px",
+    gridGap: "1.8em",
+  })}
+    ${laptop({
+    width: "85%",
+    gridTemplateColumns: `repeat(3, 1fr)`,
+    padding: "100px 20px 180px 20px",
+    gridGap: "2.5em",
+  })}
 `;
 //
 //
@@ -79,7 +101,27 @@ const Input = styled.input`
     color: rgba(142, 182, 203, 0.596);
   }
 `;
+const ButtonCloseOverlay = styled.button`
+  position: fixed;
+  bottom: 2.5%;
+  right: 2.5%;
+  z-index: 10;
 
+  width: 45px;
+  height: 45px;
+  border-radius: 100px;
+  border: none;
+  display: block;
+  background-color: #fefefe;
+  color: #b6b6b6;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #fafafa;
+    color: #282828;
+  }
+`;
 //
 //
 export const Add = () => {
@@ -140,6 +182,9 @@ export const Add = () => {
                 </li>
               ))}
             </Ul>
+            <ButtonCloseOverlay onClick={removeItem}>
+              <CgClose />
+            </ButtonCloseOverlay>
           </>
         )}
       </AddPage>

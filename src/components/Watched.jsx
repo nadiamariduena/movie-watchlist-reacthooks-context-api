@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import WatchedMovieCard from "./WatchedMovieCard";
+import { mobile, mobileM, tablet, laptop } from "../responsive";
+
 //
 import styled from "styled-components";
 
@@ -51,6 +53,31 @@ const Ul = styled.ul`
   background-color: #fefefe;
   border-radius: 50px;
   border: 1px solid #eee;
+  //
+  ${mobile({
+    width: "100%",
+    gridTemplateColumns: `repeat(1, 1fr)`,
+    padding: "100px 10px 180px 10px",
+    gridGap: "0.9em",
+  })}
+  ${mobileM({
+    width: "90%",
+    gridTemplateColumns: `repeat(2, 1fr)`,
+    padding: "100px 15px 180px 15px",
+    gridGap: "0.9em",
+  })}
+  ${tablet({
+    width: "85%",
+    gridTemplateColumns: `repeat(3, 1fr)`,
+    padding: "100px 20px 180px 20px",
+    gridGap: "1.8em",
+  })}
+    ${laptop({
+    width: "85%",
+    gridTemplateColumns: `repeat(3, 1fr)`,
+    padding: "100px 20px 180px 20px",
+    gridGap: "2.5em",
+  })}
 `;
 
 export const Watched = () => {

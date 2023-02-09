@@ -1,26 +1,21 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import styled from "styled-components";
+import { mobile, mobileM } from "../responsive";
 
+//
+//
+//
 const Container = styled.div``;
 
 const Grid = styled.div``;
 const ResultCard = styled.div`
   padding: 20px;
 
-  /*  */
   text-align: center;
   width: 100%;
   height: auto;
   border-radius: 30px;
-  //
-  // ** Neuphormism
-  /* border: 10px solid #fefefe;
-  border-radius: 20px;
-  box-shadow: inset 5px 5px 10px #bbb, inset -5px -5px 10px #fff;
-  transition: 0.5s; */
-
-  /*  */
 `;
 const ImgBox = styled.div`
   width: 100%;
@@ -59,11 +54,23 @@ const H3 = styled.h3`
   letter-spacing: 1px;
   font-family: "RobotoBlack";
   color: rgba(142, 182, 203, 0.496);
+  ${mobile({
+    fontSize: `calc(16px + 1.1vmin)`,
+  })}
+  ${mobileM({
+    fontSize: `calc(13px + 1.1vmin)`,
+  })}
 `;
 const H4 = styled.h3`
   font-size: calc(5px + 1vmin);
   font-weight: 600;
   color: rgba(23, 23, 23, 0.138);
+  ${mobile({
+    fontSize: `calc(9px + 1.1vmin)`,
+  })}
+  ${mobileM({
+    fontSize: `calc(10px + 1.1vmin)`,
+  })}
 `;
 //
 //
@@ -79,35 +86,38 @@ const Controls = styled.div`
 
 //
 const Button = styled.button`
-  /* width: 9em;
-  height: 3em; */
   margin-top: 18px;
   padding: 12.5px 25px;
-  border-radius: 30em;
 
-  border: none;
   position: relative;
   overflow: hidden;
   z-index: 1;
 
-  color: #cccccc;
-  background: #fefefe;
-  /* background: #e0e0e0; */
-  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff;
   //
 
+  border-radius: 30em;
+  border: none;
+  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff;
+  background: rgba(142, 182, 203, 0.106);
+  color: #cccccc;
+  text-transform: capitalize;
   font-size: calc(4px + 1vmin);
   font-weight: 500;
 
   &:disabled {
-    background-color: #f7fefb;
+    background-color: #fafafa;
     color: #b6b6b6;
   }
   &:hover {
     cursor: pointer;
-    background-color: #fafafa;
+    background-color: #eeeeee;
     color: #b6b6b6;
   }
+
+  ${mobile({ padding: "18.5px 28px", fontSize: `calc(9px + 1.1vmin)` })}
+  ${mobileM({
+    fontSize: `calc(8px + 1.1vmin)`,
+  })}
 `;
 
 const ResultCards = ({ movie }) => {

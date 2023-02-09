@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import WatchedMovieCard from "./WatchedMovieCard";
 import styled from "styled-components";
-import { mobile, mobileM, tablet, laptop, laptopM } from "../responsive";
+import { mobile, mobileM, tablet, laptop } from "../responsive";
 
 //
 //
@@ -31,13 +31,14 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  h1 {
-    padding: 20vh 0 60px 0;
-    font-weight: 600;
-    font-size: calc(20px + 2vmin);
-    font-family: "Poppins-Light";
-    color: rgba(142, 182, 203, 0.496);
-  }
+`;
+
+const H1 = styled.h1`
+  padding: 20vh 0 60px 0;
+  font-weight: 600;
+  font-size: calc(20px + 2vmin);
+  font-family: "Poppins-Light";
+  color: rgba(142, 182, 203, 0.496);
 `;
 
 const Ul = styled.ul`
@@ -45,7 +46,7 @@ const Ul = styled.ul`
   padding: 100px 90px 180px 90px;
   margin: 30px auto 0 auto;
   //
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   display: grid;
   grid-gap: 3em;
   //
@@ -75,7 +76,7 @@ const Ul = styled.ul`
     ${laptop({
     width: "85%",
     gridTemplateColumns: `repeat(3, 1fr)`,
-    padding: "100px 50px 180px 50px",
+    padding: "100px 20px 180px 20px",
     gridGap: "2.5em",
   })}
 `;
@@ -95,7 +96,7 @@ export const WatchList = () => {
     <>
       <WrapperContainer>
         <Content>
-          <h1>My Watchlist</h1>
+          <H1>My Watchlist</H1>
 
           <span className="count-pill">
             {watchlist.length} {watchlist.length === 1 ? "movie" : "movies"}
