@@ -1,14 +1,4 @@
-### Create a Movie Watchlist with React Hooks, Context API and localStorage ✋
-
-> In this tutorial I will be creating a movie watchlist using React, **React Hooks**, **Context API**, **storing data in localStorage** and **fetching data** from an external **API** (The Movie Database).
-
-<br>
-
-##### ⚠️ This app isn't responsive, as the main goal was to refresh my knowledge in react context & API's
-
-<br>
-
-[<img src="./src/img/preview-app.gif"/>](https://movie-search-exercise-mariduena.netlify.app/)
+#### 🔴 I'm currently in the process of updating this repository to ensure that all the information and resources contained within it are up-to-date and accurate. This is an ongoing effort, and I'm working hard to make the necessary improvements and modifications as quickly as possible.
 
 <br>
 <br>
@@ -33,3 +23,5 @@
 ##### [3-saving-to-localstorage-access-context-buttons-disbled](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/3-saving-to-localstorage-access-context-buttons-disbled)
 
 ##### [4-counter](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/4-counter)
+
+##### ✋ [5- First version 2021](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/default-0-app)
