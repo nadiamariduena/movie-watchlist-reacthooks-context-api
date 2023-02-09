@@ -41,11 +41,11 @@ const Content = styled.div`
 `;
 
 const Ul = styled.ul`
-  width: 80%;
+  width: 70%;
   padding: 100px 90px 180px 90px;
   margin: 30px auto 0 auto;
   //
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   display: grid;
   grid-gap: 3em;
   //
