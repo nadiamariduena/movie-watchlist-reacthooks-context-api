@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import WatchedMovieCard from "./WatchedMovieCard";
 import styled from "styled-components";
-import { mobile, mobileM, tablet } from "../responsive";
+import { mobile, mobileM, tablet, laptop, laptopM } from "../responsive";
 
 //
 //
@@ -71,6 +71,12 @@ const Ul = styled.ul`
     gridTemplateColumns: `repeat(3, 1fr)`,
     padding: "100px 20px 180px 20px",
     gridGap: "1.8em",
+  })}
+    ${laptop({
+    width: "85%",
+    gridTemplateColumns: `repeat(3, 1fr)`,
+    padding: "100px 50px 180px 50px",
+    gridGap: "2.5em",
   })}
 `;
 //
