@@ -5,7 +5,7 @@ import "./lib/font-awesome/css/all.min.css";
 //
 //
 import Home from "./components/Home";
-import { Navigation } from "./components/Navigation";
+import Navigation from "./components/Navigation";
 import { WatchList } from "./components/WatchList";
 import { Watched } from "./components/Watched";
 import { Add } from "./components/Add";

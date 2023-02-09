@@ -1,32 +1,42 @@
 import React from "react";
 import styled from "styled-components";
-import { mobile } from "../responsive";
+import { mobile, mobileM, tablet } from "../responsive";
 import MovieControls from "./MovieControls";
 //
 //
 // ** This is the Card linked to Watchlist **
 //
 
-const Container = styled.div``;
+const Container = styled.div`
+  /* background-color: pink; */
+`;
 
-const Grid = styled.div``;
 const ResultCard = styled.div`
   padding: 10px;
-  /* background: #f8f8f8c5; */
+
   ${mobile({
-    padding: "5px",
+    padding: "20px 10px",
   })}
 `;
 const ImgBox = styled.div`
+  margin: 10px 0 40px 0;
   width: 100%;
+  position: relative;
+  overflow: hidden;
 
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  border: 8px solid #efefef;
+  border-radius: 30px;
+  //
   img {
-    margin: 10px 0 10px 0;
+    display: block;
     width: 100%;
     min-height: auto;
     object-fit: cover;
-    /* border-radius: 5rem; */
   }
+  ${mobile({
+    border: "5px solid #efefef",
+  })}
 `;
 //
 
@@ -36,23 +46,20 @@ const ImgBox = styled.div`
 const WatchedMovieCard = ({ movie, type }) => {
   return (
     <Container>
-      <Grid>
-        <ResultCard>
-          {movie.poster_path ? (
-            <ImgBox>
-              {" "}
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={`${movie.title} Poster`}
-              />
-            </ImgBox>
-          ) : (
-            <div className="filler-poster"></div>
-          )}
-          {/* controls */}
-          <MovieControls type={type} movie={movie} />
-        </ResultCard>
-      </Grid>
+      <ResultCard>
+        {movie.poster_path ? (
+          <ImgBox>
+            <img
+              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+              alt={`${movie.title} Poster`}
+            />
+          </ImgBox>
+        ) : (
+          <div className="filler-poster"></div>
+        )}
+        {/* controls */}
+        <MovieControls type={type} movie={movie} />
+      </ResultCard>
     </Container>
   );
 };

@@ -15,13 +15,17 @@ const Nav = styled.div`
   width: 100vw;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 25px 0;
   background-color: #000000;
   //
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 15;
   //
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  border-bottom: 1px solid #eee;
 `;
 
 // LEFT
@@ -37,8 +41,11 @@ const Left = styled.div`
 const Brand = styled.h3`
   margin: 0 0 0 30px;
   .logo {
-    color: #ffffffd6;
+    color: #141414;
     letter-spacing: 3px;
+    font-size: calc(28px + 1vmin);
+    font-weight: 500;
+    font-family: "Syncopate-Bold";
   }
 `;
 //----------------------
@@ -64,85 +71,40 @@ const Li = styled.li`
   display: inline;
   list-style: none;
   margin: 0 30px 0 0;
-  color: #f7f7f7;
 
   text-decoration: none;
   ${mobile({ margin: "0 10px 0 0" })}
-   .btn-header {
-      padding: 10px 26px;
-      background-color: #ffffffa7;
-      
-      text-transform: uppercase;
-      font-weight: 700;
-      display: inline-block;
-      border: none;
-      font-size: "calc(9px + 1vmin)",
-      transition: all 0.3s ease;
-      line-height: 1.1;
-      &:hover {
-        background-color: #b4cec4;
-      }
-    }
-    //
-    .linkos {
-      color: #ffffffc3;
+`;
 
-      font-size: 1em;
-      font-weight: 100;
-      text-transform: uppercase;
-      font-weight: 500;
-      text-transform: lowercase;
-      letter-spacing: 1px;
-      transition: all 0.6s ease-in-out;
-    }
+const NavbarLink = styled(Link)`
+  color: rgba(142, 182, 203, 0.496);
+  font-size: calc(12px + 1vmin);
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  margin: 10px;
+  text-transform: lowercase;
 
-  @media screen and (min-width: 868px) {
- 
-    /* 
-    
-    
-    */
-    .btn-header {
-      padding: 10px 26px;
-      background-color: #9dcebba7;
-      border-radius: 50px;
-      text-transform: uppercase;
-      font-weight: 700;
-      display: inline-block;
-      border: none;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      line-height: 1.1;
-      &:hover {
-        background-color: #b4cec4;
-      }
-    }
-    //
-    .linkos {
-      color: #dfdfdfc3;
-
-      font-size: 1em;
-      font-weight: 100;
-      text-transform: uppercase;
-      font-weight: 500;
-      text-transform: lowercase;
-      letter-spacing: 1px;
-      transition: all 0.6s ease-in-out;
-    }
+  //
+  &:hover,
+  &:focus {
+    color: rgba(142, 182, 203, 0.796);
+  }
+  &:active {
+    color: red;
   }
 `;
+
 //
 // -------------------------
-export const Navigation = () => {
+const Navigation = () => {
   return (
     <>
       <Header>
         <Nav>
           <Left>
             <Brand>
-              {" "}
               <Link to="/" className="logo">
-                GHDH
+                MUBII
               </Link>
             </Brand>
           </Left>
@@ -150,20 +112,16 @@ export const Navigation = () => {
           <Right>
             <Ul className="nav-links">
               <Li>
-                <Link to="/watchlist" className="linkos">
-                  Watch list
-                </Link>
+                <NavbarLink to="/watchlist">Watch list</NavbarLink>
               </Li>
               <Li>
-                <Link to="/watched" className="linkos">
-                  Watched
-                </Link>
+                <NavbarLink to="/watched">Watched</NavbarLink>
               </Li>
-              <Li>
+              {/* <Li>
                 <Link to="/add" className="btn-header">
-                  + Add
+                  + AddC
                 </Link>
-              </Li>
+              </Li> */}
             </Ul>
           </Right>
         </Nav>
@@ -171,3 +129,5 @@ export const Navigation = () => {
     </>
   );
 };
+
+export default Navigation;

@@ -1,45 +1,83 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ResultCards from "./ResultCards";
+import { CiSearch } from "react-icons/ci";
+import { TiDelete } from "react-icons/ti";
 
 //
 const { REACT_APP_TMDB_KEY } = process.env;
-//
-//
 
 const AddPage = styled.div`
+  width: 100%;
+`;
+
+const ClickableOverlay = styled.div`
   width: 100vw;
   min-height: 100vh;
   padding: 0 0 100px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Container = styled.div``;
 
-//
-//
-const AddContent = styled.div`
-  width: 100vw;
-  min-height: 4vh;
-  padding: 0px 0 20px 0;
-  text-align: center;
+  //
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  cursor: pointer;
+  //
+
+  // ** BG + square gradient
+
+  // ** squared pattern
+  background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
+    linear-gradient(to right, #e8e4d8 1px, transparent 1px);
+  background-size: 39px 39px;
+  background-color: #ffffff;
 `;
 
 //
 const Ul = styled.ul`
-  padding: 5em 7.5em;
+  margin: 150px auto 0 auto;
+  width: 80%;
+  padding: 100px 100px 0 100px;
+
+  grid-template-columns: repeat(4, 1fr);
   display: grid;
-  grid-gap: 2em;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-gap: 2.8em;
+
+  //
+  background-color: #fefefe;
+  border-radius: 50px;
+
+  position: absolute;
+  top: 1%;
+  left: 10.5%;
+  z-index: 10;
+
+  //
+  // ** squared pattern
 `;
 //
 //
-const InputWrapper = styled.div``;
+const InputWrapper = styled.div`
+  padding: 10px 0px;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
 const Input = styled.input`
-  padding: 10px 26px;
+  padding: 18px 26px;
   border-radius: 5rem;
   border: 0;
+  text-align: center;
+  color: rgba(142, 182, 203, 0.496);
+  border: 3px solid rgba(142, 182, 203, 0.496);
+
+  //
+
+  //
+  &::placeholder {
+    color: rgba(142, 182, 203, 0.596);
+  }
 `;
 
 //
@@ -72,35 +110,38 @@ export const Add = () => {
         }
       });
   };
+
+  //
+  const removeItem = (e) => {
+    e.preventDefault(e);
+    setQuery("");
+    setResults([]);
+  };
   //
   return (
     <>
       <AddPage>
-        <Container>
-          <AddContent>
-            <InputWrapper>
-              <Input
-                type="text"
-                placeholder="search for a movie"
-                value={query}
-                onChange={onChange}
-              />
-            </InputWrapper>
-            {/* 
-            
-            
-            */}
-            {results.length > 0 && (
-              <Ul className="results">
-                {results.map((movie) => (
-                  <li key={movie.id}>
-                    <ResultCards movie={movie} />
-                  </li>
-                ))}
-              </Ul>
-            )}
-          </AddContent>{" "}
-        </Container>
+        <InputWrapper>
+          <Input
+            type="text"
+            placeholder="SEARCH"
+            value={query}
+            onChange={onChange}
+          />
+        </InputWrapper>
+
+        {results.length > 0 && (
+          <>
+            <ClickableOverlay onClick={removeItem} />
+            <Ul className="results">
+              {results.map((movie) => (
+                <li key={movie.id}>
+                  <ResultCards movie={movie} />
+                </li>
+              ))}
+            </Ul>
+          </>
+        )}
       </AddPage>
     </>
   );

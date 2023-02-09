@@ -1,26 +1,61 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 //
+import { mobile, mobileM, tablet } from "../responsive";
+
 import styled from "styled-components";
 
 //
 //
 const WrapperContainer = styled.div``;
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+const H3 = styled.h3`
+  padding: 25px 0 25px 0;
+  font-weight: 300;
+  font-size: calc(8px + 1.1vmin);
+  letter-spacing: 1px;
+  font-family: "RobotoBlack";
+  color: rgba(142, 182, 203, 0.496);
+  ${mobile({
+    fontSize: `calc(14px + 1.1vmin)`,
+  })}
+  ${mobileM({
+    fontSize: `calc(13px + 1.1vmin)`,
+  })}
+`;
 
-//
 //
 const Content = styled.div`
   color: rgb(189, 212, 197);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 
+  /*  */
   .ctrl-btn {
-    padding: 5px 5px;
+    /*  */
+    width: 30px;
+    height: 30px;
+    font-size: calc(2px + 1.1vmin);
+    padding: 5px;
     margin: 1px;
     border-radius: 5rem;
     border: 0;
-    background: rgba(189, 212, 197, 0.418);
+
+    @media (max-width: 768px) {
+      font-size: calc(8px + 1.1vmin);
+    }
+
+    //
+    background: rgba(142, 182, 203, 0.196);
     &:hover {
-      background: rgba(238, 241, 239, 0.418);
+      background: rgba(142, 182, 203, 0.496);
     }
   }
 `;
@@ -43,6 +78,7 @@ const MovieControls = ({ movie, type }) => {
     <>
       <WrapperContainer>
         <Container>
+          <H3>{movie.title}</H3>
           <Content>
             {type === "watchlist" && (
               <>
@@ -61,14 +97,16 @@ const MovieControls = ({ movie, type }) => {
                 </button>
               </>
             )}
-            {/* 
-            
+            {/*
 
+
+EYE AND X to control
             here below we will implement a control that will move the movie
             back to the watchlist
-            
+
             */}
 
+            {/*  */}
             {type === "watched" && (
               <>
                 <button

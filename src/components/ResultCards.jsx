@@ -7,62 +7,107 @@ const Container = styled.div``;
 const Grid = styled.div``;
 const ResultCard = styled.div`
   padding: 20px;
-  background: #f8f8f8c5;
-  padding: 20px;
+
+  /*  */
+  text-align: center;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  //
+  // ** Neuphormism
+  /* border: 10px solid #fefefe;
+  border-radius: 20px;
+  box-shadow: inset 5px 5px 10px #bbb, inset -5px -5px 10px #fff;
+  transition: 0.5s; */
+
+  /*  */
 `;
 const ImgBox = styled.div`
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 8px solid #efefef;
+
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  border-radius: 30px;
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #a5a5a541;
+    display: block;
+
+    //
+  }
 
   img {
-    margin: 10px 0 10px 0;
-    width: 70%;
+    display: block;
+    width: 100%;
     min-height: auto;
     object-fit: cover;
-    /* border-radius: 5rem; */
+    //
   }
 `;
 //
 const H3 = styled.h3`
-  padding: 10px 0 10px 0;
-  font-weight: 100;
-  font-size: calc(10px + 1.1vmin);
+  padding: 50px 0 5px 0;
+  font-weight: 300;
+  font-size: calc(8px + 1.1vmin);
+  letter-spacing: 1px;
   font-family: "RobotoBlack";
-  color: rgb(189, 212, 197);
+  color: rgba(142, 182, 203, 0.496);
 `;
 const H4 = styled.h3`
-  font-weight: 100;
-  font-size: calc(10px + 1vmin);
-  font-family: "Poppins-Light";
-  color: rgb(189, 212, 197);
+  font-size: calc(5px + 1vmin);
+  font-weight: 600;
+  color: rgba(23, 23, 23, 0.138);
 `;
 //
 //
 //
-const Controls = styled.div``;
+const Controls = styled.div`
+  /* background: purple; */
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 //
 const Button = styled.button`
-  margin-top: 10px;
-  padding: 10px 26px;
-  background-color: #9dcebb55;
-  color: #a17cc444;
+  /* width: 9em;
+  height: 3em; */
+  margin-top: 18px;
+  padding: 12.5px 25px;
+  border-radius: 30em;
 
-  border-radius: 50px;
-  text-transform: uppercase;
-  font-weight: 700;
-  display: inline-block;
   border: none;
-  font-size: calc(8px + 1vmin);
-  transition: all 0.3s ease;
-  line-height: 1.1;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  color: #cccccc;
+  background: #fefefe;
+  /* background: #e0e0e0; */
+  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff;
+  //
+
+  font-size: calc(4px + 1vmin);
+  font-weight: 500;
+
   &:disabled {
-    background-color: #9db6ac7b;
+    background-color: #f7fefb;
     color: #b6b6b6;
   }
-  /* &:hover {
-    background-color: #9db6ac7b;
+  &:hover {
+    cursor: pointer;
+    background-color: #fafafa;
     color: #b6b6b6;
-  } */
+  }
 `;
 
 const ResultCards = ({ movie }) => {
@@ -80,8 +125,8 @@ const ResultCards = ({ movie }) => {
   let storedMovieWatched = watched.find((o) => o.id === movie.id);
 
   /*
-  
-  
+
+
   */
   //3 and 6 disabled the possibility to duplicate a movie in the watchlist
 
@@ -92,12 +137,12 @@ const ResultCards = ({ movie }) => {
     : false;
   /*
  this is going to be disabled if we have a movie inside the
-  watchlist, so if we have a similar movie in the watchlist 
+  watchlist, so if we have a similar movie in the watchlist
   it s going to be true, which means it s going to disabled
-  the option to save it the same for the storedMovieWatched, but if it s false, meaning that we 
+  the option to save it the same for the storedMovieWatched, but if it s false, meaning that we
   dont have a similar movie in the watched list, then it s going
   to show the option to save the movie as it will mean its false
-  
+
  */
 
   //7 related to the 2 buttons
@@ -113,7 +158,6 @@ const ResultCards = ({ movie }) => {
         <ResultCard>
           {movie.poster_path ? (
             <ImgBox>
-              {" "}
               <img
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                 alt={`${movie.title} Poster`}
@@ -127,7 +171,16 @@ const ResultCards = ({ movie }) => {
           <H4>
             {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
           </H4>
-          {/*4 the button to add to the watchlist */}
+          {/*
+
+
+
+          4)
+          the button to add to the watchlist
+
+
+
+          */}
           <Controls>
             <Button
               disabled={watchlistDisabled}
@@ -135,7 +188,7 @@ const ResultCards = ({ movie }) => {
             >
               add to watchlist
             </Button>
-            {/*  */}
+
             <Button
               disabled={watchedDisabled}
               onClick={() => addMovieToWatched(movie)}
