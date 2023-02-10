@@ -1,3 +1,138 @@
+### this one works too but the picture on the movie is missing, the reason for that is because i hat to repeat it again to find out why i was having a weird behavior on the click event of the modal movie
+
+<br>
+
+> reason: the context from the add.js and the state i added inside the ResultCardHome.jsx
+
+```javascript
+// resultCardsHome
+import React, { useState } from "react";
+
+import "./videoMovie.scss";
+import styled from "styled-components";
+import Youtube from "react-youtube";
+
+//
+const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
+
+//
+
+//
+const Container = styled.div`
+  position: relative;
+`;
+
+const ModalPoster = styled.div`
+  width: 70vw;
+  min-height: 80vh;
+  position: fixed;
+  z-index: 850;
+  top: 150px;
+  left: 300px;
+
+  background-color: #f0f;
+
+  /*  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const VideoWrapper = styled.div`
+  width: 60vw;
+  height: 60vh;
+  background-color: lavender;
+`;
+
+//
+
+const Grid = styled.div``;
+const ResultCard = styled.div`
+  padding: 20px;
+
+  text-align: center;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+`;
+const ImgBox = styled.div`
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 8px solid #efefef;
+
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  border-radius: 30px;
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #a5a5a541;
+    display: block;
+
+    //
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    min-height: auto;
+    object-fit: cover;
+    //
+  }
+`;
+//
+
+//
+
+const ResultCards = ({ moviearg }) => {
+  const [openMovieModalee, setOpenMovieModalee] = useState(false);
+  return (
+    <>
+      <Container>
+        {openMovieModalee ? (
+          <ModalPoster>
+            <div className="poster">d</div>
+            <p>{moviearg.overview}</p>
+            <span className={"brand"}>
+              Movie Trailer sssssssssssssssssssApp
+            </span>
+          </ModalPoster>
+        ) : null}
+        <Grid>
+          <ResultCard>
+            {/* if there is a path with an img, then show if not dont show anything */}
+            {moviearg.poster_path ? (
+              <ImgBox>
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${moviearg.poster_path}`}
+                  alt={`${moviearg.title} Poster`}
+                />
+              </ImgBox>
+            ) : null}
+
+            <h3 onClick={() => setOpenMovieModalee(!openMovieModalee)}>
+              {moviearg.title}
+            </h3>
+          </ResultCard>
+        </Grid>
+      </Container>
+    </>
+  );
+};
+
+export default ResultCards;
+```
+
+<br>
+<br>
+
+```javascript
+// Add.jsx
 import React, { useState, useContext } from "react";
 import MovieeContext from "../ContextMovieHandler.js";
 
@@ -23,10 +158,6 @@ const ClickableOverlay = styled.div`
   z-index: 10;
   cursor: pointer;
 
-  background-color: #ffffff;
-  background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
-    linear-gradient(to right, #e8e4d8 1px, transparent 1px);
-  background-size: 39px 39px;
   background-color: #ffffff;
 `;
 
@@ -95,6 +226,9 @@ const Input = styled.input`
   color: rgba(142, 182, 203, 0.496);
   border: 3px solid rgba(142, 182, 203, 0.496);
 
+  //
+
+  //
   &::placeholder {
     color: rgba(142, 182, 203, 0.596);
   }
@@ -126,12 +260,34 @@ const ButtonCloseOverlay = styled.button`
 `;
 //
 
+const ModalPoster = styled.div`
+  width: 70vw;
+  min-height: 80vh;
+  position: fixed;
+  z-index: 850;
+  top: 150px;
+  left: 300px;
+
+  background-color: #f0f;
+
+  /*  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const VideoWrapper = styled.div`
+  width: 60vw;
+  height: 60vh;
+  background-color: lavender;
+`;
+
 //
 export const Add = () => {
   //
   const {
     query,
-    setMovies,
     movies,
     fetchMovies,
     removeItem,
@@ -139,9 +295,22 @@ export const Add = () => {
     playing,
     setPlaying,
     trailer,
+    setTrailer,
+
+    setQuery,
     movie,
+
+    //
+    // openMovieModalee,
+    // setOpenMovieModalee,
+
+    //
+
+    //
   } = useContext(MovieeContext);
 
+  //
+  const [openMovieModalee, setOpenMovieModalee] = useState(false);
   //
 
   return (
@@ -164,8 +333,6 @@ export const Add = () => {
                   <ResultCards
                     moviearg={moviearg}
                     movie={movie}
-                    movies={movies}
-                    setMovies={setMovies}
                     //
 
                     playing={playing}
@@ -175,10 +342,7 @@ export const Add = () => {
                 </li>
               ))}
             </Ul>
-            <ButtonCloseOverlay
-              // onClick={() => setMovies(!movies)}
-              onClick={removeItem}
-            >
+            <ButtonCloseOverlay onClick={removeItem}>
               <CgClose />
             </ButtonCloseOverlay>
           </>
@@ -187,3 +351,4 @@ export const Add = () => {
     </>
   );
 };
+```

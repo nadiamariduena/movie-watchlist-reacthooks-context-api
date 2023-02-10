@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { mobile, mobileM, tablet } from "../responsive";
+import { mobile } from "../responsive";
 import MovieControls from "./MovieControls";
 //
 //
@@ -41,7 +41,7 @@ const ImgBox = styled.div`
 //
 
 //
-//
+//null}
 //
 const WatchedMovieCard = ({ movie, type }) => {
   return (
@@ -54,9 +54,7 @@ const WatchedMovieCard = ({ movie, type }) => {
               alt={`${movie.title} Poster`}
             />
           </ImgBox>
-        ) : (
-          <div className="filler-poster"></div>
-        )}
+        ) : null}
         {/* controls */}
         <MovieControls type={type} movie={movie} />
       </ResultCard>
@@ -65,3 +63,19 @@ const WatchedMovieCard = ({ movie, type }) => {
 };
 
 export default WatchedMovieCard;
+
+/*
+
+
+ {movie.poster_path ? (
+          <ImgBox>
+            <img
+              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+              alt={`${movie.title} Poster`}
+            />
+          </ImgBox>
+        ) : (
+          <div className="filler-poster"></div>
+        )}
+
+*/

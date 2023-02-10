@@ -20,12 +20,13 @@ const Nav = styled.div`
   //
   position: fixed;
   top: 0;
-  z-index: 15;
+  z-index: 11;
   //
-  background: rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  /* background: rgba(255, 255, 255, 0.4);
   -webkit-backdrop-filter: blur(9px);
-  backdrop-filter: blur(9px);
-  border-bottom: 1px solid #eee;
+  backdrop-filter: blur(9px); */
+  /* border-bottom: 1px solid #eee; */
 `;
 
 // LEFT
