@@ -42,7 +42,8 @@ const Left = styled.div`
 const Brand = styled.h3`
   margin: 0 0 0 30px;
   .logo {
-    color: #141414;
+    color: rgba(142, 182, 203, 0.496);
+    /* color: #141414; */
     letter-spacing: 3px;
     font-size: calc(28px + 1vmin);
     font-weight: 500;
@@ -79,6 +80,8 @@ const Li = styled.li`
 
 const NavbarLink = styled(Link)`
   color: rgba(142, 182, 203, 0.496);
+  font-weight: 600;
+  /* color: rgba(142, 182, 203, 0.496); */
   font-size: calc(12px + 1vmin);
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
@@ -105,7 +108,7 @@ const Navigation = () => {
           <Left>
             <Brand>
               <Link to="/" className="logo">
-                MUBII
+                MUBII:
               </Link>
             </Brand>
           </Left>

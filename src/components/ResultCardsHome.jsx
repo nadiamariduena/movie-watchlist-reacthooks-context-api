@@ -126,7 +126,12 @@ const Button = styled.button`
 
   border-radius: 30em;
   color: rgba(142, 182, 203, 0.496);
-  border: 3px solid #ffffff;
+  border-top: 3px solid rgba(142, 182, 203, 0.296);
+  border-left: 3px solid rgba(142, 182, 203, 0.296);
+  border-bottom: 3px solid rgba(142, 182, 203, 0.196);
+  border-right: 3px solid rgba(142, 182, 203, 0.196);
+
+  /*  */
   box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff;
   background: #fafafa;
 
@@ -221,17 +226,17 @@ const ResultCards = ({ moviearg, movies, setMovies }) => {
           <ResultCard>
             {/* if there is a path with an img, then show if not dont show anything */}
             {moviearg.poster_path ? (
-              <ImgBox>
+              <ImgBox onClick={() => setOpenMovieModalee(!openMovieModalee)}>
                 <img
                   src={`https://image.tmdb.org/t/p/w200${moviearg.poster_path}`}
                   alt={`${moviearg.title} Poster`}
                 />
               </ImgBox>
             ) : null}
-
+            {/*
             <H3 onClick={() => setOpenMovieModalee(!openMovieModalee)}>
               {moviearg.title}
-            </H3>
+            </H3> */}
 
             <Controls>
               <Button

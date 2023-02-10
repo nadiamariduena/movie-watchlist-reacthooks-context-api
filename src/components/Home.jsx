@@ -57,24 +57,23 @@ const HeroContainerRight = styled.div`
 const HeroContainerLeft = styled.div`
   background-color: #fafafa;
   flex: 1;
-
   height: 100%;
 `;
 
 const H1 = styled.h1`
   font-family: "Syncopate-Bold";
-  color: red;
+  color: rgba(142, 182, 203, 0.496);
   font-size: calc(58px + 1vmin);
   line-height: calc(62px + 1vmin);
   margin-bottom: 10px;
 `;
 const H2 = styled.h2`
-  color: red;
+  color: rgba(142, 182, 203, 0.496);
   font-size: calc(48px + 1vmin);
   line-height: calc(50px + 1vmin);
 `;
 const P = styled.p`
-  margin: 35px 0 30px 0;
+  margin: 35px 0 50px 0;
   max-width: 650px;
   font-size: calc(10px + 1vmin);
   line-height: calc(16px + 1vmin);
@@ -150,9 +149,9 @@ const Home = () => {
               <h1
                 style={{
                   zIndex: "999",
-                  background: "pink",
+                  background: "rgba(142, 182, 203, 0.196)",
                   width: "40vw",
-                  height: "50vh",
+                  height: "100%",
                   display: "flex",
                   alignItems: "flex-start",
                   justifyContent: "flex-start",

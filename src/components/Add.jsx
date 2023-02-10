@@ -93,7 +93,10 @@ const Input = styled.input`
   border: 0;
   text-align: center;
   color: rgba(142, 182, 203, 0.496);
-  border: 3px solid rgba(142, 182, 203, 0.496);
+  border-top: 3px solid rgba(142, 182, 203, 0.496);
+  border-left: 3px solid rgba(142, 182, 203, 0.496);
+  color: #b6b6b6;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
 
   &::placeholder {
     color: rgba(142, 182, 203, 0.596);
