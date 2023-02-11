@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
-
+import Movie from "./components/Movie";
 //
 
 //
@@ -17,8 +17,8 @@ export function MoviessProvider({ children }) {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const [searchKey, setSearchKey] = useState("");
-
   const [movie, setMovie] = useState({ title: "Loading Movies" });
+  const [selectedMovie, setSelectedMovie] = useState({});
 
   // const [openMovieModalee, setOpenMovieModalee] = useState(false);
 
@@ -42,28 +42,16 @@ export function MoviessProvider({ children }) {
     );
 
     console.log(data.results[0]);
+    setSelectedMovie(data.results[0]);
     setMovies(data.results);
-    setMovie(data.results[0]);
-
-    if (data.results.length) {
-      await fetchMovie(data.results[0].id);
-    }
   };
 
-  const fetchMovie = async (id) => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}`
-    );
+  // const selectMovie = (movie) => {
 
-    if (data.videos && data.videos.results) {
-      const trailer = data.videos.results.find(
-        (vid) => vid.name === "Official Trailer"
-      );
-      setTrailer(trailer ? trailer : data.videos.results[0]);
-    }
+  // };
 
-    setMovie(data);
-  };
+  const renderMovies = () =>
+    movies.map((movie) => <Movie key={movie.id} movie={movie} />);
 
   const removeItem = (e) => {
     e.preventDefault(e);
@@ -89,11 +77,13 @@ export function MoviessProvider({ children }) {
         setMovies,
         movies,
         fetchMovies,
-        fetchMovie,
+        // fetchMovie,
         removeItem,
         //
-        // openMovieModalee,
-        // setOpenMovieModalee,
+        // selectMovie,
+        renderMovies,
+        selectedMovie,
+        setSelectedMovie,
         //
       }}
     >

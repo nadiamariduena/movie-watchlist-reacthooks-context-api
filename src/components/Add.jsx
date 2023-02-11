@@ -93,8 +93,8 @@ const Input = styled.input`
   border: 0;
   text-align: center;
   color: rgba(142, 182, 203, 0.496);
-  border-top: 3px solid rgba(142, 182, 203, 0.496);
-  border-left: 3px solid rgba(142, 182, 203, 0.496);
+
+  /* border: 3px solid rgba(142, 182, 203, 0.496); border-left: 3px solid rgba(142, 182, 203, 0.496); */
   color: #b6b6b6;
   box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
 
@@ -138,7 +138,7 @@ export const Add = () => {
     movies,
     fetchMovies,
     removeItem,
-
+    selectMovie,
     playing,
     setPlaying,
     trailer,
@@ -166,14 +166,14 @@ export const Add = () => {
                 <li key={moviearg.id}>
                   <ResultCards
                     moviearg={moviearg}
+                    selectMovie={selectMovie}
                     movie={movie}
                     movies={movies}
                     setMovies={setMovies}
                     //
-
+                    trailer={trailer}
                     playing={playing}
                     setPlaying={setPlaying}
-                    trailer={trailer}
                   />
                 </li>
               ))}

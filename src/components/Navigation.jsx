@@ -91,11 +91,11 @@ const NavbarLink = styled(Link)`
   //
   &:hover,
   &:focus {
-    color: rgba(142, 182, 203, 0.796);
+    color: rgba(142, 182, 203, 6.196);
   }
-  &:active {
-    color: red;
-  }
+  /* &:active {
+    color: #181818;
+  } */
 `;
 
 //

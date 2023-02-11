@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 import "./videoMovie.scss";
 import { GlobalContext } from "../context/GlobalState";
@@ -7,6 +7,8 @@ import Youtube from "react-youtube";
 
 //
 const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
+const { REACT_APP_TMDB_KEY } = process.env;
+const IMAGE_PATH = "https://image.tmdb.org/t/p/w342";
 
 //
 
@@ -29,9 +31,16 @@ const ModalPoster = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: #ffffff;
+  background-color: pink;
+`;
+const VideoContainerr = styled.div`
+  width: 60vw;
+  height: 70vmin;
+  background-color: green;
+  pointer-events: all;
 `;
 
+//
 const VideoWrapper = styled.div`
   border-radius: 30px;
   width: 60vw;
@@ -155,11 +164,27 @@ const Button = styled.button`
   })}
 `;
 
-const ResultCards = ({ moviearg, movies, setMovies }) => {
+const ResultCardsHome = ({
+  trailer,
+
+  moviearg,
+  movie,
+  movies,
+  setMovies,
+  //
+  selectMovie,
+  selectedMovie,
+  setSelectedMovie,
+}) => {
   //
   //1 not duplication
-  const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
-    useContext(GlobalContext);
+  const {
+    renderMovies,
+    addMovieToWatchlist,
+    watchlist,
+    watched,
+    addMovieToWatched,
+  } = useContext(GlobalContext);
 
   //2 here we will search if there is any object that has an idential object id o.id === movie.id
   let storedMovie = watchlist.find(
@@ -197,15 +222,57 @@ const ResultCards = ({ moviearg, movies, setMovies }) => {
   //
   const [openMovieModalee, setOpenMovieModalee] = useState(false);
 
-  //
-  //
-
   return (
     <>
       <Container>
         {openMovieModalee ? (
-          <ModalPoster>
-            <VideoWrapper
+          <ModalPoster
+          // style={{
+          //   backgroundImage: `url('${BACKDROP_PATH}${selectedMovie.backdrop_path}')`,
+          // }}
+          >
+            <div className="container-mxcenter">{renderMovies}</div>
+
+            <VideoContainerr>
+              <button className={"button"}>Play Trailer</button>
+
+              {/* <Youtube
+                videoId={trailer.key}
+                className={"youtube amru"}
+                containerClassName={"youtube-container amru"}
+                opts={{
+                  width: "100%",
+                  height: "100%",
+                  playerVars: {
+                    autoplay: 1,
+                    controls: 0,
+                    cc_load_policy: 0,
+                    fs: 0,
+                    iv_load_policy: 0,
+                    modestbranding: 0,
+                    rel: 0,
+                    showinfo: 0,
+                  },
+                }}
+              /> */}
+              {/* <div className="movie-title">
+                {moviearg.poster_path && (
+                  <img
+                    src={IMAGE_PATH + moviearg.poster_path}
+                    alt={moviearg.title}
+                  />
+                )}
+                <div className={"flex between movie-infos"}>
+                  {moviearg.vote_average ? (
+                    <span className={"movie-voting"}>
+                      {moviearg.vote_average}
+                    </span>
+                  ) : null}
+                </div>
+              </div> */}
+            </VideoContainerr>
+
+            {/* <VideoWrapper
               style={{
                 border: "10px solid #ffffff",
                 borderRadius: "50px",
@@ -213,7 +280,7 @@ const ResultCards = ({ moviearg, movies, setMovies }) => {
               }}
             >
               <div className="poster"></div>
-            </VideoWrapper>
+            </VideoWrapper> */}
             <MovieTitleModal>{moviearg.title}</MovieTitleModal>
             <PModalMovieDescription>{moviearg.overview}</PModalMovieDescription>
 
@@ -260,4 +327,4 @@ const ResultCards = ({ moviearg, movies, setMovies }) => {
   );
 };
 
-export default ResultCards;
+export default ResultCardsHome;
