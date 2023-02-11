@@ -47,11 +47,16 @@ export function MoviessProvider({ children }) {
   };
 
   // const selectMovie = (movie) => {
-
+  //   fetchMovie(movie.id);
+  //   setPlaying(false);
+  //   setMovie(movie);
+  //   window.scrollTo(0, 0);
   // };
 
   const renderMovies = () =>
-    movies.map((movie) => <Movie key={movie.id} movie={movie} />);
+    movies.map((movie) => (
+      <Movie selectMovie={setSelectedMovie} key={movie.id} movie={movie} />
+    ));
 
   const removeItem = (e) => {
     e.preventDefault(e);
@@ -83,6 +88,7 @@ export function MoviessProvider({ children }) {
         // selectMovie,
         renderMovies,
         selectedMovie,
+
         setSelectedMovie,
         //
       }}

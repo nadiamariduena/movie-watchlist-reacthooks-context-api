@@ -10,6 +10,7 @@ import { mobile, mobileM, tablet, laptop } from "../responsive";
 
 //
 //
+const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
 //
 
 const AddPage = styled.div``;
@@ -127,7 +128,29 @@ const ButtonCloseOverlay = styled.button`
     color: #282828;
   }
 `;
-//
+//---------
+const ModalPoster = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 12;
+  top: 0px;
+  left: 0px;
+
+  /*  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: pink;
+`;
+const VideoContainerr = styled.div`
+  width: 60vw;
+  height: 70vmin;
+  background-color: green;
+  pointer-events: all;
+`;
 
 //
 export const Add = () => {
@@ -138,17 +161,32 @@ export const Add = () => {
     movies,
     fetchMovies,
     removeItem,
-    selectMovie,
+
+    //
+    renderMovies,
     playing,
     setPlaying,
     trailer,
     movie,
+    selectMovie,
+    selectedMovie,
   } = useContext(MovieeContext);
 
   //
 
   return (
     <>
+      {/*   <ModalPoster>
+        <div className="container-mxcenter">{renderMovies}</div>
+
+      <VideoContainerr
+          style={{
+            backgroundImage: `url('${BACKDROP_PATH}${selectedMovie.backdrop_path}')`,
+          }}
+        >
+          <button className={"button"}>Play Trailer</button>
+        </VideoContainerr>
+      </ModalPoster>*/}
       <AddPage>
         <Input
           type="text"
@@ -166,10 +204,11 @@ export const Add = () => {
                 <li key={moviearg.id}>
                   <ResultCards
                     moviearg={moviearg}
-                    selectMovie={selectMovie}
                     movie={movie}
                     movies={movies}
                     setMovies={setMovies}
+                    selectedMovie={selectedMovie}
+                    selectMovie={selectMovie}
                     //
                     trailer={trailer}
                     playing={playing}

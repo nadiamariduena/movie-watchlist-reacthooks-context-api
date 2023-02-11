@@ -31,20 +31,24 @@ const ModalPoster = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: pink;
+  background-color: lavender;
 `;
 const VideoContainerr = styled.div`
   width: 60vw;
   height: 70vmin;
-  background-color: green;
-  pointer-events: all;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  /* background-color: green; */
 `;
 
 //
 const VideoWrapper = styled.div`
   border-radius: 30px;
   width: 60vw;
-  height: 65vh;
+  height: 65vmin;
+
   box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff;
   /* background: rgba(142, 182, 203, 0.106); */
 `;
@@ -164,27 +168,11 @@ const Button = styled.button`
   })}
 `;
 
-const ResultCardsHome = ({
-  trailer,
-
-  moviearg,
-  movie,
-  movies,
-  setMovies,
-  //
-  selectMovie,
-  selectedMovie,
-  setSelectedMovie,
-}) => {
+const ResultCardsHome = ({ moviearg }) => {
   //
   //1 not duplication
-  const {
-    renderMovies,
-    addMovieToWatchlist,
-    watchlist,
-    watched,
-    addMovieToWatched,
-  } = useContext(GlobalContext);
+  const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
+    useContext(GlobalContext);
 
   //2 here we will search if there is any object that has an idential object id o.id === movie.id
   let storedMovie = watchlist.find(
@@ -226,61 +214,19 @@ const ResultCardsHome = ({
     <>
       <Container>
         {openMovieModalee ? (
-          <ModalPoster
-          // style={{
-          //   backgroundImage: `url('${BACKDROP_PATH}${selectedMovie.backdrop_path}')`,
-          // }}
-          >
-            <div className="container-mxcenter">{renderMovies}</div>
-
+          <ModalPoster>
             <VideoContainerr>
-              <button className={"button"}>Play Trailer</button>
-
-              {/* <Youtube
-                videoId={trailer.key}
-                className={"youtube amru"}
-                containerClassName={"youtube-container amru"}
-                opts={{
-                  width: "100%",
-                  height: "100%",
-                  playerVars: {
-                    autoplay: 1,
-                    controls: 0,
-                    cc_load_policy: 0,
-                    fs: 0,
-                    iv_load_policy: 0,
-                    modestbranding: 0,
-                    rel: 0,
-                    showinfo: 0,
-                  },
+              <VideoWrapper
+                style={{
+                  border: "10px solid #ffffff",
+                  borderRadius: "50px",
+                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
                 }}
-              /> */}
-              {/* <div className="movie-title">
-                {moviearg.poster_path && (
-                  <img
-                    src={IMAGE_PATH + moviearg.poster_path}
-                    alt={moviearg.title}
-                  />
-                )}
-                <div className={"flex between movie-infos"}>
-                  {moviearg.vote_average ? (
-                    <span className={"movie-voting"}>
-                      {moviearg.vote_average}
-                    </span>
-                  ) : null}
-                </div>
-              </div> */}
+              >
+                <div className="poster"></div>
+              </VideoWrapper>
             </VideoContainerr>
 
-            {/* <VideoWrapper
-              style={{
-                border: "10px solid #ffffff",
-                borderRadius: "50px",
-                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
-              }}
-            >
-              <div className="poster"></div>
-            </VideoWrapper> */}
             <MovieTitleModal>{moviearg.title}</MovieTitleModal>
             <PModalMovieDescription>{moviearg.overview}</PModalMovieDescription>
 
