@@ -24,6 +24,7 @@ function App() {
               {/* Watchlist was the Home page */}
               <Route exact path="/" component={Home} />
               <Route exact path="/watchlist" component={WatchList} />
+
               <Route path="/watched" exact component={Watched} />
               <Route path="/add" exact component={Add} />
               <Route path="/*" component={Home} />

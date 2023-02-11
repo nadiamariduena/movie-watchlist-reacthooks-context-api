@@ -13,11 +13,8 @@ const IMAGE_PATH = "https://image.tmdb.org/t/p/w342";
 //
 
 //
-const Container = styled.div`
-  position: relative;
-`;
 
-const ModalPoster = styled.div`
+const WrapperVidDescript = styled.div`
   width: 100vw;
   min-height: 100vh;
   position: fixed;
@@ -29,13 +26,63 @@ const ModalPoster = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 
   background-color: lavender;
+  gap: 20px;
+  // **
+
+  background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
+    linear-gradient(to right, #e8e4d8 1px, transparent 1px);
+  background-size: 39px 39px;
+  background-color: #ffffff;
 `;
+// ----
+
+const ContainerDescript = styled.div`
+  flex: 1;
+  height: 100%;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+`;
+const MovieTitleModal = styled.h1`
+  position: fixed;
+  z-index: 12;
+  top: 50px;
+  left: 25px;
+  max-width: 500px;
+
+  line-height: calc(30px + 1.1vmin);
+  font-size: calc(22px + 1.1vmin);
+  font-weight: 400;
+  text-align: left;
+  padding: 30px 0 10px 0;
+  color: rgba(142, 182, 203, 0.496);
+`;
+const PModalMovieDescription = styled.p`
+  position: fixed;
+  z-index: 12;
+  bottom: 75px;
+  left: 25px;
+  max-width: 520px;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+  line-height: calc(14px + 1.1vmin);
+  font-size: calc(6px + 1.1vmin);
+  font-family: "Poppins-Light";
+  color: rgba(142, 182, 203, 0.696);
+`;
+
+// ----
+
 const VideoContainerr = styled.div`
-  width: 60vw;
-  height: 70vmin;
+  flex: 2;
+  height: 100vh;
 
   display: flex;
   justify-content: flex-end;
@@ -45,28 +92,10 @@ const VideoContainerr = styled.div`
 
 //
 const VideoWrapper = styled.div`
-  border-radius: 30px;
-  width: 60vw;
-  height: 65vmin;
+  width: 100%;
+  height: 100%;
 
-  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff;
-  /* background: rgba(142, 182, 203, 0.106); */
-`;
-
-const MovieTitleModal = styled.h1`
-  text-align: right;
-  padding: 30px 0 10px 0;
-  color: rgba(142, 182, 203, 0.496);
-`;
-const PModalMovieDescription = styled.p`
-  padding: 20px 0 10px 0;
-  font-weight: 300;
-  max-width: 1000px;
-  letter-spacing: 1px;
-  line-height: calc(14px + 1.1vmin);
-  font-size: calc(6px + 1.1vmin);
-  font-family: "Poppins-Light";
-  color: #282828;
+  /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
 `;
 
 //
@@ -212,63 +241,67 @@ const ResultCardsHome = ({ moviearg }) => {
 
   return (
     <>
-      <Container>
-        {openMovieModalee ? (
-          <ModalPoster>
-            <VideoContainerr>
-              <VideoWrapper
-                style={{
-                  border: "10px solid #ffffff",
-                  borderRadius: "50px",
-                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
-                }}
-              >
-                <div className="poster"></div>
-              </VideoWrapper>
-            </VideoContainerr>
-
+      {openMovieModalee ? (
+        <WrapperVidDescript>
+          <ContainerDescript>
             <MovieTitleModal>{moviearg.title}</MovieTitleModal>
             <PModalMovieDescription>{moviearg.overview}</PModalMovieDescription>
+          </ContainerDescript>
 
-            {/* <span className={"brand"}>
-              Movie Trailer sssssssssssssssssssApp
-            </span> */}
-          </ModalPoster>
-        ) : null}
-        <Grid>
-          <ResultCard>
-            {/* if there is a path with an img, then show if not dont show anything */}
-            {moviearg.poster_path ? (
-              <ImgBox onClick={() => setOpenMovieModalee(!openMovieModalee)}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${moviearg.poster_path}`}
-                  alt={`${moviearg.title} Poster`}
-                />
-              </ImgBox>
-            ) : null}
-            {/*
+          {/*  */}
+          <VideoContainerr>
+            <VideoWrapper
+              style={{
+                // border: "10px solid #ffffff",
+                // borderRadius: "50px",
+                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
+                backgroundRepeat: "no-repeat",
+                backgroundAttachment: "fixed",
+                backgroundSize: "cover",
+                backgroundPosition: "top",
+              }}
+            >
+              <div className="poster"></div>
+            </VideoWrapper>
+          </VideoContainerr>
+        </WrapperVidDescript>
+      ) : null}
+
+      {/*
+
+       */}
+      <Grid>
+        <ResultCard>
+          {moviearg.poster_path ? (
+            <ImgBox onClick={() => setOpenMovieModalee(!openMovieModalee)}>
+              <img
+                src={`https://image.tmdb.org/t/p/w200${moviearg.poster_path}`}
+                alt={`${moviearg.title} Poster`}
+              />
+            </ImgBox>
+          ) : null}
+          {/*
             <H3 onClick={() => setOpenMovieModalee(!openMovieModalee)}>
               {moviearg.title}
             </H3> */}
 
-            <Controls>
-              <Button
-                disabled={watchlistDisabled}
-                onClick={() => addMovieToWatchlist(moviearg)}
-              >
-                add to watchlist
-              </Button>
+          <Controls>
+            <Button
+              disabled={watchlistDisabled}
+              onClick={() => addMovieToWatchlist(moviearg)}
+            >
+              add to watchlist
+            </Button>
 
-              <Button
-                disabled={watchedDisabled}
-                onClick={() => addMovieToWatched(moviearg)}
-              >
-                add to watched
-              </Button>
-            </Controls>
-          </ResultCard>
-        </Grid>
-      </Container>
+            <Button
+              disabled={watchedDisabled}
+              onClick={() => addMovieToWatched(moviearg)}
+            >
+              add to watched
+            </Button>
+          </Controls>
+        </ResultCard>
+      </Grid>
     </>
   );
 };
