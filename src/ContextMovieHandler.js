@@ -38,7 +38,7 @@ export function MoviessProvider({ children }) {
     setQuery(e.target.value);
 
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&include_adult=false&query=${e.target.value}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&include_adult=false&include_video&query=${e.target.value}`
     );
 
     console.log(data.results[0]);

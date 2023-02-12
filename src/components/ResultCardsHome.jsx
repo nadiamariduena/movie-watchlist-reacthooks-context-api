@@ -5,6 +5,8 @@ import { GlobalContext } from "../context/GlobalState";
 import styled from "styled-components";
 import Youtube from "react-youtube";
 
+const defaultImg =
+  "https://images.pexels.com/photos/4286932/pexels-photo-4286932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 //
 const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
 const { REACT_APP_TMDB_KEY } = process.env;
@@ -162,14 +164,22 @@ const VideoContainerr = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+
+  /*  */
+  /* background-image: url(${defaultImg});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
 `;
 
 //
 const VideoWrapper = styled.div`
-  background-color: green;
   width: 100%;
   height: 70%;
-  background-color: rgba(142, 182, 203);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 
   /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
 `;
@@ -292,15 +302,16 @@ const ResultCardsHome = ({ moviearg }) => {
           {/*  */}
           <VideoContainerr>
             <VideoWrapper
-              style={{
-                // border: "10px solid #ffffff",
-                // borderRadius: "50px",
-                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
-                backgroundRepeat: "no-repeat",
-                backgroundAttachment: "fixed",
-                backgroundSize: "cover",
-                backgroundPosition: "top",
-              }}
+              style={
+                // if there is an img in the API related to the movie, show the BACKDROP_PATH, if not show the img inside the url(${defaultImg})`
+                moviearg.backdrop_path
+                  ? {
+                      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
+                    }
+                  : {
+                      backgroundImage: ` linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)),  url(${defaultImg})`,
+                    }
+              }
             >
               <div className="poster"></div>
             </VideoWrapper>
@@ -318,7 +329,12 @@ const ResultCardsHome = ({ moviearg }) => {
             <>
               <ImgBox onClick={() => setOpenMovieModalee(!openMovieModalee)}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w200${moviearg.poster_path}`}
+                  // defaultImg
+                  src={
+                    moviearg.poster_path
+                      ? `https://image.tmdb.org/t/p/w200${moviearg.poster_path}`
+                      : defaultImg
+                  }
                   alt={`${moviearg.title} Poster`}
                 />
               </ImgBox>
