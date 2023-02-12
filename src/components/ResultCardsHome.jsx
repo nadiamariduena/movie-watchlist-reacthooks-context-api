@@ -160,15 +160,15 @@ const VideoContainerr = styled.div`
   height: 100vh;
 
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  /* background-color: green; */
+  justify-content: flex-start;
+  align-items: flex-start;
 `;
 
 //
 const VideoWrapper = styled.div`
+  background-color: green;
   width: 100%;
-  height: 100%;
+  height: 70%;
   background-color: rgba(142, 182, 203);
 
   /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */

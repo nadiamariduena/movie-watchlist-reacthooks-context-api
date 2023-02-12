@@ -24,6 +24,8 @@ const ClickableOverlay = styled.div`
   z-index: 10;
   cursor: pointer;
 
+  //
+
   background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
     linear-gradient(to right, #e8e4d8 1px, transparent 1px);
   background-size: 39px 39px;

@@ -43,6 +43,8 @@ const HeroWrapperHome = styled.div`
   flex-direction: row;
   //
 
+  //
+
   overflow: hidden;
   // ** squared pattern
   background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
@@ -52,9 +54,13 @@ const HeroWrapperHome = styled.div`
 `;
 
 const HeroContainerRight = styled.div`
+  -webkit-box-shadow: inset 1.5px 0 32px 22px #ffffff;
+  -moz-box-shadow: inset 1.5px 0 32px 22px #ffffff;
+  box-shadow: inset 1.5px 0 32px 22px #ffffff;
+
   flex: 1;
   height: 100%;
-  padding-left: 22px;
+  padding-left: 92px;
 
   display: flex;
   justify-content: center;
@@ -62,7 +68,7 @@ const HeroContainerRight = styled.div`
   flex-direction: column;
 `;
 const HeroContainerLeft = styled.div`
-  background-color: #fafafa;
+  background-color: #fefefe;
   flex: 1;
   height: 100%;
 `;
@@ -154,18 +160,9 @@ const Home = () => {
       <WrapperSectionHome>
         <WrapperContainer>
           <HeroWrapperHome>
-            <HeroContainerLeft
-            // style={{
-            //   // border: "10px solid #ffffff",
-            //   // borderRadius: "50px",
-            //   backgroundImage: `url(https://images.unsplash.com/photo-1535979014625-490762ceb2ff?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwzNjMxMDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzYxOTExMzE&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080)`,
-            //   backgroundRepeat: "no-repeat",
-            //   backgroundAttachment: "fixed",
-            //   backgroundSize: "cover",
-            //   backgroundPosition: "top",
-            // }}
-            >
+            <HeroContainerLeft>
               <svg
+                className="svgBox"
                 id="10015.io"
                 viewBox="0 0 480 480"
                 xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +176,6 @@ const Home = () => {
                     />
                   </clipPath>
                 </defs>
-                {/*  xlinkHref=`url(https://images.unsplash.com/photo-1535979014625-490762ceb2ff?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwzNjMxMDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzYxOTExMzE&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080)` */}
 
                 <image
                   x="0"
@@ -187,7 +183,7 @@ const Home = () => {
                   width="100%"
                   height="100%"
                   clip-path="url(#blob)"
-                  xlinkHref={randomImage}
+                  xlinkHref="https://xl.movieposterdb.com/21_08/0/1219827/xl_1219827_b4b42042.jpg?v=2022-08-02%2018:23:57"
                   preserveAspectRatio="xMidYMid slice"
                 ></image>
               </svg>
