@@ -51,7 +51,8 @@ const ContainerDescript = styled.div`
 const MovieTitleModal = styled.h1`
   max-width: 92%;
 
-  min-height: 60%;
+  min-height: 55%;
+
   margin-left: 20px;
   display: flex;
   justify-content: flex-start;
@@ -72,6 +73,20 @@ const LargeDescriptAndBtn = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+  //
+  // ** STICKY
+  //
+
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0%;
+  //@at-root
+  overflow: hidden;
+  overflow-y: scroll;
+  //
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const PModalMovieDescription = styled.p`
@@ -89,7 +104,7 @@ const PModalMovieDescription = styled.p`
 //
 const Controls = styled.div`
   /*  */
-  padding: 60px 0 30px 0;
+  padding: 20px 0 30px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -253,7 +268,6 @@ const ResultCardsHome = ({ moviearg }) => {
             <MovieTitleModal>{moviearg.title}</MovieTitleModal>
 
             <LargeDescriptAndBtn>
-              {" "}
               <PModalMovieDescription>
                 {moviearg.overview}
               </PModalMovieDescription>
