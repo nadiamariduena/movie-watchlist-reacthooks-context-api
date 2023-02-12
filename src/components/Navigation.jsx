@@ -40,10 +40,10 @@ const Left = styled.div`
 `;
 
 const Brand = styled.h3`
-  margin: 0 0 0 30px;
+  margin-left: 45px;
   .logo {
     color: rgba(142, 182, 203, 0.496);
-    /* color: #141414; */
+
     letter-spacing: 3px;
     font-size: calc(28px + 1vmin);
     font-weight: 500;

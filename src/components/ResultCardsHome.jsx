@@ -29,7 +29,7 @@ const WrapperVidDescript = styled.div`
   flex-direction: row;
 
   background-color: lavender;
-  gap: 20px;
+  gap: 1%;
   // **
 
   background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
@@ -40,8 +40,8 @@ const WrapperVidDescript = styled.div`
 // ----
 
 const ContainerDescript = styled.div`
-  flex: 1;
-  height: 100%;
+  width: 30%;
+  height: 100vh;
   display: flex;
 
   justify-content: space-between;
@@ -49,11 +49,13 @@ const ContainerDescript = styled.div`
   flex-direction: column;
 `;
 const MovieTitleModal = styled.h1`
-  position: fixed;
-  z-index: 12;
-  top: 50px;
-  left: 25px;
-  max-width: 500px;
+  max-width: 92%;
+
+  min-height: 60%;
+  margin-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 
   line-height: calc(30px + 1.1vmin);
   font-size: calc(22px + 1.1vmin);
@@ -62,12 +64,18 @@ const MovieTitleModal = styled.h1`
   padding: 30px 0 10px 0;
   color: rgba(142, 182, 203, 0.496);
 `;
+
+const LargeDescriptAndBtn = styled.div`
+  min-height: 30%;
+  margin-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+`;
+
 const PModalMovieDescription = styled.p`
-  position: fixed;
-  z-index: 12;
-  bottom: 75px;
-  left: 25px;
-  max-width: 520px;
+  max-width: 92%;
 
   font-weight: 600;
 
@@ -77,81 +85,19 @@ const PModalMovieDescription = styled.p`
   font-family: "Poppins-Light";
   color: rgba(142, 182, 203, 0.696);
 `;
-
-// ----
-
-const VideoContainerr = styled.div`
-  flex: 2;
-  height: 100vh;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  /* background-color: green; */
-`;
-
-//
-const VideoWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-
-  /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
-`;
-
-//
-
-const Grid = styled.div``;
-const ResultCard = styled.div`
-  padding: 20px;
-
-  text-align: center;
-  width: 100%;
-  height: auto;
-  border-radius: 30px;
-`;
-const ImgBox = styled.div`
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  border: 8px solid #efefef;
-
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
-  border-radius: 30px;
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #a5a5a541;
-    display: block;
-
-    //
-  }
-
-  img {
-    display: block;
-    width: 100%;
-    min-height: auto;
-    object-fit: cover;
-    //
-  }
-`;
-//
-
 //  ** CONTROLS
 //
 const Controls = styled.div`
-  /* background: purple; */
-  padding: 40px 0;
+  /*  */
+  padding: 60px 0 30px 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 50px;
 `;
 const H3 = styled.h3`
-  margin: 50px 0 0 0;
+  margin: 20px 0 30px 0;
   color: rgba(142, 182, 203, 0.416);
 `;
 //
@@ -159,10 +105,6 @@ const H3 = styled.h3`
 const Button = styled.button`
   margin-top: 15px;
   padding: 12.5px 25px;
-
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
 
   //
 
@@ -196,6 +138,70 @@ const Button = styled.button`
     fontSize: `calc(8px + 1.1vmin)`,
   })}
 `;
+
+// ----
+
+const VideoContainerr = styled.div`
+  width: 67%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  /* background-color: green; */
+`;
+
+//
+const VideoWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+
+  /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
+`;
+
+//
+// ** outer modal
+//
+const Grid = styled.div``;
+const ResultCard = styled.div`
+  padding: 20px;
+
+  text-align: center;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+`;
+
+const ImgBox = styled.div`
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 8px solid #efefef;
+
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  border-radius: 30px;
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #a5a5a541;
+    display: block;
+
+    //
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    min-height: auto;
+    object-fit: cover;
+    //
+  }
+`;
+//
 
 const ResultCardsHome = ({ moviearg }) => {
   //
@@ -245,7 +251,28 @@ const ResultCardsHome = ({ moviearg }) => {
         <WrapperVidDescript>
           <ContainerDescript>
             <MovieTitleModal>{moviearg.title}</MovieTitleModal>
-            <PModalMovieDescription>{moviearg.overview}</PModalMovieDescription>
+
+            <LargeDescriptAndBtn>
+              {" "}
+              <PModalMovieDescription>
+                {moviearg.overview}
+              </PModalMovieDescription>
+              <Controls>
+                <Button
+                  disabled={watchlistDisabled}
+                  onClick={() => addMovieToWatchlist(moviearg)}
+                >
+                  add to watchlist
+                </Button>
+
+                <Button
+                  disabled={watchedDisabled}
+                  onClick={() => addMovieToWatched(moviearg)}
+                >
+                  add to watched
+                </Button>
+              </Controls>
+            </LargeDescriptAndBtn>
           </ContainerDescript>
 
           {/*  */}
@@ -267,11 +294,12 @@ const ResultCardsHome = ({ moviearg }) => {
         </WrapperVidDescript>
       ) : null}
 
-      {/*
-
-       */}
       <Grid>
         <ResultCard>
+          <H3 onClick={() => setOpenMovieModalee(!openMovieModalee)}>
+            {moviearg.title}
+          </H3>
+
           {moviearg.poster_path ? (
             <ImgBox onClick={() => setOpenMovieModalee(!openMovieModalee)}>
               <img
@@ -280,26 +308,6 @@ const ResultCardsHome = ({ moviearg }) => {
               />
             </ImgBox>
           ) : null}
-          {/*
-            <H3 onClick={() => setOpenMovieModalee(!openMovieModalee)}>
-              {moviearg.title}
-            </H3> */}
-
-          <Controls>
-            <Button
-              disabled={watchlistDisabled}
-              onClick={() => addMovieToWatchlist(moviearg)}
-            >
-              add to watchlist
-            </Button>
-
-            <Button
-              disabled={watchedDisabled}
-              onClick={() => addMovieToWatched(moviearg)}
-            >
-              add to watched
-            </Button>
-          </Controls>
         </ResultCard>
       </Grid>
     </>
