@@ -85,3 +85,25 @@ sketch:type TO sketchType
   ) : null}
 </ResultCard>
 ```
+
+<br>
+
+## Conditional svg/ inline styling
+
+```javascript
+import React from "react";
+
+const MyPath = ({ condition }) => {
+  return (
+    <path
+      d="M50,50 L100,100 L200,50"
+      style={{
+        stroke: condition ? "red" : "blue",
+        strokeWidth: 2,
+      }}
+    />
+  );
+};
+
+export default MyPath;
+```

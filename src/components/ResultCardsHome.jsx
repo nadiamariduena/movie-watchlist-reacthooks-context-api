@@ -3,14 +3,14 @@ import { mobile, mobileM, tablet, laptop } from "../responsive";
 import "./videoMovie.scss";
 import { GlobalContext } from "../context/GlobalState";
 import styled from "styled-components";
-import Youtube from "react-youtube";
+// import Youtube from "react-youtube";
 
 const defaultImg =
   "https://images.pexels.com/photos/4286932/pexels-photo-4286932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 //
 const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
-const { REACT_APP_TMDB_KEY } = process.env;
-const IMAGE_PATH = "https://image.tmdb.org/t/p/w342";
+// const { REACT_APP_TMDB_KEY } = process.env;
+// const IMAGE_PATH = "https://image.tmdb.org/t/p/w342";
 
 //
 
@@ -164,24 +164,28 @@ const VideoContainerr = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-
-  /*  */
-  /* background-image: url(${defaultImg});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
 `;
 
 //
-const VideoWrapper = styled.div`
+const VideoBoxWrapper = styled.div`
   width: 100%;
   height: 70%;
-  background-position: top;
+  overflow: hidden;
+
+  /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
+`;
+const VideoBoxContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  background-position: bottom right;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  transition: all 0.8s ease;
 
-  /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
+  &:hover {
+    background-position: center right;
+  }
 `;
 
 //
@@ -299,22 +303,23 @@ const ResultCardsHome = ({ moviearg }) => {
             </LargeDescriptAndBtn>
           </ContainerDescript>
 
-          {/*  */}
           <VideoContainerr>
-            <VideoWrapper
-              style={
-                // if there is an img in the API related to the movie, show the BACKDROP_PATH, if not show the img inside the url(${defaultImg})`
-                moviearg.backdrop_path
-                  ? {
-                      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
-                    }
-                  : {
-                      backgroundImage: ` linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)),  url(${defaultImg})`,
-                    }
-              }
-            >
-              <div className="poster"></div>
-            </VideoWrapper>
+            <VideoBoxWrapper>
+              <VideoBoxContainer
+                style={
+                  // if there is an img in the API related to the movie, show the BACKDROP_PATH, if not show the img inside the url(${defaultImg})`
+                  moviearg.backdrop_path
+                    ? {
+                        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
+                      }
+                    : {
+                        backgroundImage: ` linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)),  url(${defaultImg})`,
+                      }
+                }
+              >
+                {/* <div className="poster">WRITE SOMETHING</div> */}
+              </VideoBoxContainer>
+            </VideoBoxWrapper>
           </VideoContainerr>
         </WrapperVidDescript>
       ) : null}
