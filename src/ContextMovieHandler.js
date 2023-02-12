@@ -21,7 +21,7 @@ export function MoviessProvider({ children }) {
   const [selectedMovie, setSelectedMovie] = useState({});
 
   // const [openMovieModalee, setOpenMovieModalee] = useState(false);
-
+  const [randomImage, setRandomImage] = useState("");
   //
   //
   //
@@ -52,6 +52,15 @@ export function MoviessProvider({ children }) {
   //   setMovie(movie);
   //   window.scrollTo(0, 0);
   // };
+
+  useEffect(() => {
+    if (movies.length > 0) {
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      const randomMovie = movies[randomIndex];
+      const imagePath = `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`;
+      setRandomImage(imagePath);
+    }
+  }, [movies]);
 
   const renderMovies = () =>
     movies.map((movie) => (
@@ -90,6 +99,9 @@ export function MoviessProvider({ children }) {
         selectedMovie,
 
         setSelectedMovie,
+        //
+        randomImage,
+        setRandomImage,
         //
       }}
     >

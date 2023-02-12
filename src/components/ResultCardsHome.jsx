@@ -60,11 +60,11 @@ const MovieTitleModal = styled.h1`
   justify-content: flex-start;
   align-items: flex-start;
 
+  font-size: calc(15px + 1.1vmin);
   line-height: calc(30px + 1.1vmin);
-  font-size: calc(22px + 1.1vmin);
   font-weight: 400;
 
-  color: rgba(103, 103, 103, 0.596);
+  color: rgba(103, 103, 103, 0.396);
 `;
 
 const LargeDescriptAndBtn = styled.div`

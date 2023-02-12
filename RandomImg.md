@@ -1,3 +1,74 @@
+## Random Img from the API
+
+- Pros / Cons
+
+- **Pros** can be nice to save time (i dont have to look for images to add on the hero section)
+
+<br>
+
+- **Cons** Not all the images are great, some are extremely pixelated, **also and very important**, since the API didnt filter correctly the adult images, you might see erotic images on the hero.. so its not recommended
+
+<br>
+
+```javascript
+// some snippet
+import React, { useState, useEffect } from "react";
+
+const API_KEY = "YOUR_API_KEY";
+const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
+const RandomizeImages = () => {
+  const [movies, setMovies] = useState([]);
+  const [randomImage, setRandomImage] = useState("");
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.results);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (movies.length > 0) {
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      const randomMovie = movies[randomIndex];
+      const imagePath = `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`;
+      setRandomImage(imagePath);
+    }
+  }, [movies]);
+
+  return (
+    <div>
+      <img src={randomImage} alt="Random Movie" />
+    </div>
+  );
+};
+
+export default RandomizeImages;
+```
+
+<br>
+
+<br>
+
+### In my code
+
+```javascript
+<image
+  x="0"
+  y="0"
+  width="100%"
+  height="100%"
+  clip-path="url(#blob)"
+  xlinkHref={randomImage}
+  preserveAspectRatio="xMidYMid slice"
+></image>
+```
+
+<br>
+
+```javascript
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import MovieeContext from "../ContextMovieHandler.js";
@@ -154,17 +225,7 @@ const Home = () => {
       <WrapperSectionHome>
         <WrapperContainer>
           <HeroWrapperHome>
-            <HeroContainerLeft
-            // style={{
-            //   // border: "10px solid #ffffff",
-            //   // borderRadius: "50px",
-            //   backgroundImage: `url(https://images.unsplash.com/photo-1535979014625-490762ceb2ff?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwzNjMxMDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzYxOTExMzE&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080)`,
-            //   backgroundRepeat: "no-repeat",
-            //   backgroundAttachment: "fixed",
-            //   backgroundSize: "cover",
-            //   backgroundPosition: "top",
-            // }}
-            >
+            <HeroContainerLeft>
               <svg
                 id="10015.io"
                 viewBox="0 0 480 480"
@@ -187,6 +248,7 @@ const Home = () => {
                   width="100%"
                   height="100%"
                   clip-path="url(#blob)"
+                  //   ✋ the "randomImage" function is stored inside the context
                   xlinkHref={randomImage}
                   preserveAspectRatio="xMidYMid slice"
                 ></image>
@@ -214,3 +276,132 @@ const Home = () => {
 };
 
 export default Home;
+```
+
+<br>
+<br>
+
+### The function
+
+```javascript
+import { createContext, useState, useEffect } from "react";
+import axios from "axios";
+import Movie from "./components/Movie";
+//
+
+//
+const { REACT_APP_TMDB_KEY } = process.env;
+
+//
+//
+const MoviessContext = createContext();
+export function MoviessProvider({ children }) {
+  //
+  //
+  const [playing, setPlaying] = useState(false);
+  const [trailer, setTrailer] = useState(null);
+  const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState("");
+  const [searchKey, setSearchKey] = useState("");
+  const [movie, setMovie] = useState({ title: "Loading Movies" });
+  const [selectedMovie, setSelectedMovie] = useState({});
+
+  //  ✋ the random img function
+  const [randomImage, setRandomImage] = useState("");
+  //
+  //
+  //
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+
+  const fetchMovies = async (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+
+    setQuery(e.target.value);
+
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&include_adult=false&query=${e.target.value}`
+    );
+
+    console.log(data.results[0]);
+    setSelectedMovie(data.results[0]);
+    setMovies(data.results);
+  };
+
+  //
+  //
+  //-------       ✋ the random img function
+
+  useEffect(() => {
+    if (movies.length > 0) {
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      const randomMovie = movies[randomIndex];
+      const imagePath = `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`;
+      setRandomImage(imagePath);
+    }
+  }, [movies]);
+  //
+  //
+  //-------       ✋ the random img function
+
+  //
+  //
+  const renderMovies = () =>
+    movies.map((movie) => (
+      <Movie selectMovie={setSelectedMovie} key={movie.id} movie={movie} />
+    ));
+
+  const removeItem = (e) => {
+    e.preventDefault(e);
+    setSearchKey("");
+    setMovies([]);
+  };
+  //
+  //
+  return (
+    //
+
+    //
+    <MoviessContext.Provider
+      value={{
+        playing,
+        setPlaying,
+        trailer,
+        setTrailer,
+        query,
+        setQuery,
+        movie,
+        setMovie,
+        setMovies,
+        movies,
+        fetchMovies,
+        // fetchMovie,
+        removeItem,
+        //
+        // selectMovie,
+        renderMovies,
+        selectedMovie,
+        setSelectedMovie,
+        //
+        //  ✋ the random img function
+        randomImage,
+
+        //
+      }}
+    >
+      {children}
+    </MoviessContext.Provider>
+  );
+}
+export default MoviessContext;
+```
+
+<br>
+
+### As you can see, it's not nice!
+
+- You have no control over the images you show, unless you want to [Overengineer ](https://www.masterborn.com/blog/What-is-Overengineering-Why-Developers-Do-It-and-4-Ways-to-Avoid-It) the app
