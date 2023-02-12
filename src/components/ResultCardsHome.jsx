@@ -28,7 +28,6 @@ const WrapperVidDescript = styled.div`
   align-items: center;
   flex-direction: row;
 
-  background-color: lavender;
   gap: 1%;
   // **
 
@@ -50,48 +49,45 @@ const ContainerDescript = styled.div`
 `;
 const MovieTitleModal = styled.h1`
   max-width: 92%;
-
-  min-height: 55%;
-
+  min-height: 40%;
   margin-left: 20px;
+  //
+  text-align: left;
+  padding: 70px 0 10px 0;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: flex-start;
 
   line-height: calc(30px + 1.1vmin);
   font-size: calc(22px + 1.1vmin);
   font-weight: 400;
-  text-align: left;
-  padding: 30px 0 10px 0;
-  color: rgba(142, 182, 203, 0.496);
+
+  color: rgba(103, 103, 103, 0.596);
 `;
 
 const LargeDescriptAndBtn = styled.div`
-  min-height: 30%;
+  min-height: 60%;
   margin-left: 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  //
-  // ** STICKY
-  //
-
+  // ** sticky
   position: sticky;
   position: -webkit-sticky;
   top: 0%;
-  //@at-root
+
   overflow: hidden;
   overflow-y: scroll;
-  //
   &::-webkit-scrollbar {
     display: none;
   }
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
 `;
 
 const PModalMovieDescription = styled.p`
   max-width: 92%;
-
+  padding-top: 20px;
   font-weight: 600;
 
   letter-spacing: 1px;
@@ -104,7 +100,7 @@ const PModalMovieDescription = styled.p`
 //
 const Controls = styled.div`
   /*  */
-  padding: 20px 0 30px 0;
+  padding: 30px 0 30px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -170,6 +166,7 @@ const VideoContainerr = styled.div`
 const VideoWrapper = styled.div`
   width: 100%;
   height: 100%;
+  background-color: rgba(142, 182, 203);
 
   /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
 `;
@@ -270,7 +267,7 @@ const ResultCardsHome = ({ moviearg }) => {
             <LargeDescriptAndBtn>
               <PModalMovieDescription>
                 {moviearg.overview}
-              </PModalMovieDescription>
+              </PModalMovieDescription>{" "}
               <Controls>
                 <Button
                   disabled={watchlistDisabled}
