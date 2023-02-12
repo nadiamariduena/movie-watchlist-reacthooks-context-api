@@ -405,3 +405,7 @@ export default MoviessContext;
 ### As you can see, it's not nice!
 
 - You have no control over the images you show, unless you want to [Overengineer ](https://www.masterborn.com/blog/What-is-Overengineering-Why-Developers-Do-It-and-4-Ways-to-Avoid-It) the app
+
+
+https://user-images.githubusercontent.com/58809268/218306529-d27edb67-62a4-48a2-b4a8-78c935de3277.mp4
+
