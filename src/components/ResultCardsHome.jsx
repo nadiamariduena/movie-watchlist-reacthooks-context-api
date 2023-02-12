@@ -15,6 +15,8 @@ const IMAGE_PATH = "https://image.tmdb.org/t/p/w342";
 //
 
 const WrapperVidDescript = styled.div`
+  //https://stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
+  //
   width: 100vw;
   min-height: 100vh;
   position: fixed;
@@ -48,7 +50,7 @@ const ContainerDescript = styled.div`
   flex-direction: column;
 `;
 const MovieTitleModal = styled.h1`
-  max-width: 92%;
+  max-width: 90%;
   min-height: 40%;
   margin-left: 20px;
   //
@@ -91,8 +93,9 @@ const PModalMovieDescription = styled.p`
   font-weight: 600;
 
   letter-spacing: 1px;
-  line-height: calc(14px + 1.1vmin);
+
   font-size: calc(6px + 1.1vmin);
+  line-height: calc(16px + 1.1vmin);
   font-family: "Poppins-Light";
   color: rgba(142, 182, 203, 0.696);
 `;
@@ -312,12 +315,14 @@ const ResultCardsHome = ({ moviearg }) => {
           </H3>
 
           {moviearg.poster_path ? (
-            <ImgBox onClick={() => setOpenMovieModalee(!openMovieModalee)}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${moviearg.poster_path}`}
-                alt={`${moviearg.title} Poster`}
-              />
-            </ImgBox>
+            <>
+              <ImgBox onClick={() => setOpenMovieModalee(!openMovieModalee)}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${moviearg.poster_path}`}
+                  alt={`${moviearg.title} Poster`}
+                />
+              </ImgBox>
+            </>
           ) : null}
         </ResultCard>
       </Grid>

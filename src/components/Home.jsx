@@ -4,6 +4,7 @@ import { mobile, mobileM, tablet, laptop } from "../responsive";
 import styled from "styled-components";
 import { Add } from "./Add";
 import ResultCardsHome from "./ResultCardsHome";
+import SvgImg from "./SvgImg";
 
 // import videoCity1 from "../../videos/smartphone-cottonbro_lwres.mp4";
 
@@ -146,7 +147,7 @@ const Home = () => {
         <WrapperContainer>
           <HeroWrapperHome>
             <HeroContainerLeft>
-              <h1
+              {/* <h1
                 style={{
                   zIndex: "999",
                   background: "rgba(142, 182, 203, 0.196)",
@@ -156,10 +157,8 @@ const Home = () => {
                   alignItems: "flex-start",
                   justifyContent: "flex-start",
                 }}
-              >
-                d
-              </h1>
-              <h1> </h1>
+              ></h1>{" "} */}
+              <SvgImg />
             </HeroContainerLeft>
 
             <HeroContainerRight>

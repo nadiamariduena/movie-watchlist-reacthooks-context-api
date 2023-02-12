@@ -8,7 +8,9 @@ import Navigation from "./components/Navigation";
 import { WatchList } from "./components/WatchList";
 import { Watched } from "./components/Watched";
 import { Add } from "./components/Add";
+
 //
+
 //
 import { GlobalProvider } from "./context/GlobalState";
 import { MoviessProvider } from "./ContextMovieHandler";
