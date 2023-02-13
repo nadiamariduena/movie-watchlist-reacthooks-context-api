@@ -158,42 +158,27 @@ export const Add = () => {
   //
   const {
     query,
-    setMovies,
+    setQuery,
     movies,
-    fetchMovies,
-    removeItem,
-
-    //
-    renderMovies,
-    playing,
-    setPlaying,
-    trailer,
-    movie,
-    selectMovie,
+    setMovies,
     selectedMovie,
+    setSelectedMovie,
+    videoId,
+    setVideoId,
+    //
+    removeItem,
   } = useContext(MovieeContext);
 
   //
 
   return (
     <>
-      {/*   <ModalPoster>
-        <div className="container-mxcenter">{renderMovies}</div>
-
-      <VideoContainerr
-          style={{
-            backgroundImage: `url('${BACKDROP_PATH}${selectedMovie.backdrop_path}')`,
-          }}
-        >
-          <button className={"button"}>Play Trailer</button>
-        </VideoContainerr>
-      </ModalPoster>*/}
       <AddPage>
         <Input
           type="text"
-          placeholder="SEARCH"
+          placeholder="CHANGE"
           value={query}
-          onChange={fetchMovies}
+          onChange={(e) => setQuery(e.target.value)}
         />
 
         {movies.length ? (
@@ -205,15 +190,9 @@ export const Add = () => {
                 <li key={moviearg.id}>
                   <ResultCards
                     moviearg={moviearg}
-                    movie={movie}
-                    movies={movies}
-                    setMovies={setMovies}
                     selectedMovie={selectedMovie}
-                    selectMovie={selectMovie}
-                    //
-                    trailer={trailer}
-                    playing={playing}
-                    setPlaying={setPlaying}
+                    setSelectedMovie={setSelectedMovie}
+                    videoId={videoId}
                   />
                 </li>
               ))}

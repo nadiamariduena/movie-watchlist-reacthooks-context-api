@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import MovieeContext from "../ContextMovieHandler.js";
 
@@ -153,8 +153,32 @@ const UlHome = styled.ul`
 //https://images.unsplash.com/photo-1535979014625-490762ceb2ff?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwzNjMxMDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzYxOTExMzE&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080
 //
 const Home = () => {
-  const { movies, randomImage, setRandomImage } = useContext(MovieeContext);
+  // const { movies, randomImage, setRandomImage } = useContext(MovieeContext);
 
+  //
+  //
+  const [randomImgHome, setRandomImgHome] = useState("");
+
+  useEffect(() => {
+    const ImagesRandomHome = [
+      // melancholia
+      "https://www.filmonpaper.com/wp-content/uploads/2013/05/Melancholia_onesheet_waterstyle_USA-12.jpg",
+      //Blade runner
+      "https://www.motionpictures.org/wp-content/uploads/2017/10/BR-SINTL-87634_3.jpg",
+      // ghost
+      "https://i.guim.co.uk/img/media/31dbbedbf1101828aca84a0211cfadb57fa1e366/0_141_3945_2367/master/3945.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=ce0c3fcd5f988ee68759b7a6d9d2cae3",
+      // tenet
+      "https://rare-gallery.com/uploads/posts/343166-Tenet-2020-Movie-Poster-John-David-Washington.jpg",
+      // dune
+      "https://assets.letemps.ch/sites/default/files/styles/original/public/media/2021/09/16/file7hiccsddigx2twkj70n.jpeg?itok=M7tnFGct",
+    ];
+
+    const randomIndexImg = Math.floor(Math.random() * ImagesRandomHome.length);
+    setRandomImgHome(ImagesRandomHome[randomIndexImg]);
+  }, []);
+
+  //
+  //
   return (
     <>
       <WrapperSectionHome>
@@ -194,8 +218,8 @@ const Home = () => {
                   y="0"
                   width="100%"
                   height="100%"
-                  clip-path="url(#blob)"
-                  xlinkHref="https://images.bravo.de/m3gan-horror-movie-figur-nach-vorbild-dieser-beruhmten-schauspielerin,id=7aca77fc,b=bravo,w=1600,h=,ca=0,0,100,56.25,rm=sk.jpeg"
+                  clipPath="url(#blob)"
+                  xlinkHref={randomImgHome}
                   preserveAspectRatio="xMidYMid slice"
                 ></image>
               </svg>

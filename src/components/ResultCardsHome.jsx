@@ -3,8 +3,14 @@ import { mobile, mobileM, tablet, laptop } from "../responsive";
 import "./videoMovie.scss";
 import { GlobalContext } from "../context/GlobalState";
 import styled from "styled-components";
-// import Youtube from "react-youtube";
+import Youtube from "react-youtube";
+import { HiOutlinePlay } from "react-icons/hi";
+//
+import Movie from "./Movie";
 
+//
+//
+//
 const defaultImg =
   "https://images.pexels.com/photos/4286932/pexels-photo-4286932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 //
@@ -232,7 +238,12 @@ const ImgBox = styled.div`
 `;
 //
 
-const ResultCardsHome = ({ moviearg }) => {
+const ResultCardsHome = ({
+  videoId,
+  selectedMovie,
+  setSelectedMovie,
+  moviearg,
+}) => {
   //
   //1 not duplication
   const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
@@ -282,6 +293,14 @@ const ResultCardsHome = ({ moviearg }) => {
             <MovieTitleModal>{moviearg.title}</MovieTitleModal>
 
             <LargeDescriptAndBtn>
+              <button
+                key={moviearg.id}
+                onClick={(e) => (
+                  e.preventDefault(), setSelectedMovie(moviearg)
+                )}
+              >
+                <HiOutlinePlay />
+              </button>
               <PModalMovieDescription>
                 {moviearg.overview}
               </PModalMovieDescription>{" "}
@@ -317,6 +336,16 @@ const ResultCardsHome = ({ moviearg }) => {
                       }
                 }
               >
+                {selectedMovie && (
+                  <div>
+                    {videoId && (
+                      <>
+                        <Movie videoId={videoId} />
+                      </>
+                    )}
+                  </div>
+                )}
+
                 {/* <div className="poster">WRITE SOMETHING</div> */}
               </VideoBoxContainer>
             </VideoBoxWrapper>

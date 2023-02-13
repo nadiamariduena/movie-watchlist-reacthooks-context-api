@@ -1,76 +1,115 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useCallback, useEffect, useRef } from "react";
 import axios from "axios";
-import Movie from "./components/Movie";
-//
 
 //
+
+// coming from the .env
 const { REACT_APP_TMDB_KEY } = process.env;
-
+//
+const API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&language=en-US&query=`;
+const VIDEO_URL = `https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=${REACT_APP_TMDB_KEY}&language=en-US`;
 //
 //
 const MoviessContext = createContext();
 export function MoviessProvider({ children }) {
   //
-  //
-  const [playing, setPlaying] = useState(false);
-  const [trailer, setTrailer] = useState(null);
-  const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState("");
-  const [searchKey, setSearchKey] = useState("");
-  const [movie, setMovie] = useState({ title: "Loading Movies" });
-  const [selectedMovie, setSelectedMovie] = useState({});
 
-  // const [openMovieModalee, setOpenMovieModalee] = useState(false);
-  const [randomImage, setRandomImage] = useState("");
-  //
-  //
-  //
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [videoId, setVideoId] = useState(null);
 
   useEffect(() => {
+    const fetchMovies = async () => {
+      const result = await axios.get(`${API_URL}${query}`);
+      setMovies(result.data.results);
+    };
     fetchMovies();
+  }, [query]);
+
+  // ** fetching the video
+  useEffect(() => {
+    const fetchVideoId = async () => {
+      if (!selectedMovie) {
+        return;
+      }
+      const result = await axios.get(
+        `${VIDEO_URL.replace("{movie_id}", selectedMovie.id)}`
+      );
+      setVideoId(result.data.results[0].key);
+    };
+    fetchVideoId();
+  }, [selectedMovie]);
+
+  //
+  // -------- video size
+  // const iframeRef = useRef<HTMLIFrameElement>(null);
+  // since we I already have the state in line 20, you can add it inside the url path, the add this value to the new variable, this videoURL variable will carry the data that you will pass in line 134, from there you will send it to the Movie.js component
+  const videoURL = `https://www.youtube.com/embed/${videoId} `;
+
+  //
+  const iframeRef = useRef();
+  // ** default height
+  const defaultHeight = 495;
+  //
+  const [videoHeight, setVideoHeight] = useState(
+    iframeRef.current ? iframeRef.current.offsetWidth * 0.5625 : defaultHeight
+  );
+  //
+  //
+  //
+  const handleChangeVideoWidth = useCallback(() => {
+    const ratio =
+      window.innerWidth > 990
+        ? 1.0
+        : window.innerWidth > 522
+        ? 1.2
+        : window.innerWidth > 400
+        ? 1.45
+        : 1.85;
+    const height = iframeRef.current
+      ? iframeRef.current.offsetWidth * 0.5625
+      : defaultHeight;
+    return setVideoHeight(Math.floor(height * ratio));
   }, []);
 
-  const fetchMovies = async (e) => {
-    if (e) {
-      e.preventDefault();
-    }
-
-    setQuery(e.target.value);
-
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&include_adult=false&include_video&query=${e.target.value}`
-    );
-
-    console.log(data.results[0]);
-    setSelectedMovie(data.results[0]);
-    setMovies(data.results);
-  };
-
-  // const selectMovie = (movie) => {
-  //   fetchMovie(movie.id);
-  //   setPlaying(false);
-  //   setMovie(movie);
-  //   window.scrollTo(0, 0);
-  // };
-
+  //
+  //
   useEffect(() => {
-    if (movies.length > 0) {
-      const randomIndex = Math.floor(Math.random() * movies.length);
-      const randomMovie = movies[randomIndex];
-      const imagePath = `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`;
-      setRandomImage(imagePath);
-    }
-  }, [movies]);
+    window.addEventListener("resize", handleChangeVideoWidth);
+    const ratio =
+      window.innerWidth > 990
+        ? 1.0
+        : window.innerWidth > 522
+        ? 1.2
+        : window.innerWidth > 400
+        ? 1.45
+        : 1.85;
+    const height = iframeRef.current
+      ? iframeRef.current.offsetWidth * 0.5625
+      : defaultHeight;
+    setVideoHeight(Math.floor(height * ratio));
+    return function cleanup() {
+      window.removeEventListener("resize", handleChangeVideoWidth);
+    };
+  }, [videoHeight, handleChangeVideoWidth]);
+  /*
 
-  const renderMovies = () =>
-    movies.map((movie) => (
-      <Movie selectMovie={setSelectedMovie} key={movie.id} movie={movie} />
-    ));
 
+
+
+
+
+
+
+
+  */
   const removeItem = (e) => {
     e.preventDefault(e);
-    setSearchKey("");
+    setQuery("");
     setMovies([]);
+    // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
+    setVideoId();
   };
   //
   //
@@ -80,29 +119,22 @@ export function MoviessProvider({ children }) {
     //
     <MoviessContext.Provider
       value={{
-        playing,
-        setPlaying,
-        trailer,
-        setTrailer,
         query,
         setQuery,
-        movie,
-        setMovie,
-        setMovies,
         movies,
-        fetchMovies,
-        // fetchMovie,
+        setMovies,
+        selectedMovie,
+        setSelectedMovie,
+        videoId,
+        setVideoId,
+        //
         removeItem,
         //
-        // selectMovie,
-        renderMovies,
-        selectedMovie,
-
-        setSelectedMovie,
-        //
-        randomImage,
-        setRandomImage,
-        //
+        //  resize video
+        videoHeight,
+        setVideoHeight,
+        iframeRef,
+        videoURL,
       }}
     >
       {children}
