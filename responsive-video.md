@@ -759,3 +759,9 @@ const ResultCardsHome = ({
 
 export default ResultCardsHome;
 ```
+
+<br>
+
+https://user-images.githubusercontent.com/58809268/218476202-ea637be1-01ff-4e63-8ce7-69574e6bb9f8.mp4
+
+
