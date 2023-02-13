@@ -107,3 +107,7 @@ const MyPath = ({ condition }) => {
 
 export default MyPath;
 ```
+
+
+https://user-images.githubusercontent.com/58809268/218341332-37d5f491-3552-4ebc-afc6-9abc47576d90.mp4
+
