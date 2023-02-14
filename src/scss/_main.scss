@@ -28,11 +28,16 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   // background-color: #ffffff;
   overflow-x: hidden;
   min-height: 100vh;
+
   //
   //
   .page {

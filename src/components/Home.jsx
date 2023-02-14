@@ -1,66 +1,37 @@
 import React, { useState, useEffect } from "react";
 
-//
-//
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 import styled from "styled-components";
 import { Add } from "./Add";
 
 const WrapperSectionHome = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  $red-with-opacity: rgba(red, 0.2);
 
   // ** gradient
-
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     position: fixed;
     inset: 0;
     z-index: -1;
+    //
+    // https://medium.com/@nana8/css-box-shadow-what-is-difference-between-blur-and-spread-c3a3de92a126
+    box-shadow: inset 5px 10px 400px #fafafa;
 
-    // ** working -------
-    /* -webkit-mask-image: radial-gradient(red, transparent 70%);
-    mask-image: radial-gradient(red, transparent 70%);
-    */
-    // ** ----------
-    //
-    /* mask-image: radial-gradient(at 25%, red, transparent 70%); */
-    //
-    mask-image: radial-gradient(
-      hsla(39, 64%, 91%, 0.129) 0%,
-      hsla(39, 64%, 91%, 0.115) 9%,
-      hsla(39, 64%, 91%, 0.245) 34%,
-      hsla(40, 63%, 91%, 0.228) 47%,
-      hsla(40, 63%, 91%, 0.218) 56.5%,
-      hsla(40, 63%, 91%, 0.218) 65%,
-      hsla(40, 63%, 91%, 0.218) 73%,
-      hsla(40, 63%, 91%, 0.118) 80.2%,
-      hsla(40, 63%, 91%, 0.118) 86.1%,
-      hsla(40, 63%, 91%, 0.123) 91%,
-      hsla(40, 63%, 91%, 0.123) 95.2%,
-      hsla(40, 63%, 91%, 0.123) 98.2%,
-      hsla(40, 63%, 91%, 0) 100%,
-      transparent 80%
-    );
-
-    //
+    mask-image: radial-gradient(at -35% 15%, red, transparent 75%);
+    mask-composite: intersect;
     //
     //
     mix-blend-mode: color;
-    content: " ";
+    content: "";
   }
   &::before {
     background-color: #000;
     filter: url(#f);
   }
   &::after {
-    background: linear-gradient(navy, aqua);
+    background: linear-gradient(30deg, purple, navy 80%, aqua);
   }
 `;
-
 const WrapperContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
@@ -311,7 +282,7 @@ const Home = () => {
         <svg style={{ position: "absolute" }}>
           <filter id="f">
             {/* https://tympanus.net/codrops/2019/02/19/svg-filter-effects-creating-texture-with-feturbulence/ */}
-            <feTurbulence type="fractalNoise" baseFrequency="1.5" />
+            <feTurbulence type="fractalNoise" baseFrequency="8.5" />
           </filter>
         </svg>
 
@@ -372,3 +343,38 @@ const Home = () => {
 };
 
 export default Home;
+
+/*
+
+
+     -webkit-mask-image: radial-gradient(red, transparent 70%);
+    mask-image: radial-gradient(red, transparent 70%);
+
+    //   ----------
+       mask-image: radial-gradient(at 25%, red, transparent 70%);
+  //   ----------
+    mask-image: radial-gradient(
+      at 25%,
+      red,
+      #{rgba(red, 0.2)}50%,
+      transparent 70%
+    );
+    //
+    mask-image: radial-gradient(
+      at 20%,
+      hsla(39, 24%, 91%, 0.129),
+      hsla(39, 24%, 91%, 0.245) 34%,
+      hsla(40, 23%, 91%, 0.228) 47%,
+      hsla(40, 23%, 91%, 0.218) 56.5%,
+      hsla(40, 23%, 91%, 0.218) 65%,
+      hsla(40, 23%, 91%, 0.218) 73%,
+      hsla(40, 23%, 91%, 0.118) 80.2%,
+      hsla(40, 23%, 91%, 0.118) 86.1%,
+      hsla(40, 23%, 91%, 0.123) 91%,
+      hsla(40, 23%, 91%, 0.123) 95.2%,
+      hsla(40, 23%, 91%, 0.123) 98.2%,
+      hsla(40, 23%, 91%, 0) 100%,
+      transparent 20%
+    );
+
+*/
