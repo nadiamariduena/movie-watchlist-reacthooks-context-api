@@ -45,12 +45,14 @@ export function MoviessProvider({ children }) {
   // -------- video size
   // const iframeRef = useRef<HTMLIFrameElement>(null);
   // since we I already have the state in line 20, you can add it inside the url path, the add this value to the new variable, this videoURL variable will carry the data that you will pass in line 134, from there you will send it to the Movie.js component
-  const videoURL = `https://www.youtube.com/embed/${videoId} `;
-
+  const videoURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://localhost:2280/"
+  frameborder="0"`;
+  // try to publish
   //
   const iframeRef = useRef();
   // ** default height
-  const defaultHeight = 495;
+  // change this depending of the project you have
+  const defaultHeight = 695;
   //
   const [videoHeight, setVideoHeight] = useState(
     iframeRef.current ? iframeRef.current.offsetWidth * 0.5625 : defaultHeight

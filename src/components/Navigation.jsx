@@ -42,7 +42,7 @@ const Left = styled.div`
 const Brand = styled.h3`
   margin-left: 45px;
   .logo {
-    color: rgba(142, 182, 203, 0.496);
+    color: rgba(248, 248, 248, 0.596);
 
     letter-spacing: 3px;
     font-size: calc(28px + 1vmin);
@@ -79,9 +79,9 @@ const Li = styled.li`
 `;
 
 const NavbarLink = styled(Link)`
-  color: rgba(142, 182, 203, 0.496);
+  color: rgba(248, 248, 248, 0.596);
   font-weight: 600;
-  /* color: rgba(142, 182, 203, 0.496); */
+
   font-size: calc(12px + 1vmin);
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;

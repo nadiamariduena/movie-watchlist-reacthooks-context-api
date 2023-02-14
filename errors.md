@@ -34,3 +34,7 @@ https://stackoverflow.com/questions/65150529/embedded-youtube-video-causes-tons-
 ### Unrecognized feature: 'web-share'.
 
 > **www-widgetapi.js:679** 🔴 deprecated
+
+https://experienceleaguecommunities.adobe.com/t5/adobe-analytics-questions/youtube-embed-video-tracking-console-error/td-p/562296
+
+https://developers.google.com/youtube/player_parameters

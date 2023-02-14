@@ -1,30 +1,69 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import MovieeContext from "../ContextMovieHandler.js";
+import React, { useState, useEffect } from "react";
 
 //
 //
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 import styled from "styled-components";
 import { Add } from "./Add";
-import ResultCardsHome from "./ResultCardsHome";
-import SvgImg from "./SvgImg";
-//
-//
-const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
-// import videoCity1 from "../../videos/smartphone-cottonbro_lwres.mp4";
 
 const WrapperSectionHome = styled.div`
   width: 100vw;
-  height: auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
+  // ** gradient
+
+  &:before,
+  &:after {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    // ** working -------
+    /* -webkit-mask-image: radial-gradient(red, transparent 70%);
+    mask-image: radial-gradient(red, transparent 70%);
+    */
+    // ** ----------
+    //
+    /* mask-image: radial-gradient(at 25%, red, transparent 70%); */
+    //
+    mask-image: radial-gradient(
+      hsla(39, 64%, 91%, 0.129) 0%,
+      hsla(39, 64%, 91%, 0.115) 9%,
+      hsla(39, 64%, 91%, 0.245) 34%,
+      hsla(40, 63%, 91%, 0.228) 47%,
+      hsla(40, 63%, 91%, 0.218) 56.5%,
+      hsla(40, 63%, 91%, 0.218) 65%,
+      hsla(40, 63%, 91%, 0.218) 73%,
+      hsla(40, 63%, 91%, 0.118) 80.2%,
+      hsla(40, 63%, 91%, 0.118) 86.1%,
+      hsla(40, 63%, 91%, 0.123) 91%,
+      hsla(40, 63%, 91%, 0.123) 95.2%,
+      hsla(40, 63%, 91%, 0.123) 98.2%,
+      hsla(40, 63%, 91%, 0) 100%,
+      transparent 80%
+    );
+
+    //
+    //
+    //
+    mix-blend-mode: color;
+    content: " ";
+  }
+  &::before {
+    background-color: #000;
+    filter: url(#f);
+  }
+  &::after {
+    background: linear-gradient(navy, aqua);
+  }
 `;
 
 const WrapperContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
   display: flex;
   justify-content: center;
@@ -33,6 +72,15 @@ const WrapperContainer = styled.div`
 `;
 
 const HeroWrapperHome = styled.div`
+  /* -webkit-box-shadow: inset -1px 1px 32px 24.5px #282828;
+  -moz-box-shadow: inset -1px 1px 32px 24.5px #282828;
+  box-shadow: inset -1px 1px 32px 24.5px #282828; */
+
+  // ** squared pattern
+  background-image: linear-gradient(#fafafa2b 1px, transparent 1px),
+    linear-gradient(to right, #fafafa2b 1px, transparent 1px);
+  background-size: 39px 39px;
+
   width: 80%;
   height: 70%;
   margin-top: 70px;
@@ -43,112 +91,192 @@ const HeroWrapperHome = styled.div`
   flex-direction: row;
   //
 
-  //
+  ${mobile({
+    marginTop: "20px",
+    width: "98%",
+    flexFlow: "column wrap-reverse",
+    padding: "100px 10px",
+    height: "auto",
+  })}
+  ${mobileM({
+    marginTop: "70px",
+    width: "98%",
+    flexFlow: "column wrap-reverse",
+    padding: "100px 10px",
+    height: "auto",
+  })}
+  ${tablet({
+    marginTop: "70px",
+    width: "98%",
+    flexFlow: "column wrap-reverse",
+    padding: "100px 10px",
+    height: "auto",
+  })}
+    ${laptop({
+    marginTop: "70px",
+    width: "90%",
+    flexFlow: "column wrap-reverse",
+    padding: "100px 10px",
+    height: "auto",
+  })} //
 
-  overflow: hidden;
-  // ** squared pattern
-  background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
-    linear-gradient(to right, #e8e4d8 1px, transparent 1px);
-  background-size: 39px 39px;
-  background-color: #ffffff;
+  /* overflow: hidden; */
 `;
 
 const HeroContainerRight = styled.div`
-  -webkit-box-shadow: inset 1.5px 0 32px 22px #ffffff;
-  -moz-box-shadow: inset 1.5px 0 32px 22px #ffffff;
+  /*  -webkit-box-shadow: inset 1.5px 0 32px 22px #ffffff;
+   -moz-box-shadow: inset 1.5px 0 32px 22px #ffffff;
   box-shadow: inset 1.5px 0 32px 22px #ffffff;
+  background-color: #fefefe; */
+  //
 
-  flex: 1;
-  height: 100%;
+  width: 50%;
   padding-left: 92px;
 
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+
+  ${mobile({
+    display: "flex",
+    width: "100%",
+    padding: "40px 5px",
+    minHeight: "100vh",
+    // background: "red",
+  })}
+  ${mobileM({
+    display: "flex",
+    width: "85%",
+    padding: "40px 5px",
+    minHeight: "90vh",
+    // background: "greenyellow",
+  })}
+    ${tablet({
+    display: "flex",
+    width: "80%",
+    padding: "70px 5px 20px 5px ",
+    minHeight: "90vh",
+    background: "red",
+  })}
+  ${laptop({
+    display: "flex",
+    width: "70%",
+    padding: "70px 5px 20px 5px ",
+    minHeight: "90vh",
+    // background: "olive",
+  })}
 `;
 const HeroContainerLeft = styled.div`
-  background-color: #fefefe;
-  flex: 1;
-  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  ${mobile({
+    display: "flex",
+    width: "100%",
+    padding: "40px 0",
+    minHeight: "50vh",
+    backgroundColor: "#fafafa",
+
+    borderRadius: "30px",
+    border: "3px solid  rgb(248, 248, 248, 0.8)",
+  })}
+  ${mobileM({
+    backgroundColor: "#fefefe",
+    display: "flex",
+    width: "92%",
+    padding: "40px 0",
+    minHeight: "50vh",
+    // background: "lavender",
+    borderRadius: "30px",
+    border: "3px solid  rgb(248, 248, 248, 0.8)",
+  })}
+  ${tablet({
+    backgroundColor: "#fefefe",
+    display: "flex",
+    width: "80%",
+    padding: "40px 0",
+    minHeight: "50vh",
+    // background: "lavender",
+    borderRadius: "30px",
+    border: "3px solid  rgb(248, 248, 248, 0.8)",
+  })}
+    ${laptop({
+    backgroundColor: "#fefefe",
+    display: "flex",
+    width: "70%",
+    padding: "40px 0",
+    minHeight: "50vh",
+    // background: "lavender",
+    borderRadius: "30px",
+    border: "3px solid  rgb(248, 248, 248, 0.8)",
+  })}
 `;
 
 const H1 = styled.h1`
   font-family: "Syncopate-Bold";
-  color: rgba(142, 182, 203, 0.496);
+  /* color: rgb(248, 248, 248); */
+  color: #1f18c0;
+  color: red;
+
   font-size: calc(58px + 1vmin);
   line-height: calc(62px + 1vmin);
   margin-bottom: 10px;
 `;
 const H2 = styled.h2`
-  color: rgba(142, 182, 203, 0.496);
+  color: #1f18c0;
+  color: rgb(248, 248, 248, 0.9);
+
   font-size: calc(48px + 1vmin);
   line-height: calc(50px + 1vmin);
+
+  word-wrap: break-word;
+  ${mobile({
+    maxWidth: "230px",
+    wordWrap: "break-word",
+    marginTop: "70px 0 0 0",
+    fontSize: `calc(45px + 1vmin)`,
+    lineHeight: `calc(45px + 1vmin)`,
+  })}
+  ${mobileM({
+    maxWidth: "80%",
+    wordWrap: "break-word",
+    marginTop: "100px 0 0 0",
+    fontSize: `calc(46px + 1vmin)`,
+    lineHeight: `calc(45px + 1vmin)`,
+  })}
 `;
 const P = styled.p`
   margin: 35px 0 55px 0;
   max-width: 550px;
+  word-wrap: break-word;
   font-size: calc(10px + 1vmin);
   line-height: calc(19px + 1vmin);
-  color: rgba(103, 103, 103, 0.396);
-`;
-
-//
-// ** POPULAR SECTION
-//
-const SectionHomePopularMovies = styled.div``;
-
-//
-
-const WrapperPopularMovies = styled.div`
-  width: 100%;
-
-  margin: 30px auto 0 auto;
-`;
-
-//
-const UlHome = styled.ul`
-  margin: 0 auto 0 auto;
-  padding: 50px 120px 50px 120px;
-  width: 90%;
-
-  grid-template-columns: repeat(4, 1fr);
-  display: grid;
-  grid-gap: 1em;
-
-  //
-  background-color: #fefefe;
-  border-radius: 50px;
+  color: rgb(248, 248, 248, 0.9);
 
   ${mobile({
-    left: "0",
-    width: "100%",
-    gridTemplateColumns: `repeat(1, 1fr)`,
-    padding: "100px 0px 180px 0px",
-    gridGap: "0.9em",
-    // background: "red",
+    maxWidth: "90%",
+    fontSize: `calc(13px + 1vmin)`,
+    lineHeight: `calc(22px + 1vmin)`,
   })}
   ${mobileM({
-    left: "2.5%",
-    width: "90%",
-    gridTemplateColumns: `repeat(2, 1fr)`,
-    padding: "100px 15px 180px 15px",
-    gridGap: "0.9em",
+    background: "green",
+    maxWidth: "85%",
+    wordWrap: "break-word",
+    fontSize: `calc(14px + 1vmin)`,
+    lineHeight: `calc(22px + 1vmin)`,
   })}
-  ${tablet({
-    width: "95%",
-    left: "4.5%",
-    gridTemplateColumns: `repeat(3, 1fr)`,
-    padding: "100px 20px 180px 20px",
-    gridGap: "1.8em",
-  })}
-    ${laptop({
-    width: "85%",
-    gridTemplateColumns: `repeat(3, 1fr)`,
-    padding: "100px 20px 180px 20px",
-    gridGap: "2.5em",
+   ${tablet({
+    background: "sienna",
+    maxWidth: "90%",
+    fontSize: `calc(13px + 1vmin)`,
+    lineHeight: `calc(22px + 1vmin)`,
   })}
 `;
+
 //
 //https://images.unsplash.com/photo-1535979014625-490762ceb2ff?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwzNjMxMDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzYxOTExMzE&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080
 //
@@ -169,8 +297,6 @@ const Home = () => {
       "https://i.guim.co.uk/img/media/31dbbedbf1101828aca84a0211cfadb57fa1e366/0_141_3945_2367/master/3945.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=ce0c3fcd5f988ee68759b7a6d9d2cae3",
       // tenet
       "https://rare-gallery.com/uploads/posts/343166-Tenet-2020-Movie-Poster-John-David-Washington.jpg",
-      // dune
-      "https://assets.letemps.ch/sites/default/files/styles/original/public/media/2021/09/16/file7hiccsddigx2twkj70n.jpeg?itok=M7tnFGct",
     ];
 
     const randomIndexImg = Math.floor(Math.random() * ImagesRandomHome.length);
@@ -182,6 +308,13 @@ const Home = () => {
   return (
     <>
       <WrapperSectionHome>
+        <svg style={{ position: "absolute" }}>
+          <filter id="f">
+            {/* https://tympanus.net/codrops/2019/02/19/svg-filter-effects-creating-texture-with-feturbulence/ */}
+            <feTurbulence type="fractalNoise" baseFrequency="1.5" />
+          </filter>
+        </svg>
+
         <WrapperContainer>
           <HeroWrapperHome>
             <HeroContainerLeft>
@@ -202,13 +335,6 @@ const Home = () => {
                     <path
                       fill="#474bff"
                       d=" M220,422.09456541837426C261.00959093341237,421.7066504474001,240.94212856858982,337.9030224056536,274.28498148423387,314.0243460186288C302.41328436761745,293.8800997068984,360.5925605645113,341.0619763298557,376.2378217361627,310.2039484369743C392.3818753848988,278.36212410875254,336.13005541710197,252.76629487420774,321.95605933346087,220C314.5830126315018,202.95558846410836,323.8538093199914,181.4579918543012,313.7928315834878,165.84868343721612C303.8331832479769,150.39658457900677,282.40118239789393,148.202519945664,268.17444268570404,136.55941764204584C250.42554697111237,122.03379808606462,240.4768877238593,99.41928181848948,220,89.08903536852449C192.66836931634458,75.30068605250003,153.59934858892734,46.05776669759314,132.22985787957447,67.97765445988169C107.36168761828834,93.48633449324785,155.12038327049052,141.42843455924682,138.33919550967917,172.8531125452718C122.49143382802949,202.52984429653068,56.65687852719071,186.82772538352972,51.047943287412636,219.99999999999997C45.94837045880049,250.15981163371472,97.17221551238029,257.76615120146096,120.67070871807393,277.34779306003463C135.85586110611192,290.001805086575,153.93465004633907,298.75890028352256,165.118837080663,315.05696255475664C188.19886283082354,348.6901355107685,179.21116513812913,422.480392229405,220,422.09456541837426"
-
-                      // M220,422.2142035120891C249.661175638,417.20069448810557,237.67901758334773,356.46089562288955,265.529068124207,345.0900866000701C291.89418885507934,334.32555487132163,322.21816889018646,385.6867143538053,346.3806838098638,370.61463396491814C368.2815622956829,356.9533159182319,340.7869310306117,318.62331085295585,347.78818208155604,293.77854132403934C352.9053095778164,275.6198076392185,375.61313174187575,266.4887450615495,380.83227716692795,248.3590698333114C386.0518835420972,230.22779340885495,382.947582645851,210.22184231596196,376.9967181314837,192.3172427107376C371.2110351433508,174.90963124602052,351.21120823960405,164.52000382288074,347.03065903243856,146.65881481228607C340.9838057752452,120.82393437099327,367.482787582736,85.48508188777075,347.82162755372224,67.66811615161255C328.66254861875046,50.30613687790716,296.61856157888275,84.73322730967153,271.5799380133888,78.28528501134518C249.6254246582753,72.63156227649426,241.7999392771997,28.528338039086446,220,34.751511259625374C193.59696280176883,42.288719136381985,202.4279274600655,92.17456436834772,178.12969689277267,104.9622876671722C158.1211424781205,115.49243128217503,134.7177210124755,89.76103717243981,112.17424771561872,91.49827234091521C86.45673219832942,93.48010414713806,46.98679622509988,91.046149638612,39.28153152091333,115.66214357606229C30.324417322331385,144.27741862164825,67.56548733462165,167.8387972373559,79.69476799945866,195.26040206374384C86.3857943203287,210.38732382636468,98.95669472724555,225.9099594608622,95.16891729766714,242.011087911471C88.42982312253156,270.65770798668615,40.18992922536069,290.2177696974447,50.908604148594556,317.62496291245856C60.55170879122183,342.2819689347427,104.1764138073068,319.21735377311694,128.98235604035577,328.4706041783666C145.18901340156373,334.5161015590524,156.45235592851384,349.07992701349553,168.501771610514,361.49021964202944C187.1311862060895,380.6775804843267,193.6306223501108,426.67131318360117,220,422.2142035120891"
-
-                      // M220,396.42106195911765C236.82192227016705,393.3351998075356,250.93365458205423,416.5246250025248,267.8913420384562,414.3028126312618C283.991318312587,412.19337839650126,295.09168961845063,396.48933986250177,306.63542257151244,385.07000632998984C317.45708737739227,374.3649596784549,323.26599205619823,359.4856638521638,334.1072554999007,348.8004656824246C344.5116224872493,338.54587463149954,358.6079894175523,332.94816639880247,369.4510673171998,323.1586234221708C381.0447094643116,312.6914425068212,403.7393141116329,303.9176196213727,400.81507288656223,288.57411194523996C396.36445104910916,265.22167790489334,344.6498908873473,258.44087910827,352.86525027758137,236.13276219002591C363.62138497544635,206.92538378688627,433.428502014169,224.84844151868708,435.7145530396681,193.80751116002003C437.73124953193224,166.42398617624494,381.55360204355685,181.6520295961168,357.90511054476065,167.6994902175553C347.71028299027915,161.68457239842982,342.71086227595754,148.7506503737433,339.8701578300106,137.25960414255854C335.82286429605136,120.88773653195351,347.6369820357239,100.6766538117196,337.92752015959746,86.88734693699769C329.5498201063281,74.9893984808684,310.4551869107757,72.85208115998357,296.0717394918835,75.05741015929894C278.52067266636766,77.74841152440929,267.0713509267118,102.7620917151465,249.46628420826437,100.45058551793166C234.1930566014918,98.44524462208976,230.46041368756914,76.37743716047207,220,65.06935955542656C203.55959465943255,47.29669921882142,188.64566546373135,-0.7230746766660054,169.1272852519194,13.601282799662338C143.53867865950068,32.380522888915166,175.95775212963287,79.99950693618526,161.29706298844107,108.15089836852333C154.9556196653644,120.32771021649664,133.99434799122537,107.25236937177884,120.26630305254714,107.42392799840047C100.02644243390088,107.67686442935322,64.65074893464678,89.76864972312453,59.79626830179157,109.41934824723722C53.42655707089169,135.20362560884007,112.33144829098207,150.7664270002781,103.38157735237978,175.77246607901824C94.61887561839215,200.2555523155287,43.42377797385967,175.429890672795,28.539026867311563,196.75242893256492C18.493536301190318,211.14268345553432,51.32982128152662,223.7095940708548,58.847859675501596,239.5674124787125C64.48064468444231,251.4486609003579,63.772716850447544,265.27130059630844,67.05906414716893,278.0028461607374C70.49744045081113,291.32336302185746,76.21773599684762,303.8857780460737,78.93142918766146,317.3726038519838C82.52720586032778,335.24331001190217,76.32235615765288,355.88057942541786,85.85522051304137,371.4181547097278C94.33935680104591,385.24641255362576,114.43904330442385,386.66647058545567,127.41788755893626,396.4004772306081C141.9064679359994,407.2667712475137,149.46215333243703,432.7015110397259,167.57279359693214,432.7055377637134C188.90346407821028,432.71028042997153,199.01941996593575,400.2698003378567,220,396.42106195911765"
-
-                      // d="M220,422.09456541837426C259.4258935481083,417.4652492496607,237.48992115501926,338.2503630981835,270.4549775793808,316.13392791537564C298.0447517415145,297.6237987619427,351.267004549671,350.9048637689475,368.47278840706633,322.4833662460001C386.30960365314064,293.0194949957708,332.1554761737414,264.9471699767092,321.2126848683943,232.28944492397014C315.7647925676106,216.03072592701798,328.1988993295493,197.2779156763827,321.26472109800534,181.59535701409888C314.3799693036249,166.02458275861875,294.43195438869867,161.25118489227157,283.89112898602576,147.8818237251958C270.5076370598109,130.90699202057084,267.1704272170881,107.600665396002,251.32904446330656,92.89307007971757C230.21343661044742,73.2887325048884,202.6728529133403,34.69525379837518,177.99046026767405,49.56059738770218C148.45115162168844,67.35109196079836,182.43271911214367,125.62896221209881,157.47166132648218,149.42009599464546C133.9568572729008,171.83276191261342,78.9065256936802,132.33345104245797,62.027082738623456,160.08877501382884C46.92529980336212,184.92104459935615,92.07116475973612,208.39365922541083,106.14067383872943,233.82502519085162C114.97120985420943,249.78667614966005,120.30453320843566,266.6967627845797,129.667376751809,282.3521078281688C139.57907807897487,298.9251823996868,152.43460640695042,312.54321231583947,162.9179672467987,328.7607265968128C183.00766590031242,359.83902102844127,183.24632786931443,426.4101142453543,220,422.09456541837426;
-                      //"
                     />
                   </clipPath>
                 </defs>

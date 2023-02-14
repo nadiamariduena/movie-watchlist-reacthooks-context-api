@@ -82,27 +82,53 @@ ${laptop({
 `;
 //
 //
-const InputWrapper = styled.div`
-  padding: 10px 0px;
-  margin: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
+
 const Input = styled.input`
   padding: 18px 26px;
   border-radius: 5rem;
   border: 0;
   text-align: center;
-  color: rgba(142, 182, 203, 0.496);
-
-  /* border: 3px solid rgba(142, 182, 203, 0.496); border-left: 3px solid rgba(142, 182, 203, 0.496); */
+  font-size: calc(2px + 1vmin);
+  //
+  background-color: #282828;
   color: #b6b6b6;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
 
-  &::placeholder {
-    color: rgba(142, 182, 203, 0.596);
+  // ** border btn input
+  border: 2px solid rgba(248, 248, 248, 0.196);
+  border-left: 3px solid rgba(248, 248, 248, 0.496);
+  border-right: 3px solid rgba(248, 248, 248, 0.496);
+
+  &:hover {
+    border: 2px solid rgba(248, 248, 248, 0.196);
+    border-top: 3px solid rgba(248, 248, 248, 0.496);
+    border-bottom: 3px solid rgba(248, 248, 248, 0.496);
   }
+
+  transition: all 0.8s ease-in-out;
+
+  -webkit-box-shadow: -1px 8px 32px 1px #1b1b1b;
+  -moz-box-shadow: -1px 8px 32px 1px #1b1b1b;
+  box-shadow: -1px 8px 32px 1px #1b1b1b;
+
+  //
+  &:focus-within {
+    background-color: #303030;
+    font-size: calc(2px + 1vmin);
+  }
+  &::placeholder {
+    color: rgb(248, 248, 248, 0.5);
+    letter-spacing: 1px;
+    font-size: calc(8px + 1vmin);
+  }
+
+  ${mobile({
+    background: "#282828",
+    fontSize: `calc(8px + 1vmin)`,
+  })}
+  ${mobileM({
+    background: "#282828",
+    fontSize: `calc(8px + 1vmin)`,
+  })}
 `;
 const ButtonCloseOverlay = styled.button`
   display: flex;
@@ -130,28 +156,6 @@ const ButtonCloseOverlay = styled.button`
   }
 `;
 //---------
-const ModalPoster = styled.div`
-  width: 100vw;
-  min-height: 100vh;
-  position: fixed;
-  z-index: 12;
-  top: 0px;
-  left: 0px;
-
-  /*  */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  background-color: pink;
-`;
-const VideoContainerr = styled.div`
-  width: 60vw;
-  height: 70vmin;
-  background-color: green;
-  pointer-events: all;
-`;
 
 //
 export const Add = () => {
@@ -160,11 +164,11 @@ export const Add = () => {
     query,
     setQuery,
     movies,
-    setMovies,
+    //video trailer
     selectedMovie,
     setSelectedMovie,
     videoId,
-    setVideoId,
+
     //
     removeItem,
   } = useContext(MovieeContext);
@@ -176,7 +180,7 @@ export const Add = () => {
       <AddPage>
         <Input
           type="text"
-          placeholder="CHANGE"
+          placeholder="Search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
