@@ -16,7 +16,7 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 25px 0;
-  background-color: #000000;
+
   //
   position: fixed;
   top: 0;
@@ -42,11 +42,11 @@ const Left = styled.div`
 const Brand = styled.h3`
   margin-left: 45px;
   .logo {
-    color: rgba(248, 248, 248, 0.596);
+    color: rgba(241, 29, 29);
 
-    letter-spacing: 3px;
+    letter-spacing: -2px;
     font-size: calc(28px + 1vmin);
-    font-weight: 500;
+    font-weight: 600;
     font-family: "Syncopate-Bold";
   }
 `;
@@ -68,7 +68,9 @@ const Right = styled.div`
   ${mobile({ justifyContent: "space-between" })}
 `;
 //
-const Ul = styled.ul``;
+const Ul = styled.ul`
+  width: 90%;
+`;
 const Li = styled.li`
   display: inline;
   list-style: none;
@@ -79,7 +81,7 @@ const Li = styled.li`
 `;
 
 const NavbarLink = styled(Link)`
-  color: rgba(248, 248, 248, 0.596);
+  color: rgb(228, 228, 221, 0.9);
   font-weight: 600;
 
   font-size: calc(12px + 1vmin);
@@ -91,7 +93,7 @@ const NavbarLink = styled(Link)`
   //
   &:hover,
   &:focus {
-    color: rgba(142, 182, 203, 6.196);
+    color: rgba(228, 228, 221, 4.196);
   }
   /* &:active {
     color: #181818;

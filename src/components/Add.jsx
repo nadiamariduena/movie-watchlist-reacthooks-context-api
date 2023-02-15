@@ -90,8 +90,8 @@ const Input = styled.input`
   text-align: center;
   font-size: calc(2px + 1vmin);
   //
-  background-color: #282828;
-  color: #b6b6b6;
+  background-color: rgba(251, 251, 251, 2.196);
+  color: rgba(87, 87, 87, 0.4);
 
   // ** border btn input
   border: 2px solid rgba(248, 248, 248, 0.196);
@@ -99,34 +99,32 @@ const Input = styled.input`
   border-right: 3px solid rgba(248, 248, 248, 0.496);
 
   &:hover {
-    border: 2px solid rgba(248, 248, 248, 0.196);
-    border-top: 3px solid rgba(248, 248, 248, 0.496);
-    border-bottom: 3px solid rgba(248, 248, 248, 0.496);
+    -webkit-box-shadow: 28.5px 3px 26.5px 6.5px #f1f1f1;
+    -moz-box-shadow: 28.5px 3px 26.5px 6.5px #f1f1f1;
+    box-shadow: 28.5px 3px 26.5px 6.5px #f1f1f1;
   }
 
   transition: all 0.8s ease-in-out;
 
-  -webkit-box-shadow: -1px 8px 32px 1px #1b1b1b;
-  -moz-box-shadow: -1px 8px 32px 1px #1b1b1b;
-  box-shadow: -1px 8px 32px 1px #1b1b1b;
+  -webkit-box-shadow: -1px 8px 32px 1px #e4e4dd;
+  -moz-box-shadow: -1px 8px 32px 1px #e4e4dd;
+  box-shadow: -1px 8px 32px 1px #e4e4dd;
 
   //
   &:focus-within {
-    background-color: #303030;
+    background-color: rgba(248, 248, 248);
     font-size: calc(2px + 1vmin);
   }
   &::placeholder {
-    color: rgb(248, 248, 248, 0.5);
+    color: rgba(87, 87, 87, 0.2);
     letter-spacing: 1px;
     font-size: calc(8px + 1vmin);
   }
 
   ${mobile({
-    background: "#282828",
     fontSize: `calc(8px + 1vmin)`,
   })}
   ${mobileM({
-    background: "#282828",
     fontSize: `calc(8px + 1vmin)`,
   })}
 `;

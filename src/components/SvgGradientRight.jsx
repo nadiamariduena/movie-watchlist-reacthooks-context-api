@@ -1,47 +1,38 @@
 import React from "react";
-
 import styled from "styled-components";
 
-const WrapperSvg1 = styled.div`
-  -webkit-filter: blur(100px);
-  filter: blur(100px);
-  // ** gradient
-  width: 1000px;
-  height: 1000px;
+const WrapperSvg2 = styled.div`
+  overflow: hidden;
+  border: 1px solid #000;
+  width: 850px;
+  height: 850px;
   position: absolute;
-
-  //
-  top: 8%;
-  left: 7%;
-  //
-  transform: translate(-7%, 0%);
+  filter: blur(100px);
+  z-index: -1;
+  top: -20%;
+  left: 60%;
+  transform: translate(0%, 20%);
   border-radius: 50% 22% 40% 80%;
-  //
+  opacity: 0.3;
 
-  /*  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(255, 253, 167, 0.9),
-    rgba(255, 253, 167, 0)
-  );
-  opacity: 0.8; */
-
-  //
+  // ** ---
 
   &::before,
   &::after {
     //
     position: fixed;
     inset: 0;
-    z-index: -1;
-    //
+
     mask: radial-gradient(
+      circle at -35% 15%,
       ${(props) => props.theme.redOnly},
-      ${(props) => props.theme.redWithOpacity} 20%,
+      ${(props) => props.theme.redWithOpacity} 50%,
       transparent 80%
     );
     -webkit-mask: radial-gradient(
+      circle at -35% 15%,
       ${(props) => props.theme.redOnly},
-      ${(props) => props.theme.redWithOpacity} 20%,
+      ${(props) => props.theme.redWithOpacity} 100%,
       transparent 50%
     );
 
@@ -53,22 +44,21 @@ const WrapperSvg1 = styled.div`
     /* intersect is the product of the alphas of the 2 masking layers */
   }
   &::before {
-    background-color: #000000;
+    background-color: #000;
     filter: url(#f);
-    z-index: 20;
   }
   &::after {
-    z-index: -1;
+    z-index: 900;
     background-color: $red-with-opacity;
     background: linear-gradient(120deg, sienna 20%, navy 50%, sienna 10%);
   }
 `;
 
-WrapperSvg1.defaultProps = {
+WrapperSvg2.defaultProps = {
   theme: {
     greenOnlyTest: "green",
     redOnly: "red",
-    redWithOpacity: "rgba(255, 0, 45, 0.8)",
+    redWithOpacity: "rgba(255, 0, 45, 0.6)",
     //  redWithOpacity: "rgba(red, 0.2)", // this "red" dont work, you have to put the decimals
     // 255, 0, 45 // red
   },
@@ -77,9 +67,9 @@ WrapperSvg1.defaultProps = {
 //
 //
 //
-const SvgGradientCenter = () => {
+const SvgGradientRight = () => {
   return (
-    <WrapperSvg1>
+    <WrapperSvg2>
       {" "}
       <svg style={{ position: "absolute" }}>
         <filter id="f">
@@ -87,8 +77,8 @@ const SvgGradientCenter = () => {
           <feTurbulence type="fractalNoise" baseFrequency="8.5" />
         </filter>
       </svg>
-    </WrapperSvg1>
+    </WrapperSvg2>
   );
 };
 
-export default SvgGradientCenter;
+export default SvgGradientRight;

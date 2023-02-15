@@ -4,19 +4,18 @@ import { mobile, mobileM, tablet, laptop } from "../responsive";
 import styled from "styled-components";
 import { Add } from "./Add";
 import SvgGradientPinkYellow from "./SvgGradientCenter";
+import SvgGradientTop from "./SvgGradientTop";
+import SvgGradientRight from "./SvgGradientRight";
+
+import svgAnillos from "../img/anillos.svg";
 
 const WrapperSectionHome = styled.div`
   position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
 `;
 
-/*
-
-
-
-
-
-
-*/
 const WrapperContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
@@ -28,6 +27,9 @@ const WrapperContainer = styled.div`
 `;
 
 const HeroWrapperHome = styled.div`
+  z-index: 100;
+
+  //
   /* -webkit-box-shadow: inset -1px 1px 32px 24.5px #282828;
   -moz-box-shadow: inset -1px 1px 32px 24.5px #282828;
   box-shadow: inset -1px 1px 32px 24.5px #282828; */
@@ -98,8 +100,7 @@ const HeroContainerRight = styled.div`
     display: "flex",
     width: "100%",
     padding: "40px 5px",
-    minHeight: "100vh",
-    // background: "red",
+    minHeight: "80vh",
   })}
   ${mobileM({
     display: "flex",
@@ -124,49 +125,80 @@ const HeroContainerRight = styled.div`
   })}
 `;
 const HeroContainerLeft = styled.div`
-  width: 50%;
+  width: 48%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
+  //
+  background-image: url(${svgAnillos});
+  background-repeat: no-repeat;
+
+  //
+
+  /* position: relative;
+  overflow: hidden;
+  background-color: olive;
+
+   &::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    //
+    background-image: linear-gradient(
+      95deg,
+      rgba(255, 95, 33, 0.2),
+      rgba(0, 66, 228, 0.2),
+      rgba(255, 95, 33, 0.2)
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  } */
+
   ${mobile({
     display: "flex",
     width: "100%",
     padding: "40px 0",
-    minHeight: "50vh",
-    backgroundColor: "#fafafa",
 
     borderRadius: "30px",
-    border: "3px solid  rgb(248, 248, 248, 0.8)",
   })}
   ${mobileM({
-    backgroundColor: "#fefefe",
     display: "flex",
     width: "92%",
     padding: "40px 0",
-    minHeight: "50vh",
-    // background: "lavender",
+    minHeight: "auto",
+
     borderRadius: "30px",
-    border: "3px solid  rgb(248, 248, 248, 0.8)",
   })}
   ${tablet({
     backgroundColor: "#fefefe",
     display: "flex",
     width: "80%",
     padding: "40px 0",
-    minHeight: "50vh",
-    // background: "lavender",
+    minHeight: "auto",
+
     borderRadius: "30px",
-    border: "3px solid  rgb(248, 248, 248, 0.8)",
   })}
     ${laptop({
-    backgroundColor: "#fefefe",
     display: "flex",
     width: "70%",
     padding: "40px 0",
     minHeight: "50vh",
-    // background: "lavender",
+
     borderRadius: "30px",
     border: "3px solid  rgb(248, 248, 248, 0.8)",
   })}
@@ -184,7 +216,7 @@ const H1 = styled.h1`
 `;
 const H2 = styled.h2`
   color: #1f18c0;
-  color: rgb(248, 248, 248, 0.9);
+  color: rgb(228, 228, 221, 0.9);
 
   font-size: calc(48px + 1vmin);
   line-height: calc(50px + 1vmin);
@@ -211,7 +243,7 @@ const P = styled.p`
   word-wrap: break-word;
   font-size: calc(10px + 1vmin);
   line-height: calc(19px + 1vmin);
-  color: rgb(248, 248, 248, 0.9);
+  color: rgba(87, 87, 87, 0.4);
 
   ${mobile({
     maxWidth: "90%",
@@ -219,14 +251,12 @@ const P = styled.p`
     lineHeight: `calc(22px + 1vmin)`,
   })}
   ${mobileM({
-    background: "green",
     maxWidth: "85%",
     wordWrap: "break-word",
     fontSize: `calc(14px + 1vmin)`,
     lineHeight: `calc(22px + 1vmin)`,
   })}
    ${tablet({
-    background: "sienna",
     maxWidth: "90%",
     fontSize: `calc(13px + 1vmin)`,
     lineHeight: `calc(22px + 1vmin)`,
@@ -245,10 +275,6 @@ const Home = () => {
 
   useEffect(() => {
     const ImagesRandomHome = [
-      // melancholia
-      "https://www.filmonpaper.com/wp-content/uploads/2013/05/Melancholia_onesheet_waterstyle_USA-12.jpg",
-      //Blade runner
-      "https://www.motionpictures.org/wp-content/uploads/2017/10/BR-SINTL-87634_3.jpg",
       // ghost
       "https://i.guim.co.uk/img/media/31dbbedbf1101828aca84a0211cfadb57fa1e366/0_141_3945_2367/master/3945.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=ce0c3fcd5f988ee68759b7a6d9d2cae3",
       // tenet
@@ -264,7 +290,9 @@ const Home = () => {
   return (
     <>
       <WrapperSectionHome>
+        {/* <SvgGradientTop /> */}
         <SvgGradientPinkYellow />
+        {/* <SvgGradientRight /> */}
 
         <WrapperContainer>
           <HeroWrapperHome>
