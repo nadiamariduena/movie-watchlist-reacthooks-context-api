@@ -5,22 +5,28 @@ import styled from "styled-components";
 import { Add } from "./Add";
 
 const WrapperSectionHome = styled.div`
-  $red-with-opacity: rgba(red, 0.2);
-
   // ** gradient
+  /* background: ${(props) => props.theme.testi};
+   border-left: 20px solid ${(props) => props.theme.testi};
+*/
+
+  //
   &::before,
   &::after {
     position: fixed;
     inset: 0;
     z-index: -1;
     //
-    // https://medium.com/@nana8/css-box-shadow-what-is-difference-between-blur-and-spread-c3a3de92a126
-    box-shadow: inset 5px 10px 400px #fafafa;
+    mask: radial-gradient(
+      at -35% 15%,
+      ${(props) => props.theme.testi},
+      ${(props) => props.theme.testi} 50%,
+      transparent 70%
+    );
 
-    mask-image: radial-gradient(at -35% 15%, red, transparent 75%);
+    //
+    //
     mask-composite: intersect;
-    //
-    //
     mix-blend-mode: color;
     content: "";
   }
@@ -29,9 +35,28 @@ const WrapperSectionHome = styled.div`
     filter: url(#f);
   }
   &::after {
-    background: linear-gradient(30deg, purple, navy 80%, aqua);
+    background-color: $red-with-opacity;
+    background: linear-gradient(180deg, purple, navy 80%, aqua);
   }
 `;
+
+WrapperSectionHome.defaultProps = {
+  theme: {
+    redWithOpacity: "green",
+    testi: "rgba(255, 0, 45, 0.2)",
+    //  testi: "rgba(red, 0.2)", // this "red" dont work, you have to put the decimals
+    // 255, 0, 45 // red
+  },
+};
+
+/*
+
+
+
+
+
+
+*/
 const WrapperContainer = styled.div`
   width: 100vw;
   min-height: 100vh;

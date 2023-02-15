@@ -89,7 +89,7 @@ mask-composite: intersect;
 
 <br>
 
-### dont work
+### Doesn't work
 
 - I dont know why this dont work,
 
@@ -124,6 +124,8 @@ const WrapperSectionHome = styled.div`
     -webkit-mask-image: var(--mask);
     mask: var(--mask);
     mask-composite: intersect;
+
+    //
     mix-blend-mode: color;
     content: " ";
   }
@@ -188,3 +190,6 @@ const WrapperSectionHome = styled.div`
   }
 `;
 ```
+
+<br>
+<>
