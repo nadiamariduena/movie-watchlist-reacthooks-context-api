@@ -6,10 +6,10 @@ import { Add } from "./Add";
 
 const WrapperSectionHome = styled.div`
   // ** gradient
-  /* background: ${(props) => props.theme.testi};
-   border-left: 20px solid ${(props) => props.theme.testi};
-*/
+  /* background: ${(props) => props.theme.testi}; */
+  border-left: 20px solid ${(props) => props.theme.testi};
 
+  //rgba(255, 0, 45, 0.2)
   //
   &::before,
   &::after {
@@ -18,11 +18,12 @@ const WrapperSectionHome = styled.div`
     z-index: -1;
     //
     mask: radial-gradient(
-      at -35% 15%,
-      ${(props) => props.theme.testi},
+      at 25%,
       ${(props) => props.theme.testi} 50%,
       transparent 70%
     );
+    /*    $red-with-opacity: rgba(red, 0.2);
+    $grad: radial-gradient(at 25%, red, $red-with-opacity 50%, transparent 70%);  */
 
     //
     //
@@ -31,22 +32,28 @@ const WrapperSectionHome = styled.div`
     content: "";
   }
   &::before {
-    background-color: #000;
+    /* background-color: #000; */
     filter: url(#f);
   }
   &::after {
     background-color: $red-with-opacity;
-    background: linear-gradient(180deg, purple, navy 80%, aqua);
+    /* background: linear-gradient(0deg, purple, navy 80%, aqua); */
   }
 `;
 
 WrapperSectionHome.defaultProps = {
   theme: {
+    main: "palevioletred",
     redWithOpacity: "green",
     testi: "rgba(255, 0, 45, 0.2)",
     //  testi: "rgba(red, 0.2)", // this "red" dont work, you have to put the decimals
     // 255, 0, 45 // red
   },
+};
+
+// Define what props.theme will look like
+const theme = {
+  main: "mediumseagreen",
 };
 
 /*
