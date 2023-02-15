@@ -3,52 +3,11 @@ import React, { useState, useEffect } from "react";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 import styled from "styled-components";
 import { Add } from "./Add";
+import SvgGradientPinkYellow from "./SvgGradientCenter";
 
 const WrapperSectionHome = styled.div`
-  // ** gradient
-  /* background: ${(props) => props.theme.redWithOpacity};
-   border-left: 20px solid ${(props) => props.theme.redWithOpacity};
-*/
-
-  //
-  &::before,
-  &::after {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    //
-    mask: radial-gradient(
-      at -35% 15%,
-      ${(props) => props.theme.redOnly},
-      ${(props) => props.theme.redWithOpacity} 50%,
-      transparent 70%
-    );
-
-    //
-    //
-    mask-composite: intersect;
-    mix-blend-mode: color;
-    content: "";
-  }
-  &::before {
-    background-color: #000;
-    filter: url(#f);
-  }
-  &::after {
-    background-color: $red-with-opacity;
-    background: linear-gradient(180deg, purple, navy 80%, aqua);
-  }
+  position: relative;
 `;
-
-WrapperSectionHome.defaultProps = {
-  theme: {
-    greenOnlyTest: "green",
-    redOnly: "white",
-    redWithOpacity: "rgba(255, 0, 45, 0.2)",
-    //  redWithOpacity: "rgba(red, 0.2)", // this "red" dont work, you have to put the decimals
-    // 255, 0, 45 // red
-  },
-};
 
 /*
 
@@ -305,12 +264,7 @@ const Home = () => {
   return (
     <>
       <WrapperSectionHome>
-        <svg style={{ position: "absolute" }}>
-          <filter id="f">
-            {/* https://tympanus.net/codrops/2019/02/19/svg-filter-effects-creating-texture-with-feturbulence/ */}
-            <feTurbulence type="fractalNoise" baseFrequency="8.5" />
-          </filter>
-        </svg>
+        <SvgGradientPinkYellow />
 
         <WrapperContainer>
           <HeroWrapperHome>
