@@ -43,13 +43,21 @@ const WrapperSectionHome = styled.div`
 WrapperSectionHome.defaultProps = {
   theme: {
     greenOnlyTest: "green",
-    redOnly: "red",
+    redOnly: "white",
     redWithOpacity: "rgba(255, 0, 45, 0.2)",
     //  redWithOpacity: "rgba(red, 0.2)", // this "red" dont work, you have to put the decimals
     // 255, 0, 45 // red
   },
 };
 
+/*
+
+
+
+
+
+
+*/
 const WrapperContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
