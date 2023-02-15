@@ -364,3 +364,24 @@ const Slide = styled.div`
     color: (props) => `#${props.mobileFColor}`,
   })}
 ```
+
+
+
+<br>
+<br>
+
+
+## Manipulating the Svg I created using figma
+
+- i changed the **stroke** and the **stroke-width**
+ 
+
+
+```javascript
+<svg id="eDqzi1UGeQZ1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(1.288665 0 0 1.329448-43.29975-38.116897)"><ellipse rx="65.349203" ry="51.87514" transform="translate(150 194)" fill="none" stroke="#fafafa2b" stroke-width="0.5"/><ellipse rx="65.349203" ry="51.87514" transform="translate(150 142)" fill="none" stroke="#fafafa2b" stroke-width="0.5"/><ellipse rx="65.349203" ry="51.87514" transform="translate(150 89)" fill="none" stroke="#fafafa2b" stroke-width="0.5"/></g></svg>
+
+```
+
+https://user-images.githubusercontent.com/58809268/219047794-c8011371-3615-4fbd-97a9-00c660a63d7b.mp4
+
+
