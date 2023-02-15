@@ -199,7 +199,11 @@ https://user-images.githubusercontent.com/58809268/218857266-e93c39af-50b4-4af8-
 <br>
 <br>
 
-### This also works
+### 🌈 This also works
+
+<br>
+
+<br>
 
 ```javascript
 const WrapperSectionHome = styled.div`
@@ -274,4 +278,75 @@ ${(props) => props.theme.redOnly},
   },
 };
 
+```
+
+<br>
+
+https://styled-components.com/docs/faqs#destructure-props
+
+https://codesandbox.io/s/l2vvl67l9q
+
+https://stackoverflow.com/questions/43502813/using-javascript-variables-with-styled-components
+
+https://styled-components.com/docs/faqs#destructure-props
+
+<br>
+
+<br>
+
+### Other examples: colors from the data.js
+
+```javascript
+  {
+    id: 0,
+
+    bg: "B4BCDC",
+    fColor: "ffffff",
+    mobileFColor: "F8F8F8",
+
+    borderButton: "ffffff",
+
+  },
+```
+
+<br>
+<br>
+
+```javascript
+ {sliderItems.map((items) => (
+          <Slide
+            bg={items.bg}
+            fColor={items.fColor}
+            mobileFColor={items.mobileFColor}
+            key={items.id}
+            small={items.img}
+          >
+            <ImgContainer>
+              <Image src={items.img} />
+            </ImgContainer>
+
+            <InfoContainer>
+              <Title
+                fColor={items.fColor}
+                mobileFColor={items.mobileFColor}
+                borderButton={items.borderButton}
+              >
+```
+
+<br>
+<br>
+
+```javascript
+const Slide = styled.div`
+
+  //color PROPS
+  background-color: #${(props) => props.bg};
+  color: #${(props) => props.fColor};
+  //opacity for images background in smaller devices
+
+  ${mobileM({
+
+
+    color: (props) => `#${props.mobileFColor}`,
+  })}
 ```
