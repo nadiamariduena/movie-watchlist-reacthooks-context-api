@@ -195,3 +195,83 @@ const WrapperSectionHome = styled.div`
 <>
 
 https://user-images.githubusercontent.com/58809268/218857266-e93c39af-50b4-4af8-9e0b-c5ab01dd3ede.mp4
+
+<br>
+<br>
+
+### This also works
+
+```javascript
+const WrapperSectionHome = styled.div`
+  // ** styled variable Tests
+  /* background: ${(props) => props.theme.redWithOpacity};
+   border-left: 20px solid ${(props) => props.theme.redWithOpacity};
+*/
+
+  //
+  &::before,
+  &::after {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    //
+    mask: radial-gradient(
+      at -35% 15%,
+      ${(props) => props.theme.redOnly},
+      ${(props) => props.theme.redWithOpacity} 50%,
+      transparent 70%
+    );
+
+    //
+    //
+    mask-composite: intersect;
+    mix-blend-mode: color;
+    content: "";
+  }
+  &::before {
+    background-color: #000;
+    filter: url(#f);
+  }
+  &::after {
+    background-color: $red-with-opacity;
+    background: linear-gradient(180deg, purple, navy 80%, aqua);
+  }
+`;
+
+WrapperSectionHome.defaultProps = {
+  theme: {
+    greenOnlyTest: "green",
+    redOnly: "red",
+    redWithOpacity: "rgba(255, 0, 45, 0.2)",
+    //  redWithOpacity: "rgba(red, 0.2)", // this "red" dont work, you have to put the decimals
+    // 255, 0, 45 // red
+  },
+};
+```
+
+<br>
+
+### I need 2 shades of red
+
+- one pure red and the other with some opacity
+
+```javascript
+${(props) => props.theme.redOnly},
+
+//
+      ${(props) => props.theme.redWithOpacity} 50%,
+
+
+      //
+      //  ** Based on this:
+      WrapperSectionHome.defaultProps = {
+  theme: {
+    greenOnlyTest: "green",
+    redOnly: "red",
+    redWithOpacity: "rgba(255, 0, 45, 0.2)",
+    //  redWithOpacity: "rgba(red, 0.2)", // this "red" doesn't work, you have to put the decimals
+    // 255, 0, 45 // red
+  },
+};
+
+```
