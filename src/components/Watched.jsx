@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import WatchedMovieCard from "./WatchedMovieCard";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
+import { AnimatePresence, motion } from "framer-motion";
 
 //
 import styled from "styled-components";
@@ -96,9 +97,9 @@ export const Watched = () => {
           {watched.length > 0 ? (
             <Ul className="results">
               {watched.map((movie) => (
-                <li key={movie.id}>
+                <motion.li key={movie.id}>
                   <WatchedMovieCard movie={movie} type="watched" />
-                </li>
+                </motion.li>
               ))}
             </Ul>
           ) : (

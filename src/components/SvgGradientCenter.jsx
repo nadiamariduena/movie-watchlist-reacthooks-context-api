@@ -1,4 +1,5 @@
 import React from "react";
+import { mobile, mobileM, tablet, laptop } from "../responsive";
 
 import styled from "styled-components";
 
@@ -18,6 +19,38 @@ const WrapperSvg1 = styled.div`
   border-radius: 50% 22% 40% 80%;
   //
 
+  ${mobile({
+    width: "100%",
+    height: "100%",
+    top: "-15%",
+    left: "10%",
+  })} //
+
+${mobileM({
+    width: "100%",
+    height: "100%",
+    top: "-15%",
+    left: "10%",
+  })} //
+${tablet({
+    width: "100%",
+    height: "1000px",
+    top: "5%",
+    left: "2%",
+  })}
+
+${laptop({
+    width: "1500px",
+    height: "1500px",
+    top: "0%",
+    left: "2%",
+  })}
+
+
+
+
+//
+//
   /*  background: radial-gradient(
     circle at 50% 50%,
     rgba(255, 253, 167, 0.9),

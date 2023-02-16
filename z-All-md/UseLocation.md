@@ -1,3 +1,50 @@
+## UseLocation 🐔
+
+<br>
+<br>
+
+Another way of rendering the data is by using the link instead of **click events**. The problem with this approach is that you need something to help you relate the URL to the current page. For instance, when you close the overlay, you can end up with the **URL of the movie and its ID** even if you are already in the **results component**.
+
+<br>
+
+🔴 To address this issue, you need to use the **use location**.
+
+<br>
+<br>
+
+- In the following example i added a different color for test purposes, the lavender is the second overlay, the white pattern with squares is the first overlay
+
+> As you can see, the second overlay is working well, now i have to figure out how to make it work inside the add.js
+
+<br>
+
+#### ResultCardsHome
+
+- If you want to navigate to a specific route using history.push(), you need to pass the desired path to the function. For example, **to navigate to the ResultCardsHome route, you should call history.push('/resultCards'):**
+
+```javascript
+//
+const history = useHistory();
+// ** if you add the useHistory in the context it will not work
+const [closeModi, setCloseModi] = useState(false);
+
+const handleCloseModal = () => {
+  setCloseModi();
+  history.push("/ResultCardsHome"); // works
+
+  // history.push(""); // also works -- Go back to the previous URL without the movie ID
+  // history.goBack(); //
+};
+
+//
+```
+
+<br>
+<br>
+
+### the code
+
+```javascript
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
@@ -323,8 +370,7 @@ const ResultCardsHome = ({
               </button>
               <PModalMovieDescription>
                 {moviearg.overview}
-              </PModalMovieDescription>{" "}
-              <Controls>
+              </PModalMovieDescription> <Controls>
                 <Button
                   disabled={watchlistDisabled}
                   onClick={() => addMovieToWatchlist(moviearg)}
@@ -406,3 +452,4 @@ const ResultCardsHome = ({
 };
 
 export default ResultCardsHome;
+```

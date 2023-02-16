@@ -1,6 +1,6 @@
 import { createContext, useState, useCallback, useEffect, useRef } from "react";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-
 //
 
 // coming from the .env
@@ -36,7 +36,10 @@ export function MoviessProvider({ children }) {
       const result = await axios.get(
         `${VIDEO_URL.replace("{movie_id}", selectedMovie.id)}`
       );
-      setVideoId(result.data.results[0].key);
+      // setVideoId(result.data.results[0].key);
+      if (result.data.results[0]) {
+        setVideoId(result.data.results[0].key);
+      }
     };
     fetchVideoId();
   }, [selectedMovie]);
@@ -106,15 +109,19 @@ export function MoviessProvider({ children }) {
 
 
   */
+  //
+
   const removeItem = (e) => {
     e.preventDefault(e);
+
+    //
     setQuery("");
     setMovies([]);
     // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
     setVideoId();
   };
   //
-  //
+
   return (
     //
 
@@ -131,6 +138,7 @@ export function MoviessProvider({ children }) {
         setVideoId,
         //
         removeItem,
+
         //
         //  resize video
         videoHeight,

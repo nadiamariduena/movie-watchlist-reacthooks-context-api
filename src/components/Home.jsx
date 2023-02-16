@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from "react";
-
+import { motion } from "framer-motion";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 import styled from "styled-components";
 import { Add } from "./Add";
-import SvgGradientPinkYellow from "./SvgGradientCenter";
+import SvgGradientCenter from "./SvgGradientCenter";
 import SvgGradientTop from "./SvgGradientTop";
 import SvgGradientRight from "./SvgGradientRight";
 
 import svgAnillos from "../img/anillos.svg";
 
+//
+// https://dev.to/darthknoppix/animate-styled-components-with-framer-motion-2202
+
+const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 20px, rgba(0,0,0,1) 20px, rgba(0,0,0,1) 20px)`;
+// 20px size of the blind, you can add a conditional in this file so that the blinds are thinner in small devices, as 20px to 30px is too much for mobile, 15px is okay
+//
+const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 20px)`;
+
+//
+
 const WrapperSectionHome = styled.div`
   position: relative;
   width: 100vw;
-  min-height: 100vh;
-  overflow: hidden;
+  height: auto;
+  /* dont add overflow here, as it will block the overlay on the results movies */
 `;
 
 const WrapperContainer = styled.div`
@@ -104,24 +114,24 @@ const HeroContainerRight = styled.div`
   })}
   ${mobileM({
     display: "flex",
-    width: "85%",
+    width: "95%",
     padding: "40px 5px",
     minHeight: "90vh",
     // background: "greenyellow",
   })}
     ${tablet({
     display: "flex",
-    width: "80%",
+    width: "85%",
     padding: "70px 5px 20px 5px ",
-    minHeight: "90vh",
-    background: "red",
+    minHeight: "auto",
   })}
   ${laptop({
     display: "flex",
     width: "70%",
     padding: "70px 5px 20px 5px ",
-    minHeight: "90vh",
-    // background: "olive",
+    minHeight: "70vh",
+
+    justifyContent: "flex-start",
   })}
 `;
 const HeroContainerLeft = styled.div`
@@ -173,7 +183,6 @@ const HeroContainerLeft = styled.div`
     display: "flex",
     width: "100%",
     padding: "40px 0",
-
     borderRadius: "30px",
   })}
   ${mobileM({
@@ -185,7 +194,6 @@ const HeroContainerLeft = styled.div`
     borderRadius: "30px",
   })}
   ${tablet({
-    backgroundColor: "#fefefe",
     display: "flex",
     width: "80%",
     padding: "40px 0",
@@ -197,10 +205,9 @@ const HeroContainerLeft = styled.div`
     display: "flex",
     width: "70%",
     padding: "40px 0",
-    minHeight: "50vh",
+    minHeight: "auto",
 
     borderRadius: "30px",
-    border: "3px solid  rgb(248, 248, 248, 0.8)",
   })}
 `;
 
@@ -213,28 +220,42 @@ const H1 = styled.h1`
   font-size: calc(58px + 1vmin);
   line-height: calc(62px + 1vmin);
   margin-bottom: 10px;
+  ${mobile({ fontSize: `calc(44px + 1vmin)`, paddingTop: "100px 0 0 0" })}
+
+  ${tablet({
+    fontSize: `calc(74px + 1vmin)`,
+    lineHeight: `calc(124px + 1vmin)`,
+  })}
 `;
 const H2 = styled.h2`
-  color: #1f18c0;
   color: rgb(228, 228, 221, 0.9);
 
   font-size: calc(48px + 1vmin);
   line-height: calc(50px + 1vmin);
 
   word-wrap: break-word;
+  //
+  //
   ${mobile({
-    maxWidth: "230px",
+    maxWidth: "90%",
     wordWrap: "break-word",
     marginTop: "70px 0 0 0",
-    fontSize: `calc(45px + 1vmin)`,
+    fontSize: `calc(40px + 1vmin)`,
     lineHeight: `calc(45px + 1vmin)`,
   })}
   ${mobileM({
-    maxWidth: "80%",
+    maxWidth: "90%",
     wordWrap: "break-word",
-    marginTop: "100px 0 0 0",
+
     fontSize: `calc(46px + 1vmin)`,
     lineHeight: `calc(45px + 1vmin)`,
+  })}
+    ${tablet({
+    maxWidth: "90%",
+    wordWrap: "break-word",
+
+    fontSize: `calc(48px + 1vmin)`,
+    lineHeight: `calc(52px + 1vmin)`,
   })}
 `;
 const P = styled.p`
@@ -257,7 +278,7 @@ const P = styled.p`
     lineHeight: `calc(22px + 1vmin)`,
   })}
    ${tablet({
-    maxWidth: "90%",
+    maxWidth: "80%",
     fontSize: `calc(13px + 1vmin)`,
     lineHeight: `calc(22px + 1vmin)`,
   })}
@@ -286,18 +307,33 @@ const Home = () => {
   }, []);
 
   //
+  // ** Framer
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   //
   return (
     <>
       <WrapperSectionHome>
         {/* <SvgGradientTop /> */}
-        <SvgGradientPinkYellow />
+        <SvgGradientCenter />
         {/* <SvgGradientRight /> */}
 
         <WrapperContainer>
           <HeroWrapperHome>
-            <HeroContainerLeft>
+            <HeroContainerLeft
+              as={motion.div}
+              initial={false}
+              animate={
+                isLoaded && isInView
+                  ? { WebkitMaskImage: visibleMask, maskImage: visibleMask }
+                  : { WebkitMaskImage: hiddenMask, maskImage: hiddenMask }
+              }
+              transition={{ duration: 0.2, delay: 0.1 }}
+              viewport={{ once: true }}
+              onViewportEnter={() => setIsInView(true)}
+            >
               <svg
+                onLoad={() => setIsLoaded(true)}
                 // shadow img
                 // https://css-tricks.com/adding-shadows-to-svg-icons-with-css-and-svg-filters/
                 style={{

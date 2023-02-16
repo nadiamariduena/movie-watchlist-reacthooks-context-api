@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { mobile } from "../responsive";
+import { mobile, mobileM, tablet, laptop } from "../responsive";
 
 const Header = styled.div`
   width: 100%;
@@ -20,19 +20,17 @@ const Nav = styled.div`
   //
   position: fixed;
   top: 0;
-  z-index: 11;
+  z-index: 999;
   //
-  background-color: transparent;
-  /* background: rgba(255, 255, 255, 0.4);
-  -webkit-backdrop-filter: blur(9px);
-  backdrop-filter: blur(9px); */
-  /* border-bottom: 1px solid #eee; */
+  background: rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
 `;
 
 // LEFT
 //
 const Left = styled.div`
-  flex: 1;
+  width: 30%;
   color: #8741125e;
   text-transform: uppercase;
 
@@ -49,6 +47,8 @@ const Brand = styled.h3`
     font-weight: 600;
     font-family: "Syncopate-Bold";
   }
+  ${mobile({ marginLeft: "15px" })}
+  ${mobileM({ marginLeft: "25px" })}
 `;
 //----------------------
 //
@@ -57,19 +57,25 @@ const Brand = styled.h3`
 //
 
 const Right = styled.div`
-  flex: 1;
+  width: 70%;
 
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
   margin: 0 20px;
   color: #ffffff5e;
+  //
   text-transform: uppercase;
   ${mobile({ justifyContent: "space-between" })}
 `;
 //
 const Ul = styled.ul`
   width: 90%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
 `;
 const Li = styled.li`
   display: inline;
@@ -77,7 +83,8 @@ const Li = styled.li`
   margin: 0 30px 0 0;
 
   text-decoration: none;
-  ${mobile({ margin: "0 10px 0 0" })}
+  ${mobile({ margin: "0 5px 0 0" })}
+  ${mobileM({ margin: "0 5px 0 0" })}
 `;
 
 const NavbarLink = styled(Link)`
@@ -98,6 +105,9 @@ const NavbarLink = styled(Link)`
   /* &:active {
     color: #181818;
   } */
+
+  ${mobile({ fontSize: `calc(10px + 1vmin)` })}
+  ${mobileM({ fontSize: `calc(10px + 1vmin)` })}
 `;
 
 //
@@ -109,7 +119,7 @@ const Navigation = () => {
         <Nav>
           <Left>
             <Brand>
-              <Link to="/" className="logo">
+              <Link to="/home" className="logo">
                 MUBII:
               </Link>
             </Brand>

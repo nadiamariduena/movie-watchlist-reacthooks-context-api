@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import MovieeContext from "../ContextMovieHandler.js";
 
+//
 import styled from "styled-components";
-
 import { CgClose } from "react-icons/cg";
 import Movie from "./Movie.js";
 import ResultCards from "./ResultCardsHome";
@@ -122,10 +122,15 @@ const Input = styled.input`
   }
 
   ${mobile({
+    padding: "16px 10px",
     fontSize: `calc(8px + 1vmin)`,
+
+    "&::placeholder": { fontSize: `calc(10px + 1vmin)` },
   })}
   ${mobileM({
+    padding: "16px 10px",
     fontSize: `calc(8px + 1vmin)`,
+    "&::placeholder": { fontSize: `calc(10px + 1vmin)` },
   })}
 `;
 const ButtonCloseOverlay = styled.button`
@@ -169,7 +174,11 @@ export const Add = () => {
 
     //
     removeItem,
+
+    //
   } = useContext(MovieeContext);
+
+  //
 
   //
 
@@ -191,6 +200,9 @@ export const Add = () => {
               {movies.map((moviearg) => (
                 <li key={moviearg.id}>
                   <ResultCards
+                    // useHISTORY
+
+                    //
                     moviearg={moviearg}
                     selectedMovie={selectedMovie}
                     setSelectedMovie={setSelectedMovie}
@@ -199,6 +211,7 @@ export const Add = () => {
                 </li>
               ))}
             </Ul>
+
             <ButtonCloseOverlay
               // onClick={() => setMovies(!movies)}
               onClick={removeItem}

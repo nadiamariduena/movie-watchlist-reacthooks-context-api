@@ -10,7 +10,7 @@ import { Watched } from "./components/Watched";
 import { Add } from "./components/Add";
 
 //
-
+import ResultCardsHome from "./components/ResultCardsHome";
 //
 import { GlobalProvider } from "./context/GlobalState";
 import { MoviessProvider } from "./ContextMovieHandler";
@@ -25,10 +25,14 @@ function App() {
             <Switch>
               {/* Watchlist was the Home page */}
               <Route exact path="/" component={Home} />
+              <Route exact path="/home" component={Home} />
               <Route exact path="/watchlist" component={WatchList} />
 
               <Route path="/watched" exact component={Watched} />
               <Route path="/add" exact component={Add} />
+
+              <Route path="/resultCards" exact component={ResultCardsHome} />
+
               <Route path="/*" component={Home} />
             </Switch>
           </div>

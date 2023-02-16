@@ -4,7 +4,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { mobile, mobileM, tablet } from "../responsive";
 
 import styled from "styled-components";
-
+import { motion } from "framer-motion";
 //
 //
 const WrapperContainer = styled.div``;
@@ -36,6 +36,7 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  gap: 7px;
 
   /*  */
   .ctrl-btn {
@@ -44,7 +45,7 @@ const Content = styled.div`
     height: 30px;
     font-size: calc(2px + 1.1vmin);
     padding: 5px;
-    margin: 1px;
+
     border-radius: 5rem;
     border: 0;
 
@@ -82,19 +83,21 @@ const MovieControls = ({ movie, type }) => {
           <Content>
             {type === "watchlist" && (
               <>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
                   className="ctrl-btn"
                   onClick={() => addMovieToWatched(movie)}
                 >
                   <i className="fa-fw far fa-eye"></i>
-                </button>
+                </motion.button>
                 {/*  */}
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
                   className="ctrl-btn"
                   onClick={() => removeMovieFromWarchlist(movie.id)}
                 >
                   <i className="fa-fw fa fa-times"></i>
-                </button>
+                </motion.button>
               </>
             )}
             {/*
@@ -109,18 +112,20 @@ EYE AND X to control
             {/*  */}
             {type === "watched" && (
               <>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
                   className="ctrl-btn"
                   onClick={() => movieToWatchlist(movie)}
                 >
                   <i className="fa-fw far fa-eye-slash"></i>
-                </button>
-                <button
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
                   className="ctrl-btn"
                   onClick={() => removeFromWatched(movie.id)}
                 >
                   <i className="fa-fw fa fa-times"></i>
-                </button>
+                </motion.button>
               </>
             )}
           </Content>

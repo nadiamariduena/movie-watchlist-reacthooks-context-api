@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import MovieControls from "./MovieControls";
+import { AnimatePresence, motion } from "framer-motion";
 //
 //
 // ** This is the Card linked to Watchlist **
@@ -25,7 +26,7 @@ const ImgBox = styled.div`
   overflow: hidden;
 
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
-  border: 8px solid #efefef;
+  border: 10px solid #efefef;
   border-radius: 30px;
   //
   img {
@@ -48,12 +49,19 @@ const WatchedMovieCard = ({ movie, type }) => {
     <Container>
       <ResultCard>
         {movie.poster_path ? (
-          <ImgBox>
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              alt={`${movie.title} Poster`}
-            />
-          </ImgBox>
+          <AnimatePresence>
+            <ImgBox>
+              <motion.img
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ type: "spring" }}
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={`${movie.title} Poster`}
+              />
+            </ImgBox>
+          </AnimatePresence>
         ) : null}
         {/* controls */}
         <MovieControls type={type} movie={movie} />
