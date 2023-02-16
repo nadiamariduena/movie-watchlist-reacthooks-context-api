@@ -1,7 +1,11 @@
 ## UseLocation 🐔
 
+( after solving the overlay issues, i will be using useLocation to to prevent the glass effect on the other routes, as I only want the effect to work on the Home page )
+
 <br>
 <br>
+
+## Overlay
 
 Another way of rendering the data is by using the link instead of **click events**. The problem with this approach is that you need something to help you relate the URL to the current page. For instance, when you close the overlay, you can end up with the **URL of the movie and its ID** even if you are already in the **results component**.
 

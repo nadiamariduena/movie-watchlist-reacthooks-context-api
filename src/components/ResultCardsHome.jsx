@@ -1,9 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 import "./videoMovie.scss";
+//
 import { GlobalContext } from "../context/GlobalState";
+//
 import styled from "styled-components";
-import Youtube from "react-youtube";
+// icons
 import { HiOutlinePlay } from "react-icons/hi";
 //
 import Movie from "./Movie";
@@ -28,7 +31,7 @@ const WrapperVidDescript = styled.div`
   width: 100vw;
   min-height: 100vh;
   position: fixed;
-  z-index: 12;
+  z-index: 800;
   top: 0px;
   left: 0px;
 
@@ -41,10 +44,11 @@ const WrapperVidDescript = styled.div`
   gap: 1%;
   // **
 
-  background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
+  /* background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
     linear-gradient(to right, #e8e4d8 1px, transparent 1px);
   background-size: 39px 39px;
-  background-color: #ffffff;
+  background-color: #ffffff; */
+  background-color: lavender;
 `;
 // ----
 
@@ -243,7 +247,12 @@ const ResultCardsHome = ({
   selectedMovie,
   setSelectedMovie,
   moviearg,
+  //close modal history+
 }) => {
+  //
+  //
+
+  //
   //
   //1 not duplication
   const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
@@ -282,16 +291,27 @@ const ResultCardsHome = ({
   const watchedDisabled = storedMovieWatched ? true : false;
 
   //
+  const history = useHistory();
+  // ** if you add the useHistory in the context it will not work
+  const [closeModi, setCloseModi] = useState(false);
+
+  const handleCloseModal = () => {
+    setCloseModi();
+    history.push("/ResultCardsHome"); // works
+
+    // history.push(""); // also works -- Go back to the previous URL without the movie ID
+    // history.goBack(); //
+  };
+
   //
-  const [openMovieModalee, setOpenMovieModalee] = useState(false);
 
   return (
     <>
-      {openMovieModalee ? (
+      {closeModi ? (
         <WrapperVidDescript>
           <ContainerDescript>
             <MovieTitleModal>{moviearg.title}</MovieTitleModal>
-
+            <button onClick={handleCloseModal}>kekek</button>
             <LargeDescriptAndBtn>
               <button
                 key={moviearg.id}
@@ -355,23 +375,28 @@ const ResultCardsHome = ({
 
       <Grid>
         <ResultCard>
-          <H3 onClick={() => setOpenMovieModalee(!openMovieModalee)}>
+          {/* <H3 onClick={() => setOpenMovieModalee(!openMovieModalee)}>
             {moviearg.title}
-          </H3>
+          </H3> */}
 
           {moviearg.poster_path ? (
             <>
-              <ImgBox onClick={() => setOpenMovieModalee(!openMovieModalee)}>
-                <img
-                  // defaultImg
-                  src={
-                    moviearg.poster_path
-                      ? `https://image.tmdb.org/t/p/w200${moviearg.poster_path}`
-                      : defaultImg
-                  }
-                  alt={`${moviearg.title} Poster`}
-                />
-              </ImgBox>
+              <Link to={`/movies/${moviearg.id}`}>
+                <ImgBox
+                  onClick={() => setCloseModi(!closeModi)}
+                  // onClick={() => setOpenMovieModalee(!openMovieModalee)}
+                >
+                  <img
+                    // defaultImg
+                    src={
+                      moviearg.poster_path
+                        ? `https://image.tmdb.org/t/p/w200${moviearg.poster_path}`
+                        : defaultImg
+                    }
+                    alt={`${moviearg.title} Poster`}
+                  />
+                </ImgBox>
+              </Link>
             </>
           ) : null}
         </ResultCard>
