@@ -453,3 +453,7 @@ const ResultCardsHome = ({
 
 export default ResultCardsHome;
 ```
+
+
+https://user-images.githubusercontent.com/58809268/219456632-14e912d3-2996-4ed4-a248-96024bfb4f6c.mp4
+
