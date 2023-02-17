@@ -25,7 +25,7 @@ function App() {
             <Switch>
               {/* Watchlist was the Home page */}
               <Route exact path="/" component={Home} />
-              <Route exact path="/home" component={Home} />
+
               <Route exact path="/watchlist" component={WatchList} />
 
               <Route path="/watched" exact component={Watched} />

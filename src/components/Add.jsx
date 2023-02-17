@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import MovieeContext from "../ContextMovieHandler.js";
+import { Link, useHistory } from "react-router-dom";
 
 //
 import styled from "styled-components";
@@ -174,13 +175,23 @@ export const Add = () => {
     videoId,
     setVideoId,
     //
-    removeItem,
+    // removeItem,
 
     //
   } = useContext(MovieeContext);
 
   //
+  const history = useHistory();
+  //
+  // ** button remove
+  const removeItem = (e) => {
+    e.preventDefault(e);
+    history.push("/");
+    setQuery("");
+    setMovies([]);
 
+    // setVideoId();
+  };
   //
 
   return (
@@ -195,9 +206,13 @@ export const Add = () => {
 
         {movies.length ? (
           <>
-            <ClickableOverlay onClick={removeItem} />
-
-            <Ul className="results">
+            <Link to="/">
+              <ClickableOverlay onClick={removeItem} />
+            </Link>
+            <Ul
+              style={{ zIndex: "700", pointerEvents: "all" }}
+              className="results"
+            >
               {movies.map((moviearg) => (
                 <li key={moviearg.id}>
                   <ResultCards
@@ -208,8 +223,6 @@ export const Add = () => {
                     selectedMovie={selectedMovie}
                     setSelectedMovie={setSelectedMovie}
                     videoId={videoId}
-                    //
-                    setMovies={setMovies}
                     setVideoId={setVideoId}
                   />
                 </li>
@@ -217,7 +230,7 @@ export const Add = () => {
             </Ul>
 
             <ButtonCloseOverlay
-              // onClick={() => setMovies(!movies)}
+              //  onClick={() => setMovies(!movies)}
               onClick={removeItem}
             >
               <CgClose />

@@ -47,24 +47,23 @@ export function MoviessProvider({ children }) {
     fetchVideoId();
   }, [selectedMovie]);
   //
+  // const history = useHistory();
+  // //
+  // // ** button remove
+  // const removeItem = (e) => {
+  //   e.preventDefault(e);
+  //   // history.push("/Watched");
+  //   setQuery("");
+  //   setMovies([]);
 
-  //
-  // ** button remove
-  const removeItem = (e) => {
-    e.preventDefault(e);
-
-    //
-    setQuery("");
-    setMovies([]);
-    // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
-    setVideoId();
-  };
+  //   // setVideoId();
+  // };
   //
   //
   // -------- video size
   // const iframeRef = useRef<HTMLIFrameElement>(null);
   // since we I already have the state in line 20, you can add it inside the url path, the add this value to the new variable, this videoURL variable will carry the data that you will pass in line 134, from there you will send it to the Movie.js component
-  const videoURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://localhost:2835/"
+  const videoURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://localhost:1535/"
   frameborder="0"`;
   // try to publish
   //
@@ -139,11 +138,9 @@ export function MoviessProvider({ children }) {
         selectedMovie,
         setSelectedMovie,
 
-        //
         videoId,
         setVideoId,
         //
-        removeItem,
 
         //
         //  resize video
@@ -151,6 +148,7 @@ export function MoviessProvider({ children }) {
         setVideoHeight,
         iframeRef,
         videoURL,
+        // removeItem,
       }}
     >
       {children}

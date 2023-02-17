@@ -119,7 +119,7 @@ const Navigation = () => {
         <Nav>
           <Left>
             <Brand>
-              <Link to="/home" className="logo">
+              <Link to="/" className="logo">
                 MUBII:
               </Link>
             </Brand>

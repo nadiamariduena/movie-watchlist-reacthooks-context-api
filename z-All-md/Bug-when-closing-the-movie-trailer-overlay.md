@@ -70,6 +70,8 @@ const MovieContextProvider = ({ children }) => {
 
 ### what solved it
 
+- i just had to add this **setVideoId();**, now it plays the current movie trailer
+
 <br>
 
 ```javascript
@@ -86,5 +88,189 @@ const handleCloseModal = (e) => {
   //
   // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
   setVideoId(); ✋
+};
+```
+
+<br>
+<br>
+
+### ✋ The setVideoId is coming from the context
+
+- So i had to import it from there, then pass it inside the **add.js** and from there to the **ResultsCardHome**
+
+<br>
+
+```javascript
+//
+const {
+  query,
+  setQuery,
+  movies,
+  //video trailer
+  selectedMovie,
+  setSelectedMovie,
+  videoId,
+  setVideoId,
+  //
+  removeItem,
+
+  //
+} = useContext(MovieeContext);
+```
+
+<br>
+
+```javascript
+{
+  movies.map((moviearg) => (
+    <li key={moviearg.id}>
+      <ResultCards
+        // useHISTORY
+
+        //
+        moviearg={moviearg}
+        selectedMovie={selectedMovie}
+        setSelectedMovie={setSelectedMovie}
+        videoId={videoId}
+        // ✋
+        setVideoId={setVideoId}
+      />
+    </li>
+  ));
+}
+```
+
+<br>
+<br>
+
+```javascript
+
+//
+const ResultCardsHome = ({
+  videoId,
+  selectedMovie,
+  setSelectedMovie,
+  moviearg,
+  //close modal history+
+  setMovies,
+  setVideoId,
+}) => {
+  //
+  //
+
+  //
+  const history = useHistory();
+  // ** if you add the useHistory in the context it will not work
+  const [closeModi, setCloseModi] = useState(false);
+
+  const handleCloseModal = (e) => {
+    e.preventDefault(e);
+    setCloseModi();
+    history.push("/ResultCardsHome"); // works
+
+    // history.push(""); // also works -- Go back to the previous URL without the movie ID
+    // history.goBack();
+    //
+    // setMovies([]);// if you add this, specifically inside the overlay with the movie trailer, you will be send to the home page instead of the resultsCardsHome once you close the overlay.
+    //
+    //
+    // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
+    setVideoId();
+  };
+
+  //
+
+  return (
+    <>
+      {closeModi ? (
+        <WrapperVidDescript>
+          <ContainerDescript>
+            <MovieTitleModal>{moviearg.title}</MovieTitleModal>
+            <button onClick={handleCloseModal}>kekek</button>
+```
+
+<br>
+<br>
+
+### Route bug on overlay 1 solved
+
+- I realized that I didn't need to change much of the code, as there was only one function that needed to be moved from the context to Add.js. This function didn't work in the context but worked inside Add.js, so I just had to update the route on the location. I was too distracted to see this before.
+
+<br>
+
+- I moved the following function to the Add.js
+
+```javascript
+const history = useHistory();
+//
+// ** button remove
+const removeItem = (e) => {
+  e.preventDefault(e);
+  // 👍 added the Home path
+  history.push("/");
+
+  //
+  setQuery("");
+  setMovies([]);
+
+  // setVideoId();
+};
+//
+```
+
+### 🍰 To be used like so:
+
+- You have to clickable items, the bg and the button
+
+```javascript
+
+  return (
+    <>
+      <AddPage>
+        <Input
+          type="text"
+          placeholder="Search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+
+        {movies.length ? (
+          <>
+          // ✋ here
+            <Link to="/">
+              <ClickableOverlay onClick={removeItem} />
+            </Link>
+            <Ul
+              style={{ zIndex: "700", pointerEvents: "all" }}
+              className="results"
+            >
+              {movies.map((moviearg) => (
+                <li key={moviearg.id}>
+                  <ResultCards
+                    // useHISTORY
+
+                    //
+                    moviearg={moviearg}
+                    selectedMovie={selectedMovie}
+                    setSelectedMovie={setSelectedMovie}
+                    videoId={videoId}
+                    setVideoId={setVideoId}
+                  />
+                </li>
+              ))}
+            </Ul>
+
+// ✋
+            <ButtonCloseOverlay
+              //  onClick={() => setMovies(!movies)}
+              onClick={removeItem}
+            >
+              <CgClose />
+            </ButtonCloseOverlay>
+          </>
+        ) : null}
+      </AddPage>
+    </>
+  );
 };
 ```
