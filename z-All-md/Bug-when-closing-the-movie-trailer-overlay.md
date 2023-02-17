@@ -25,3 +25,44 @@
 
 https://user-images.githubusercontent.com/58809268/219629595-89aa0e1e-5293-40e9-a492-dd61cd365a50.mp4
 
+<br>
+<br>
+
+### Looking for solutions 
+
+- After looking for a solution i found the following, it s not bas but i didnt want to re structure everything
+
+
+```javascript
+ mport React, { useState, useEffect, createContext, useCallback } from 'react';
+import axios from 'axios';
+
+export const MovieContext = createContext();
+
+const apiKey = 'your_api_key_here';
+
+const MovieContextProvider = ({ children }) => {
+  const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const fetchMovies = useCallback(async () => {
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
+    setMovies(response.data.results);
+  }, []);
+
+  useEffect(() => {
+    fetchMovies();
+  }, [fetchMovies]);
+
+  const setSelectedMovieById = useCallback((movieId) => {
+    const movie = movies.find((movie) => movie.id === movieId);
+    setSelectedMovie(movie);
+  }, [movies]);
+
+  return (
+    <MovieContext.Provider value={{ movies, selectedMovie, setSelectedMovieById }}>
+      {children}
+    </MovieContext.Provider>
+  );
+};
+```
