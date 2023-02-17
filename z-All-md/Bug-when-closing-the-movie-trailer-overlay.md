@@ -21,3 +21,7 @@
 > The problem is that when I click the play button to launch the trailer, it works and plays the movie, but if I close the overlay and select another movie, the overlay opens with the correct movie description, but if I click the play button with the code mentioned before, it will play the previous movie. However, if I click the play button again, it will play the current movie.
 
 <br>
+
+
+https://user-images.githubusercontent.com/58809268/219629595-89aa0e1e-5293-40e9-a492-dd61cd365a50.mp4
+
