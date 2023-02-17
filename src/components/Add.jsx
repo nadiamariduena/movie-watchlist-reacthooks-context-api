@@ -167,11 +167,12 @@ export const Add = () => {
     query,
     setQuery,
     movies,
+    setMovies,
     //video trailer
     selectedMovie,
     setSelectedMovie,
     videoId,
-
+    setVideoId,
     //
     removeItem,
 
@@ -207,6 +208,9 @@ export const Add = () => {
                     selectedMovie={selectedMovie}
                     setSelectedMovie={setSelectedMovie}
                     videoId={videoId}
+                    //
+                    setMovies={setMovies}
+                    setVideoId={setVideoId}
                   />
                 </li>
               ))}

@@ -248,6 +248,8 @@ const ResultCardsHome = ({
   setSelectedMovie,
   moviearg,
   //close modal history+
+  setMovies,
+  setVideoId,
 }) => {
   //
   //
@@ -295,12 +297,19 @@ const ResultCardsHome = ({
   // ** if you add the useHistory in the context it will not work
   const [closeModi, setCloseModi] = useState(false);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (e) => {
+    e.preventDefault(e);
     setCloseModi();
     history.push("/ResultCardsHome"); // works
 
     // history.push(""); // also works -- Go back to the previous URL without the movie ID
-    // history.goBack(); //
+    // history.goBack();
+    //
+    // setMovies([]);// if you add this, specifically inside the overlay with the movie trailer, you will be send to the home page instead of the resultsCardsHome once you close the overlay.
+    //
+    //
+    // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
+    setVideoId();
   };
 
   //
@@ -313,6 +322,7 @@ const ResultCardsHome = ({
             <MovieTitleModal>{moviearg.title}</MovieTitleModal>
             <button onClick={handleCloseModal}>kekek</button>
             <LargeDescriptAndBtn>
+              {/* BUTTON TO CLOSE movie trailer overlay */}
               <button
                 key={moviearg.id}
                 onClick={(e) => (
