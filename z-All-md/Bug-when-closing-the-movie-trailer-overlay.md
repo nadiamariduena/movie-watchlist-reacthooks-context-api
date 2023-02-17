@@ -22,16 +22,14 @@
 
 <br>
 
-
 https://user-images.githubusercontent.com/58809268/219629595-89aa0e1e-5293-40e9-a492-dd61cd365a50.mp4
 
 <br>
 <br>
 
-### Looking for solutions 
+### Looking for solutions
 
 - After looking for a solution i found the following, it s not bas but i didnt want to re structure everything
-
 
 ```javascript
  mport React, { useState, useEffect, createContext, useCallback } from 'react';
@@ -64,5 +62,29 @@ const MovieContextProvider = ({ children }) => {
       {children}
     </MovieContext.Provider>
   );
+};
+```
+
+<br>
+<br>
+
+### what solved it
+
+<br>
+
+```javascript
+const handleCloseModal = (e) => {
+  e.preventDefault(e);
+  setCloseModi();
+  history.push("/ResultCardsHome"); // works
+
+  // history.push(""); // also works -- Go back to the previous URL without the movie ID
+  // history.goBack();
+  //
+  // setMovies([]);// if you add this, specifically inside the overlay with the movie trailer, you will be send to the home page instead of the resultsCardsHome once you close the overlay.
+  //
+  //
+  // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
+  setVideoId(); ✋
 };
 ```
