@@ -274,3 +274,7 @@ const removeItem = (e) => {
   );
 };
 ```
+
+
+https://user-images.githubusercontent.com/58809268/219755474-57beee51-afac-4fd2-a4ba-50e45afb34ef.mp4
+
