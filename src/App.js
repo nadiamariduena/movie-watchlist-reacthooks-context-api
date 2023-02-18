@@ -1,42 +1,41 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import "./lib/font-awesome/css/all.min.css";
-
-//
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import { WatchList } from "./components/WatchList";
 import { Watched } from "./components/Watched";
-import { Add } from "./components/Add";
+import Add from "./components/Add";
 
-//
 import ResultCardsHome from "./components/ResultCardsHome";
-//
 import { GlobalProvider } from "./context/GlobalState";
 import { MoviessProvider } from "./ContextMovieHandler";
+import PageNotFound from "./pages/pageNotFound";
 //
+import MovieDetails from "./components/MovieDetails/MovieDetails";
+
 function App() {
   return (
     <GlobalProvider>
       <MoviessProvider>
-        <Router>
+        <BrowserRouter>
           <Navigation />
           <div className="page">
-            <Switch>
-              {/* Watchlist was the Home page */}
-              <Route exact path="/" component={Home} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/watchlist" element={<WatchList />} />
+              <Route path="/watched" element={<Watched />} />
+              <Route path="/add" element={<Add />} />
+              <Route
+                path="/resultCards"
+                element={(props) => <ResultCardsHome />}
+              />
 
-              <Route exact path="/watchlist" component={WatchList} />
-
-              <Route path="/watched" exact component={Watched} />
-              <Route path="/add" exact component={Add} />
-
-              <Route path="/resultCards" exact component={ResultCardsHome} />
-
-              <Route path="/*" component={Home} />
-            </Switch>
+              <Route path="/movies/:id" element={<MovieDetails />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
           </div>
-        </Router>
+        </BrowserRouter>
       </MoviessProvider>
     </GlobalProvider>
   );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 import styled from "styled-components";
-import { Add } from "./Add";
+import Add from "./Add";
 import SvgGradientCenter from "./SvgGradientCenter";
 import SvgGradientTop from "./SvgGradientTop";
 import SvgGradientRight from "./SvgGradientRight";

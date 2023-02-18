@@ -1,5 +1,5 @@
 import { createContext, useState, useCallback, useEffect, useRef } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 //
 
@@ -14,13 +14,20 @@ const MoviessContext = createContext();
 export function MoviessProvider({ children }) {
   //
 
+  //
+
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [videoId, setVideoId] = useState(null);
 
+  //
+  //
+  //
+
   useEffect(() => {
     const fetchMovies = async () => {
+      //
       const result = await axios.get(`${API_URL}${query}`);
       setMovies(result.data.results);
     };
@@ -46,19 +53,7 @@ export function MoviessProvider({ children }) {
     };
     fetchVideoId();
   }, [selectedMovie]);
-  //
-  // const history = useHistory();
-  // //
-  // // ** button remove
-  // const removeItem = (e) => {
-  //   e.preventDefault(e);
-  //   // history.push("/Watched");
-  //   setQuery("");
-  //   setMovies([]);
 
-  //   // setVideoId();
-  // };
-  //
   //
   // -------- video size
   // const iframeRef = useRef<HTMLIFrameElement>(null);

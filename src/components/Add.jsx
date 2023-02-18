@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import MovieeContext from "../ContextMovieHandler.js";
-import { Link, useHistory } from "react-router-dom";
+import MovieesContext from "../ContextMovieHandler.js";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 //
 import styled from "styled-components";
@@ -161,8 +161,7 @@ const ButtonCloseOverlay = styled.button`
 `;
 //---------
 
-//
-export const Add = () => {
+const Add = () => {
   //
   const {
     query,
@@ -178,18 +177,19 @@ export const Add = () => {
     // removeItem,
 
     //
-  } = useContext(MovieeContext);
+  } = useContext(MovieesContext);
 
   //
-  const history = useHistory();
+  // const navigate = useNavigate();
+  // let location = useLocation();
   //
   // ** button remove
   const removeItem = (e) => {
     e.preventDefault(e);
-    history.push("/");
+    // navigate.push("/");
     setQuery("");
     setMovies([]);
-
+    // console.log(location);
     // setVideoId();
   };
   //
@@ -204,7 +204,7 @@ export const Add = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
 
-        {movies.length ? (
+        {movies.length > 0 ? (
           <>
             <Link to="/">
               <ClickableOverlay onClick={removeItem} />
@@ -241,3 +241,5 @@ export const Add = () => {
     </>
   );
 };
+//
+export default Add;
