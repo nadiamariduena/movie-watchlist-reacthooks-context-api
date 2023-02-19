@@ -128,6 +128,9 @@ const Navigation = () => {
           <Right>
             <Ul className="nav-links">
               <Li>
+                <NavbarLink to="/add">results</NavbarLink>
+              </Li>
+              <Li>
                 <NavbarLink to="/watchlist">Watch list</NavbarLink>
               </Li>
               <Li>

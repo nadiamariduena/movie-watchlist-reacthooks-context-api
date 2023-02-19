@@ -118,19 +118,17 @@ const ResultCardsHome = ({
       <Grid>
         <ResultCard>
           {moviearg.poster_path ? (
-            <>
-              <ImgBox onClick={() => setCloseModi(!closeModi)}>
-                <img
-                  // defaultImg
-                  src={
-                    moviearg.poster_path
-                      ? `https://image.tmdb.org/t/p/w200${moviearg.poster_path}`
-                      : defaultImg
-                  }
-                  alt={`${moviearg.title} Poster`}
-                />
-              </ImgBox>
-            </>
+            <ImgBox onClick={() => setCloseModi(!closeModi)}>
+              <img
+                // defaultImg
+                src={
+                  moviearg.poster_path
+                    ? `https://image.tmdb.org/t/p/w200${moviearg.poster_path}`
+                    : defaultImg
+                }
+                alt={`${moviearg.title} Poster`}
+              />
+            </ImgBox>
           ) : null}
         </ResultCard>
       </Grid>
