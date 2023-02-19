@@ -1,5 +1,9 @@
 ### Router v6 Params 🥚
 
+#### 🔴 the issue [react-js-url-id-changes-but-not-showing-the-component](https://stackoverflow.com/questions/71712007/react-js-url-id-changes-but-not-showing-the-component)
+
+<br>
+
 - I ve been trying to figure out a way of getting the data and the id of the specific movie. With following i can finally do it but i am still not sure if its the correct way, but its working :) 🎆 🚀
 
 ```javascript
