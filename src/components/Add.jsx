@@ -12,6 +12,10 @@ import { mobile, mobileM, tablet, laptop } from "../responsive";
 //
 //
 const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
+const defaultImg =
+  "https://images.pexels.com/photos/4286932/pexels-photo-4286932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+//
+//
 //
 
 const AddPage = styled.div``;
@@ -160,6 +164,53 @@ const ButtonCloseOverlay = styled.button`
   }
 `;
 //---------
+//
+//
+
+// ** outer modal
+//
+const Grid = styled.div``;
+const ResultCard = styled.div`
+  padding: 20px;
+
+  text-align: center;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+`;
+
+const ImgBox = styled.div`
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 8px solid #efefef;
+
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  border-radius: 30px;
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #a5a5a541;
+    display: block;
+
+    //
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    min-height: auto;
+    object-fit: cover;
+    //
+  }
+`;
+
+//
+//----------
 
 const Add = () => {
   //
@@ -169,14 +220,6 @@ const Add = () => {
     movies,
     setMovies,
     //video trailer
-    selectedMovie,
-    setSelectedMovie,
-    videoId,
-    setVideoId,
-    //
-    // removeItem,
-
-    //
   } = useContext(MovieesContext);
 
   //
@@ -215,7 +258,31 @@ const Add = () => {
             >
               {movies.map((moviearg) => (
                 <li key={moviearg.id}>
-                  <ResultCards
+                  <Link to={`/rainbow/${moviearg.id}`}>
+                    {/* <p>{moviearg.title} </p> */}
+
+                    <Grid>
+                      <ResultCard>
+                        {moviearg.poster_path ? (
+                          <>
+                            <ImgBox>
+                              <img
+                                // defaultImg
+                                src={
+                                  moviearg.poster_path
+                                    ? `https://image.tmdb.org/t/p/w200${moviearg.poster_path}`
+                                    : defaultImg
+                                }
+                                alt={`${moviearg.title} Poster`}
+                              />
+                            </ImgBox>
+                          </>
+                        ) : null}
+                      </ResultCard>
+                    </Grid>
+                  </Link>
+
+                  {/* <ResultCards
                     // useHISTORY
 
                     //
@@ -224,7 +291,7 @@ const Add = () => {
                     setSelectedMovie={setSelectedMovie}
                     videoId={videoId}
                     setVideoId={setVideoId}
-                  />
+                  /> */}
                 </li>
               ))}
             </Ul>

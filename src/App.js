@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+// if you remove the fontawesome line from below, the icons in the MovieControls will not be visible
+import "./lib/font-awesome/css/all.min.css";
+//
 
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
@@ -26,12 +29,9 @@ function App() {
               <Route path="/watchlist" element={<WatchList />} />
               <Route path="/watched" element={<Watched />} />
               <Route path="/add" element={<Add />} />
-              <Route
-                path="/resultCards"
-                element={(props) => <ResultCardsHome />}
-              />
+              <Route path="/resultCards" element={<ResultCardsHome />} />
 
-              <Route path="/movies/:id" element={<MovieDetails />} />
+              <Route path="/rainbow/:productId" element={<MovieDetails />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>

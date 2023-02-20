@@ -128,19 +128,11 @@ const Navigation = () => {
           <Right>
             <Ul className="nav-links">
               <Li>
-                <NavbarLink to="/add">results</NavbarLink>
-              </Li>
-              <Li>
                 <NavbarLink to="/watchlist">Watch list</NavbarLink>
               </Li>
               <Li>
                 <NavbarLink to="/watched">Watched</NavbarLink>
               </Li>
-              {/* <Li>
-                <Link to="/add" className="btn-header">
-                  + AddC
-                </Link>
-              </Li> */}
             </Ul>
           </Right>
         </Nav>

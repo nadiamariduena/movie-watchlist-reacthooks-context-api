@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-
 import { mobile, mobileM, tablet, laptop } from "../../responsive";
+import axios from "axios";
 import "../videoMovie.scss";
 //
+// ** context
 import { GlobalContext } from "../../context/GlobalState";
+import MovieesContext from "../../ContextMovieHandler";
 //
 import styled from "styled-components";
 import Movie from "../Movie";
@@ -13,15 +15,15 @@ import { HiOutlinePlay } from "react-icons/hi";
 import { CgClose } from "react-icons/cg";
 //
 //
+//
+//
+const { REACT_APP_TMDB_KEY } = process.env;
 const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
-// const { REACT_APP_TMDB_KEY } = process.env;
-// const IMAGE_PATH = "https://image.tmdb.org/t/p/w342";
-//
-//
 const defaultImg =
   "https://images.pexels.com/photos/4286932/pexels-photo-4286932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 //
 
+//
 //
 //
 
@@ -228,34 +230,51 @@ const VideoBoxContainer = styled.div`
 //
 //
 
-function MovieDetails({
-  handleCloseModal,
-  //
-  videoId,
-  selectedMovie,
-  setSelectedMovie,
-  moviearg,
-  //close modal history+
-  setMovies,
-  setVideoId,
-}) {
+function MovieDetails() {
   //
   //
-  const { id } = useParams();
+  //1 this productId is coming from the app.js, check it here below:
 
+  const { productId } = useParams();
+  //   App.js
+  // <Route path="/rainbow/:productId" element={<MovieDetails />} />
+  //
+  //2 you need a new variable to pass inside the logic of the useEffect
+  const [movieNew, setMovieNew] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(
+        //3 Pass the variable productId coming from the app.js and passed here in step 1, pass it inside the api url like so: /${productId}?
+        `https://api.themoviedb.org/3/movie/${productId}?api_key=${REACT_APP_TMDB_KEY}&language=en-US`
+      )
+      .then((res) => {
+        setMovieNew(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [productId]);
+
+  //-----------
   //
   //
-  //1 not duplication
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [videoId, setVideoId] = useState(null);
+  //-----------
+  //
+  //
+  //
   const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
     useContext(GlobalContext);
 
   //2 here we will search if there is any object that has an idential object id o.id === movie.id
   let storedMovie = watchlist.find(
-    (objectMovie) => objectMovie.id === moviearg.id
+    (objectMovie) => objectMovie.id === movieNew?.id
   );
 
   //5
-  let storedMovieWatched = watched.find((o) => o.id === moviearg.id);
+  let storedMovieWatched = watched.find((o) => o.id === movieNew?.id);
 
   //3 and 6 disabled the possibility to duplicate a movie in the watchlist
 
@@ -271,11 +290,15 @@ function MovieDetails({
   the option to save it the same for the storedMovieWatched, but if it s false, meaning that we
   dont have a similar movie in the watched list, then it s going
   to show the option to save the movie as it will mean its false
-
  */
 
   //7 related to the 2 buttons
   const watchedDisabled = storedMovieWatched ? true : false;
+
+  //
+  //
+  // --------------------------------
+  //
 
   //
 
@@ -283,67 +306,79 @@ function MovieDetails({
   return (
     <>
       <WrapperVidDescript>
+        {" "}
         <ContainerDescript>
-          <MovieTitleModal>{moviearg.title}</MovieTitleModal>
-
+          {" "}
+          <MovieTitleModal>{movieNew?.title}</MovieTitleModal>
           <LargeDescriptAndBtn>
             {/*
 
             BUTTON TO CLOSE movie trailer overlay */}
-            <ButtonCloseOverlayTrailer onClick={handleCloseModal}>
+            {/* <ButtonCloseOverlayTrailer onClick={handleCloseModal}>
               <CgClose />
-            </ButtonCloseOverlayTrailer>
-            {/*  */}
-            <button
-              key={moviearg.id}
-              onClick={(e) => (e.preventDefault(), setSelectedMovie(moviearg))}
+            </ButtonCloseOverlayTrailer> */}
+            {/* <button
+              key={movieNew.id}
+              onClick={(e) => (e.preventDefault(), setSelectedMovie(movieNew))}
             >
               <HiOutlinePlay />
-            </button>
-            <PModalMovieDescription>{moviearg.overview}</PModalMovieDescription>{" "}
+            </button> */}
+            <PModalMovieDescription>
+              {movieNew?.overview}
+            </PModalMovieDescription>
             <Controls>
               <Button
                 disabled={watchlistDisabled}
-                onClick={() => addMovieToWatchlist(moviearg)}
+                onClick={() => addMovieToWatchlist(movieNew)}
               >
                 add to watchlist
               </Button>
 
               <Button
                 disabled={watchedDisabled}
-                onClick={() => addMovieToWatched(moviearg)}
+                onClick={() => addMovieToWatched(movieNew)}
               >
                 add to watched
               </Button>
             </Controls>
           </LargeDescriptAndBtn>
         </ContainerDescript>
+        {/*
 
+
+
+
+
+
+         */}
         <VideoContainerr>
           <VideoBoxWrapper>
             <VideoBoxContainer
               style={
                 // if there is an img in the API related to the movie, show the BACKDROP_PATH, if not show the img inside the url(${defaultImg})`
-                moviearg.backdrop_path
+                movieNew?.backdrop_path
                   ? {
-                      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${moviearg.backdrop_path})`,
+                      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${movieNew?.backdrop_path})`,
                     }
                   : {
                       backgroundImage: ` linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)),  url(${defaultImg})`,
                     }
               }
             >
-              {selectedMovie && (
+              {/* {selectedMovie && (
                 <div>
                   {videoId && (
                     <>
-                      <Movie videoId={videoId} />
+                      <Movie
+                        videoId={videoId}
+                        setVideoId={setVideoId}
+                        selectedMovie={selectedMovie}
+                        setSelectedMovie={setSelectedMovie}
+                      />
                     </>
                   )}
                 </div>
-              )}
-
-              {/* <div className="poster">WRITE SOMETHING</div> */}
+              )} */}
             </VideoBoxContainer>
           </VideoBoxWrapper>
         </VideoContainerr>
