@@ -70,6 +70,16 @@ const handleCloseModal = (e) => {
 
 - watch the issue 🌈
 
+
+https://user-images.githubusercontent.com/58809268/220320951-75a07a82-8efb-4c83-83b7-fdd7061f4c09.mp4
+
+
+
+
+
+
+
+
 <br>
 <br>
 
