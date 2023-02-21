@@ -1,19 +1,19 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { mobile, mobileM, tablet, laptop } from "../../responsive";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
+import { mobile, mobileM, tablet, laptop } from "../../responsive";
 import "../videoMovie.scss";
 //
 // ** context
 import { GlobalContext } from "../../context/GlobalState";
-import MovieesContext from "../../ContextMovieHandler";
+import MovieeContext from "../../ContextMovieHandler.js";
 //
-import styled from "styled-components";
-import Movie from "../Movie";
 // icons
 import { HiOutlinePlay } from "react-icons/hi";
 import { CgClose } from "react-icons/cg";
 //
+import Movie from "../Movie";
 //
 //
 //
@@ -22,8 +22,8 @@ const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
 const defaultImg =
   "https://images.pexels.com/photos/4286932/pexels-photo-4286932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 //
-
 //
+
 //
 //
 
@@ -232,6 +232,17 @@ const VideoBoxContainer = styled.div`
 
 function MovieDetails() {
   //
+  const {
+    setVideoId,
+    videoId,
+    setSelectedMovie,
+    //  resize video
+  } = useContext(MovieeContext);
+
+  //
+  const navigate = useNavigate();
+
+  //
   //
   //1 this productId is coming from the app.js, check it here below:
 
@@ -241,6 +252,7 @@ function MovieDetails() {
   //
   //2 you need a new variable to pass inside the logic of the useEffect
   const [movieNew, setMovieNew] = useState(null);
+  //
 
   useEffect(() => {
     axios
@@ -259,12 +271,10 @@ function MovieDetails() {
   //-----------
   //
   //
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [videoId, setVideoId] = useState(null);
-  //-----------
+
+  // ** -----------   controls
   //
-  //
-  //
+
   const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
     useContext(GlobalContext);
 
@@ -299,30 +309,45 @@ function MovieDetails() {
   //
   // --------------------------------
   //
+  const [closeModi, setCloseModi] = useState(false);
 
+  const handleCloseModal = (e) => {
+    e.preventDefault(e);
+    navigate("/");
+
+    setCloseModi();
+    //history.push("/ResultCardsHome"); // works
+
+    // history.push(""); // also works -- Go back to the previous URL without the movie ID
+    // history.goBack();
+    //
+    // setMovies([]);// if you add this, specifically inside the overlay with the movie trailer, you will be send to the home page instead of the resultsCardsHome once you close the overlay.
+    //
+    //
+    // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
+    setVideoId();
+  };
   //
 
   //
   return (
     <>
       <WrapperVidDescript>
-        {" "}
         <ContainerDescript>
-          {" "}
           <MovieTitleModal>{movieNew?.title}</MovieTitleModal>
           <LargeDescriptAndBtn>
             {/*
 
             BUTTON TO CLOSE movie trailer overlay */}
-            {/* <ButtonCloseOverlayTrailer onClick={handleCloseModal}>
+            <ButtonCloseOverlayTrailer onClick={handleCloseModal}>
               <CgClose />
-            </ButtonCloseOverlayTrailer> */}
-            {/* <button
-              key={movieNew.id}
+            </ButtonCloseOverlayTrailer>
+            <button
+              key={setMovieNew?.id}
               onClick={(e) => (e.preventDefault(), setSelectedMovie(movieNew))}
             >
               <HiOutlinePlay />
-            </button> */}
+            </button>
             <PModalMovieDescription>
               {movieNew?.overview}
             </PModalMovieDescription>
@@ -365,20 +390,13 @@ function MovieDetails() {
                     }
               }
             >
-              {/* {selectedMovie && (
-                <div>
-                  {videoId && (
-                    <>
-                      <Movie
-                        videoId={videoId}
-                        setVideoId={setVideoId}
-                        selectedMovie={selectedMovie}
-                        setSelectedMovie={setSelectedMovie}
-                      />
-                    </>
-                  )}
-                </div>
-              )} */}
+              <div>
+                {videoId && (
+                  <>
+                    <Movie />
+                  </>
+                )}
+              </div>
             </VideoBoxContainer>
           </VideoBoxWrapper>
         </VideoContainerr>

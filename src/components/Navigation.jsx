@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
+//
+//
+import MovieeContext from "../ContextMovieHandler.js";
+
+//
+//
 
 const Header = styled.div`
   width: 100%;
@@ -113,12 +119,25 @@ const NavbarLink = styled(Link)`
 //
 // -------------------------
 const Navigation = () => {
+  const {
+    setVideoId,
+    //  resize video
+  } = useContext(MovieeContext);
+
+  const handleCloseModal = (e) => {
+    e.preventDefault(e);
+
+    //
+    // if you don't add this setVideoId(), when you will click in another movie, you will see the same previous video, and not only that, it will be launched without even have to click on "play", which is not good. so kill the process by adding the setVideoId() or setVideoId(null)
+    setVideoId();
+  };
+
   return (
     <>
       <Header>
         <Nav>
           <Left>
-            <Brand>
+            <Brand onClick={handleCloseModal}>
               <Link to="/" className="logo">
                 MUBII:
               </Link>
@@ -127,10 +146,10 @@ const Navigation = () => {
           {/* ---------------- */}
           <Right>
             <Ul className="nav-links">
-              <Li>
+              <Li onClick={handleCloseModal}>
                 <NavbarLink to="/watchlist">Watch list</NavbarLink>
               </Li>
-              <Li>
+              <Li onClick={handleCloseModal}>
                 <NavbarLink to="/watched">Watched</NavbarLink>
               </Li>
             </Ul>
