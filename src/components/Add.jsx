@@ -34,7 +34,7 @@ const ClickableOverlay = styled.div`
   background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
     linear-gradient(to right, #e8e4d8 1px, transparent 1px);
   background-size: 39px 39px;
-  background-color: #ffffff;
+  background-color: #fefefe;
 `;
 
 //
@@ -48,7 +48,7 @@ const Ul = styled.ul`
   grid-gap: 2.8em;
 
   //
-  background-color: #fefefe;
+
   border-radius: 50px;
 
   position: absolute;
@@ -183,7 +183,6 @@ const ImgBox = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
-  border: 8px solid #efefef;
 
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
   border-radius: 30px;

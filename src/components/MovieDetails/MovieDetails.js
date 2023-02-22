@@ -46,11 +46,10 @@ const WrapperVidDescript = styled.div`
   gap: 1%;
   // **
 
-  /* background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
+  background-image: linear-gradient(#e8e4d8 1px, transparent 1px),
     linear-gradient(to right, #e8e4d8 1px, transparent 1px);
   background-size: 39px 39px;
-  background-color: #ffffff; */
-  background-color: lavender;
+  background-color: #ffffff;
 `;
 // ----
 
@@ -195,8 +194,7 @@ const Button = styled.button`
 `;
 
 // ----
-
-const VideoContainerr = styled.div`
+const WrapperVideoTrailerSection = styled.div`
   width: 67%;
   height: 100vh;
 
@@ -206,16 +204,26 @@ const VideoContainerr = styled.div`
 `;
 
 //
-const VideoBoxWrapper = styled.div`
+const ContainerVideoTrailerSection = styled.div`
   width: 100%;
   height: 70%;
   overflow: hidden;
 
+  //add a before or after here, but it has to be inside a isOpen conditional on the jsx, there you should have something like className={selectedMOvie ? "isOPen" : "isClose"}, in the is open you should add a google icon that will show if the user hasnt click, but will hide if it has been clicked
+
   /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
 `;
+
 const VideoBoxContainer = styled.div`
   width: 100%;
   height: 100%;
+
+  overflow: hidden;
+  position: relative;
+  //
+  border-radius: 30px;
+
+  //
   background-position: bottom right;
   background-repeat: no-repeat;
   background-size: cover;
@@ -227,12 +235,116 @@ const VideoBoxContainer = styled.div`
   }
 `;
 
+const OverlayPlayBtnTrailer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  /*
+  red  0, 100%, 50%,
+  black 0, 0%, 2%,
+
+   */
+  //
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+  transition: all 0.8s ease-in-out;
+
+  &::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    z-index: 10;
+    background-color: ${(props) =>
+      props.visibleBg ? "hsla(203, 30%, 73%, 0.452)" : "transparent"};
+    /* background-color: hsla(0, 100%, 50%, 0.761); */
+  }
+
+  &::after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    z-index: 11;
+
+    background: linear-gradient(
+      hsla(0, 0%, 2%, 0) 0%,
+      hsla(0, 0%, 2%, 0.002) 9%,
+      hsla(0, 0%, 2%, 0.008) 34%,
+
+      hsla(0, 0%, 2%, 0.021) 47%,
+      hsla(0, 0%, 2%, 0) 56.5%,
+      hsla(0, 0%, 2%, 0) 65%,
+      hsla(0, 0%, 2%, 0.123) 73%,
+      hsla(0, 0%, 2%, 0.275) 80.2%,
+      hsla(0, 0%, 2%, 0.394) 86.1%,
+      hsla(0, 0%, 2%, 0.478) 91%,
+      hsla(0, 0%, 2%, 0.541) 95.2%,
+      hsla(0, 0%, 2%, 0.644) 98.2%,
+      hsla(0, 0%, 2%, 0.734) 100%
+    );
+  }
+`;
+
+const ButtonPlayTrailerOverlay = styled.button`
+  // visible if not clicked , hidden if clicked
+  display: ${(props) => (props.visible ? "block" : "none")};
+
+  position: absolute;
+  width: 80px;
+  height: 80px;
+
+  //
+  font-family: "Material Icons";
+  font-size: 24px;
+  line-height: 24px;
+
+  //
+  background-color: black;
+  color: #fff;
+  border-radius: 50px;
+  border: 3px solid #333;
+
+  //
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  pointer-events: all;
+  z-index: 12;
+
+  /*
+
+
+  */
+  &:hover {
+    background-color: #282828;
+  }
+  &:before {
+    cursor: pointer;
+    content: "play_arrow";
+    margin-right: 10px;
+    margin: 0 auto;
+  }
+
+  &:hover:before {
+    cursor: pointer;
+    color: #fff;
+  }
+`;
 //
 //
 
 function MovieDetails() {
   //
   const {
+    selectedMovie,
+    //
     setVideoId,
     videoId,
     setSelectedMovie,
@@ -309,13 +421,14 @@ function MovieDetails() {
   //
   // --------------------------------
   //
-  const [closeModi, setCloseModi] = useState(false);
 
+  //
+  //
+  //
   const handleCloseModal = (e) => {
     e.preventDefault(e);
     navigate("/");
 
-    setCloseModi();
     //history.push("/ResultCardsHome"); // works
 
     // history.push(""); // also works -- Go back to the previous URL without the movie ID
@@ -328,8 +441,47 @@ function MovieDetails() {
     setVideoId();
   };
   //
-
+  // const handlerShowHideIcon = (logicIcon) => {
+  //   if (logicIcon === "showicon") {
+  //     setSelectedMovie(movieNew);
+  //   } else {
+  //     setSelectedMovie(movieNew);
+  //   }
+  // };
   //
+  //
+  const [isVisible, setIsVisible] = useState(true);
+  const handleClickBtnplay = (e) => {
+    e.preventDefault();
+    setSelectedMovie(movieNew);
+
+    setIsVisible(!isVisible);
+  };
+  /*
+
+
+
+  <ButtonPlayTrailerOverlay
+                      key={setMovieNew?.id}
+                      visible={isVisible}
+                      onClick={handleClickBtnplay}
+                    />
+
+
+
+ */
+  // const [styelIcon, setStyleIcon] = useState();
+  // const handlerShowHideIcon = (logicIc) => {
+  //   if (selectedMovie === "true") {
+  //     setSelectedMovie(movieNew);
+  //     setStyleIcon("black");
+  //   } else {
+  //     //     setSelectedMovie(movieNew);
+  //     setSelectedMovie(movieNew);
+  //     setStyleIcon("white");
+  //   }
+  // };
+  //@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
   return (
     <>
       <WrapperVidDescript>
@@ -342,12 +494,24 @@ function MovieDetails() {
             <ButtonCloseOverlayTrailer onClick={handleCloseModal}>
               <CgClose />
             </ButtonCloseOverlayTrailer>
+            {/*
+
+             BUTTON PLAY
+
+             */}
+            {/* <button
+              key={setMovieNew?.id}
+              logicIc="showicon"
+              onClick={handlerShowHideIcon}
+            >
+              PLAY
+            </button> this work perfectly
             <button
               key={setMovieNew?.id}
               onClick={(e) => (e.preventDefault(), setSelectedMovie(movieNew))}
             >
               <HiOutlinePlay />
-            </button>
+            </button>*/}
             <PModalMovieDescription>
               {movieNew?.overview}
             </PModalMovieDescription>
@@ -376,8 +540,16 @@ function MovieDetails() {
 
 
          */}
-        <VideoContainerr>
-          <VideoBoxWrapper>
+        <WrapperVideoTrailerSection>
+          <ContainerVideoTrailerSection>
+            {/* {movieNew?.videoId ? (
+              <OverlayPlayBtnTrailer>
+                <ButtonPlayTrailerOverlay />
+              </OverlayPlayBtnTrailer>
+            ) : (
+              ""
+            )} */}
+
             <VideoBoxContainer
               style={
                 // if there is an img in the API related to the movie, show the BACKDROP_PATH, if not show the img inside the url(${defaultImg})`
@@ -390,16 +562,30 @@ function MovieDetails() {
                     }
               }
             >
-              <div>
-                {videoId && (
+              <OverlayPlayBtnTrailer
+                visibleBg={isVisible}
+                onClick={handleClickBtnplay}
+              >
+                {isVisible ? (
                   <>
-                    <Movie />
+                    <ButtonPlayTrailerOverlay
+                      key={setMovieNew?.id}
+                      visible={isVisible}
+                      onClick={handleClickBtnplay}
+                    />
                   </>
+                ) : (
+                  ""
                 )}
-              </div>
+              </OverlayPlayBtnTrailer>
+              {videoId && (
+                <>
+                  <Movie />
+                </>
+              )}
             </VideoBoxContainer>
-          </VideoBoxWrapper>
-        </VideoContainerr>
+          </ContainerVideoTrailerSection>
+        </WrapperVideoTrailerSection>
       </WrapperVidDescript>
     </>
   );

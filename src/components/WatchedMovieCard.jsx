@@ -26,7 +26,7 @@ const ImgBox = styled.div`
   overflow: hidden;
 
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
-  border: 10px solid #efefef;
+
   border-radius: 30px;
   //
   img {

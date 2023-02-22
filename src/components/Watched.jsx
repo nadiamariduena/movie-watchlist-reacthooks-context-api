@@ -51,7 +51,6 @@ const Ul = styled.ul`
   grid-gap: 3em;
   //
 
-  background-color: #fefefe;
   border-radius: 50px;
   border: 1px solid #eee;
   //
