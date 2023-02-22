@@ -28,9 +28,18 @@ const Nav = styled.div`
   top: 0;
   z-index: 999;
   //
-  background: rgba(255, 255, 255, 0.45);
-  -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px);
+
+  /* -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px); */
+
+  ${mobile({
+    background: "rgba(255, 255, 255, 0.45)",
+    backdropFilter: "blur(16px)",
+  })}
+  ${mobileM({
+    background: "rgba(255, 255, 255, 0.45)",
+    backdropFilter: "blur(16px)",
+  })}
 `;
 
 // LEFT

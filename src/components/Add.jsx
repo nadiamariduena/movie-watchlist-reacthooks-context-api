@@ -1,17 +1,12 @@
 import React, { useState, useContext } from "react";
 import MovieesContext from "../ContextMovieHandler.js";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //
 import styled from "styled-components";
 import { CgClose } from "react-icons/cg";
-import Movie from "./Movie.js";
-import ResultCards from "./ResultCardsHome";
-import { mobile, mobileM, tablet, laptop } from "../responsive";
+import { mobile, mobileM, tablet, laptop, laptopM } from "../responsive";
 
-//
-//
-const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
 const defaultImg =
   "https://images.pexels.com/photos/4286932/pexels-photo-4286932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 //
@@ -67,18 +62,24 @@ const Ul = styled.ul`
   ${mobileM({
     left: "2.5%",
     width: "90%",
-    gridTemplateColumns: `repeat(2, 1fr)`,
+    gridTemplateColumns: `repeat(1, 1fr)`,
     padding: "100px 15px 180px 15px",
     gridGap: "0.9em",
   })}
 ${tablet({
     width: "85%",
     left: "4.5%",
-    gridTemplateColumns: `repeat(3, 1fr)`,
+    gridTemplateColumns: `repeat(2, 1fr)`,
     padding: "100px 20px 180px 20px",
     gridGap: "1.8em",
   })}
 ${laptop({
+    width: "85%",
+    gridTemplateColumns: `repeat(3, 1fr)`,
+    padding: "100px 20px 180px 20px",
+    gridGap: "2.5em",
+  })}
+  ${laptopM({
     width: "85%",
     gridTemplateColumns: `repeat(3, 1fr)`,
     padding: "100px 20px 180px 20px",
@@ -162,6 +163,10 @@ const ButtonCloseOverlay = styled.button`
     background-color: #fafafa;
     color: #282828;
   }
+  ${mobileM({
+    bottom: "30px",
+    right: "7.5%",
+  })}
 `;
 //---------
 //
@@ -186,6 +191,9 @@ const ImgBox = styled.div`
 
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
   border-radius: 30px;
+
+  //
+  //
   &::before {
     content: "";
     width: 100%;
@@ -198,6 +206,10 @@ const ImgBox = styled.div`
 
     //
   }
+
+  ${mobileM({ width: "78%", margin: "0 auto" })}
+  ${tablet({ width: "78%", margin: "0 auto" })}
+
 
   img {
     display: block;

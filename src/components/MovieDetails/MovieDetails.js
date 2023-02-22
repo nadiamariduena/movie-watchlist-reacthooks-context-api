@@ -10,7 +10,7 @@ import { GlobalContext } from "../../context/GlobalState";
 import MovieeContext from "../../ContextMovieHandler.js";
 //
 // icons
-import { HiOutlinePlay } from "react-icons/hi";
+
 import { CgClose } from "react-icons/cg";
 //
 import Movie from "../Movie";
@@ -542,14 +542,6 @@ function MovieDetails() {
          */}
         <WrapperVideoTrailerSection>
           <ContainerVideoTrailerSection>
-            {/* {movieNew?.videoId ? (
-              <OverlayPlayBtnTrailer>
-                <ButtonPlayTrailerOverlay />
-              </OverlayPlayBtnTrailer>
-            ) : (
-              ""
-            )} */}
-
             <VideoBoxContainer
               style={
                 // if there is an img in the API related to the movie, show the BACKDROP_PATH, if not show the img inside the url(${defaultImg})`
