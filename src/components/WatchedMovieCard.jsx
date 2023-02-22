@@ -8,9 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 // ** This is the Card linked to Watchlist **
 //
 
-const Container = styled.div`
-  /* background-color: pink; */
-`;
+const Container = styled.div``;
 
 const ResultCard = styled.div`
   padding: 10px;
@@ -27,7 +25,22 @@ const ImgBox = styled.div`
 
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
 
+  background-color: red;
   border-radius: 30px;
+
+  &::after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    //
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    z-index: 59;
+    background-color: hsla(203, 30%, 73%, 0.452);
+  }
   //
   img {
     display: block;

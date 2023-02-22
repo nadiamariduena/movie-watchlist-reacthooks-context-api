@@ -201,7 +201,7 @@ const ImgBox = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #a5a5a541;
+    background-color: hsla(203, 30%, 73%, 0.352);
     display: block;
 
     //

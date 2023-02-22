@@ -261,7 +261,8 @@ const OverlayPlayBtnTrailer = styled.div`
     z-index: 10;
     background-color: ${(props) =>
       props.visibleBg ? "hsla(203, 30%, 73%, 0.452)" : "transparent"};
-    /* background-color: hsla(0, 100%, 50%, 0.761); */
+    opacity: ${(props) => (props.visibleBg ? "1" : "0")};
+    transition: all 0.08s ease-in-out;
   }
 
   &::after {
@@ -293,7 +294,10 @@ const OverlayPlayBtnTrailer = styled.div`
 const ButtonPlayTrailerOverlay = styled.button`
   // visible if not clicked , hidden if clicked
   display: ${(props) => (props.visible ? "block" : "none")};
+  opacity: ${(props) => (props.visible ? "1" : "0")};
+  transition: all 0.08s ease-in-out;
 
+  //
   position: absolute;
   width: 80px;
   height: 80px;
@@ -499,22 +503,13 @@ function MovieDetails() {
              BUTTON PLAY
 
              */}
-            {/* <button
-              key={setMovieNew?.id}
-              logicIc="showicon"
-              onClick={handlerShowHideIcon}
-            >
-              PLAY
-            </button> this work perfectly
-            <button
-              key={setMovieNew?.id}
-              onClick={(e) => (e.preventDefault(), setSelectedMovie(movieNew))}
-            >
-              <HiOutlinePlay />
-            </button>*/}
+
             <PModalMovieDescription>
               {movieNew?.overview}
             </PModalMovieDescription>
+            {/*
+
+             */}
             <Controls>
               <Button
                 disabled={watchlistDisabled}
@@ -532,19 +527,16 @@ function MovieDetails() {
             </Controls>
           </LargeDescriptAndBtn>
         </ContainerDescript>
+
         {/*
 
+ The video
 
-
-
-
-
-         */}
+ */}
         <WrapperVideoTrailerSection>
           <ContainerVideoTrailerSection>
             <VideoBoxContainer
               style={
-                // if there is an img in the API related to the movie, show the BACKDROP_PATH, if not show the img inside the url(${defaultImg})`
                 movieNew?.backdrop_path
                   ? {
                       backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${movieNew?.backdrop_path})`,
