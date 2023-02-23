@@ -73,6 +73,14 @@ export function MoviessProvider({ children }) {
   );
   //
   //
+
+  /*
+
+          ? 1.2
+        : window.innerWidth > 400
+        ? 1.45
+        : 1.85
+  */
   //
   const handleChangeVideoWidth = useCallback(() => {
     const ratio =
@@ -82,7 +90,9 @@ export function MoviessProvider({ children }) {
         ? 1.2
         : window.innerWidth > 400
         ? 1.45
-        : 1.85;
+        : window.innerWidth > 280
+        ? 1.45
+        : 1.1; //totally square for mobile
     const height = iframeRef.current
       ? iframeRef.current.offsetWidth * 0.5625
       : defaultHeight;
@@ -100,7 +110,9 @@ export function MoviessProvider({ children }) {
         ? 1.2
         : window.innerWidth > 400
         ? 1.45
-        : 1.85;
+        : window.innerWidth > 280
+        ? 1.1
+        : 1.1; //totally square for mobile
     const height = iframeRef.current
       ? iframeRef.current.offsetWidth * 0.5625
       : defaultHeight;
@@ -137,14 +149,12 @@ export function MoviessProvider({ children }) {
 
         videoId,
         setVideoId,
-        //
 
         //
-
         //
         //  resize video
-        videoHeight,
         setVideoHeight,
+        videoHeight,
         iframeRef,
         videoURL,
         // removeItem,

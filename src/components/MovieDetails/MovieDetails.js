@@ -51,6 +51,15 @@ const WrapperVidDescript = styled.div`
     linear-gradient(to right, #e8e4d8 1px, transparent 1px);
   background-size: 39px 39px;
   background-color: #ffffff;
+
+  //
+  //
+  ${mobile({})}
+  ${mobileM({
+    background: "lavender",
+    flexDirection: "column",
+    gap: "0.1%",
+  })}
 `;
 // ----
 
@@ -89,6 +98,12 @@ const ContainerDescript = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
+  ${mobile({ width: "100%", height: "auto" })}
+  ${mobileM({
+    width: "100%",
+    background: "red",
+    height: "auto",
+  })}
 `;
 const MovieTitleModal = styled.h1`
   max-width: 90%;
@@ -106,6 +121,9 @@ const MovieTitleModal = styled.h1`
   font-weight: 400;
 
   color: rgba(103, 103, 103, 0.396);
+
+  ${mobile({ maxWidth: "90%" })}
+  ${mobileM({ maxWidth: "90%" })}
 `;
 
 const LargeDescriptAndBtn = styled.div`
@@ -193,8 +211,12 @@ const Button = styled.button`
     fontSize: `calc(8px + 1.1vmin)`,
   })}
 `;
+/*
 
-// ----
+
+*/
+// ---- VIDEO
+//
 const WrapperVideoTrailerSection = styled.div`
   width: 67%;
   height: 100vh;
@@ -202,6 +224,9 @@ const WrapperVideoTrailerSection = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+
+  ${mobile({ width: "98%" })};
+  ${mobileM({ width: "97%", height: "30vh" })};
 `;
 
 //
@@ -209,10 +234,7 @@ const ContainerVideoTrailerSection = styled.div`
   width: 100%;
   height: 70%;
   overflow: hidden;
-
-  //add a before or after here, but it has to be inside a isOpen conditional on the jsx, there you should have something like className={selectedMOvie ? "isOPen" : "isClose"}, in the is open you should add a google icon that will show if the user hasnt click, but will hide if it has been clicked
-
-  /*  box-shadow: 6px 6px 12px #ededed, -6px -6px 12px #ffffff; background: rgba(142, 182, 203, 0.106); */
+  ${mobileM({ height: "100%" })};
 `;
 
 const VideoBoxContainer = styled.div`
@@ -234,6 +256,8 @@ const VideoBoxContainer = styled.div`
   &:hover {
     background-position: center right;
   }
+
+  ${mobileM({ borderRadius: "0px" })}
 `;
 
 const OverlayPlayBtnTrailer = styled.div`
@@ -437,7 +461,14 @@ function MovieDetails() {
     //history.push("/ResultCardsHome"); // works
 
     // history.push(""); // also works -- Go back to the previous URL without the movie ID
-    // history.goBack();
+    // histor // const handlerShowHideIcon = (logicIcon) => {
+    //   if (logicIcon === "showicon") {
+    //     setSelectedMovie(movieNew);
+    //   } else {
+    //     setSelectedMovie(movieNew);
+    //   }
+    // };
+    //y.goBack();
     //
     // setMovies([]);// if you add this, specifically inside the overlay with the movie trailer, you will be send to the home page instead of the resultsCardsHome once you close the overlay.
     //
@@ -446,14 +477,7 @@ function MovieDetails() {
     setVideoId();
   };
   //
-  // const handlerShowHideIcon = (logicIcon) => {
-  //   if (logicIcon === "showicon") {
-  //     setSelectedMovie(movieNew);
-  //   } else {
-  //     setSelectedMovie(movieNew);
-  //   }
-  // };
-  //
+
   //
   const [isVisible, setIsVisible] = useState(true);
   const handleClickBtnplay = (e) => {
@@ -546,20 +570,19 @@ function MovieDetails() {
           <ContainerVideoTrailerSection>
             <VideoBoxContainer
               style={
-                movieNew?.backdrop_path
-                  ? {
-                      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${movieNew?.backdrop_path})`,
-                    }
-                  : {
-                      backgroundImage: ` linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)),  url(${defaultImg})`,
-                    }
+                movieNew?.backdrop_path && {
+                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${movieNew?.backdrop_path})`,
+                }
+                // : {
+                //     backgroundImage: ` linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)),  url(${defaultImg})`,
+                //   }
               }
             >
               <OverlayPlayBtnTrailer
                 visibleBg={isVisible}
                 onClick={handleClickBtnplay}
               >
-                {isVisible ? (
+                {isVisible && (
                   <>
                     <ButtonPlayTrailerOverlay
                       key={setMovieNew?.id}
@@ -567,8 +590,6 @@ function MovieDetails() {
                       onClick={handleClickBtnplay}
                     />
                   </>
-                ) : (
-                  ""
                 )}
               </OverlayPlayBtnTrailer>
               {videoId && (
