@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 import styled from "styled-components";
 import Add from "./Add";
@@ -8,6 +8,10 @@ import SvgGradientTop from "./SvgGradientTop";
 import SvgGradientRight from "./SvgGradientRight";
 
 import svgAnillos from "../img/anillos.svg";
+
+import { motion } from "framer-motion";
+//
+//
 
 //
 // https://dev.to/darthknoppix/animate-styled-components-with-framer-motion-2202
@@ -313,7 +317,13 @@ const Home = () => {
   //
   return (
     <>
-      <WrapperSectionHome>
+      <WrapperSectionHome
+        as={motion.div}
+        layout
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         {/* <SvgGradientTop /> */}
         <SvgGradientCenter />
         {/* <SvgGradientRight /> */}

@@ -4,7 +4,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { mobile, mobileM, tablet } from "../responsive";
 
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 //
 //
 const WrapperContainer = styled.div``;
@@ -77,30 +77,32 @@ const MovieControls = ({ movie, type }) => {
   //
   return (
     <>
-      <WrapperContainer>
-        <Container>
-          <H3>{movie.title}</H3>
-          <Content>
-            {type === "watchlist" && (
-              <>
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  className="ctrl-btn"
-                  onClick={() => addMovieToWatched(movie)}
-                >
-                  <i className="fa-fw far fa-eye"></i>
-                </motion.button>
-                {/*  */}
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  className="ctrl-btn"
-                  onClick={() => removeMovieFromWarchlist(movie.id)}
-                >
-                  <i className="fa-fw fa fa-times"></i>
-                </motion.button>
-              </>
-            )}
-            {/*
+      <AnimatePresence>
+        {" "}
+        <WrapperContainer>
+          <Container>
+            <H3>{movie.title}</H3>
+            <Content>
+              {type === "watchlist" && (
+                <>
+                  <motion.button
+                    whileHover={{ scale: 1.2 }}
+                    className="ctrl-btn"
+                    onClick={() => addMovieToWatched(movie)}
+                  >
+                    <i className="fa-fw far fa-eye"></i>
+                  </motion.button>
+                  {/*  */}
+                  <motion.button
+                    whileHover={{ scale: 1.2 }}
+                    className="ctrl-btn"
+                    onClick={() => removeMovieFromWarchlist(movie.id)}
+                  >
+                    <i className="fa-fw fa fa-times"></i>
+                  </motion.button>
+                </>
+              )}
+              {/*
 
 
 EYE AND X to control
@@ -109,28 +111,29 @@ EYE AND X to control
 
             */}
 
-            {/*  */}
-            {type === "watched" && (
-              <>
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  className="ctrl-btn"
-                  onClick={() => movieToWatchlist(movie)}
-                >
-                  <i className="fa-fw far fa-eye-slash"></i>
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  className="ctrl-btn"
-                  onClick={() => removeFromWatched(movie.id)}
-                >
-                  <i className="fa-fw fa fa-times"></i>
-                </motion.button>
-              </>
-            )}
-          </Content>
-        </Container>
-      </WrapperContainer>
+              {/*  */}
+              {type === "watched" && (
+                <>
+                  <motion.button
+                    whileHover={{ scale: 1.2 }}
+                    className="ctrl-btn"
+                    onClick={() => movieToWatchlist(movie)}
+                  >
+                    <i className="fa-fw far fa-eye-slash"></i>
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.2 }}
+                    className="ctrl-btn"
+                    onClick={() => removeFromWatched(movie.id)}
+                  >
+                    <i className="fa-fw fa fa-times"></i>
+                  </motion.button>
+                </>
+              )}
+            </Content>
+          </Container>
+        </WrapperContainer>
+      </AnimatePresence>
     </>
   );
 };

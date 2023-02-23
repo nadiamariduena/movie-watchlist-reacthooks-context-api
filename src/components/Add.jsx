@@ -3,9 +3,13 @@ import MovieesContext from "../ContextMovieHandler.js";
 import { Link } from "react-router-dom";
 
 //
+
+import { mobile, mobileM, tablet, laptop, laptopM } from "../responsive";
 import styled from "styled-components";
 import { CgClose } from "react-icons/cg";
-import { mobile, mobileM, tablet, laptop, laptopM } from "../responsive";
+//
+import { motion } from "framer-motion";
+//
 
 const defaultImg =
   "https://images.pexels.com/photos/4286932/pexels-photo-4286932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
@@ -16,7 +20,7 @@ const defaultImg =
 const AddPage = styled.div``;
 const ClickableOverlay = styled.div`
   width: 100vw;
-  min-height: 150vh;
+  min-height: 200vh;
 
   position: fixed;
   top: 0;
@@ -34,7 +38,7 @@ const ClickableOverlay = styled.div`
 
 //
 const Ul = styled.ul`
-  padding: 100px 100px 0px 100px;
+  padding: 100px 100px 200px 100px;
   margin: 30px auto 0 auto;
   width: 80%;
 
@@ -263,6 +267,7 @@ const Add = () => {
             <Link to="/">
               <ClickableOverlay onClick={removeItem} />
             </Link>
+
             <Ul
               style={{ zIndex: "700", pointerEvents: "all" }}
               className="results"
@@ -276,7 +281,20 @@ const Add = () => {
                       <ResultCard>
                         {moviearg.poster_path ? (
                           <>
-                            <ImgBox>
+                            <ImgBox
+
+                            // as={motion.div}
+                            // initial={{
+                            //   y: 200,
+                            //   opacity: 0,
+                            // }}
+                            // animate={{ y: 0, opacity: 1 }}
+                            // transition={{
+                            //   delay: 0.08,
+                            //   type: "spring",
+                            //   damping: 8,
+                            // }}
+                            >
                               <img
                                 // defaultImg
                                 src={

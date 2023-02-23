@@ -96,7 +96,7 @@ export const Watched = () => {
           {watched.length > 0 ? (
             <Ul className="results">
               {watched.map((movie) => (
-                <motion.li key={movie.id}>
+                <motion.li key={movie.id} as={motion.div}>
                   <WatchedMovieCard movie={movie} type="watched" />
                 </motion.li>
               ))}

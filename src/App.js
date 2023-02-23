@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./lib/font-awesome/css/all.min.css";
 import { createGlobalStyle } from "styled-components";
 //
+import { AnimatePresence, motion } from "framer-motion";
 
 /*
 
@@ -28,25 +29,27 @@ import MovieDetails from "./components/MovieDetails/MovieDetails";
 
 function App() {
   return (
-    <GlobalProvider>
-      <MoviessProvider>
-        <BrowserRouter>
-          <Navigation />
-          <div className="page">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/watchlist" element={<WatchList />} />
-              <Route path="/watched" element={<Watched />} />
-              <Route path="/add" element={<Add />} />
-              <Route path="/resultCards" element={<ResultCardsHome />} />
+    <AnimatePresence>
+      <GlobalProvider>
+        <MoviessProvider>
+          <BrowserRouter>
+            <Navigation />
+            <div className="page">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/watchlist" element={<WatchList />} />
+                <Route path="/watched" element={<Watched />} />
+                <Route path="/add" element={<Add />} />
+                <Route path="/resultCards" element={<ResultCardsHome />} />
 
-              <Route path="/rainbow/:productId" element={<MovieDetails />} />
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </MoviessProvider>
-    </GlobalProvider>
+                <Route path="/rainbow/:productId" element={<MovieDetails />} />
+                <Route path="*" element={<PageNotFound />} />
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </MoviessProvider>
+      </GlobalProvider>
+    </AnimatePresence>
   );
 }
 

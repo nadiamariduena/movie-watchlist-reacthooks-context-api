@@ -14,6 +14,7 @@ import MovieeContext from "../../ContextMovieHandler.js";
 import { CgClose } from "react-icons/cg";
 //
 import Movie from "../Movie";
+import { AnimatePresence, motion } from "framer-motion";
 //
 //
 //
@@ -533,7 +534,15 @@ function MovieDetails() {
  The video
 
  */}
-        <WrapperVideoTrailerSection>
+        <WrapperVideoTrailerSection
+          as={motion.div}
+          initial={{
+            y: 200,
+            opacity: 0,
+          }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.08, type: "spring", damping: 12 }}
+        >
           <ContainerVideoTrailerSection>
             <VideoBoxContainer
               style={
