@@ -224,11 +224,12 @@ const H1 = styled.h1`
   font-size: calc(58px + 1vmin);
   line-height: calc(62px + 1vmin);
   margin-bottom: 10px;
-  ${mobile({ fontSize: `calc(44px + 1vmin)`, paddingTop: "100px 0 0 0" })}
 
+  //
+  ${mobile({ display: "none" })}
+  ${mobileM({ display: "none" })}
   ${tablet({
-    fontSize: `calc(74px + 1vmin)`,
-    lineHeight: `calc(124px + 1vmin)`,
+    display: "none",
   })}
 `;
 const H2 = styled.h2`
@@ -317,13 +318,7 @@ const Home = () => {
   //
   return (
     <>
-      <WrapperSectionHome
-        as={motion.div}
-        layout
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
+      <WrapperSectionHome>
         {/* <SvgGradientTop /> */}
         <SvgGradientCenter />
         {/* <SvgGradientRight /> */}

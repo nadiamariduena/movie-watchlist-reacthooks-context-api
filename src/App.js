@@ -20,7 +20,6 @@ import { WatchList } from "./components/WatchList";
 import { Watched } from "./components/Watched";
 import Add from "./components/Add";
 
-import ResultCardsHome from "./components/ResultCardsHome";
 import { GlobalProvider } from "./context/GlobalState";
 import { MoviessProvider } from "./ContextMovieHandler";
 import PageNotFound from "./pages/pageNotFound";
@@ -40,7 +39,6 @@ function App() {
                 <Route path="/watchlist" element={<WatchList />} />
                 <Route path="/watched" element={<Watched />} />
                 <Route path="/add" element={<Add />} />
-                <Route path="/resultCards" element={<ResultCardsHome />} />
 
                 <Route path="/rainbow/:productId" element={<MovieDetails />} />
                 <Route path="*" element={<PageNotFound />} />

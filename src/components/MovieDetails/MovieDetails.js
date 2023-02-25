@@ -33,10 +33,15 @@ const WrapperVidDescript = styled.div`
   //
   width: 100vw;
   min-height: 100vh;
-  position: fixed;
+  //
+  position: absolute;
   z-index: 800;
-  top: 0px;
-  left: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* let it scroll */
+  overflow-y: hidden;
 
   /*  */
   display: flex;
@@ -54,10 +59,24 @@ const WrapperVidDescript = styled.div`
 
   //
   //
-  ${mobile({})}
+  ${mobile({
+    minHeight: "auto",
+    flexDirection: "column-reverse",
+    gap: "0.1%",
+  })}
   ${mobileM({
-    background: "lavender",
-    flexDirection: "column",
+    minHeight: "auto",
+    flexDirection: "column-reverse",
+    gap: "0.1%",
+  })}
+   ${tablet({
+    minHeight: "auto",
+    flexDirection: "column-reverse",
+    gap: "0.1%",
+  })}
+     ${laptop({
+    minHeight: "auto",
+    flexDirection: "column-reverse",
     gap: "0.1%",
   })}
 `;
@@ -71,7 +90,6 @@ const ButtonCloseOverlayTrailer = styled.button`
   position: fixed;
   bottom: 2.5%;
   right: 2.5%;
-  z-index: 10;
 
   width: 45px;
   height: 45px;
@@ -87,31 +105,71 @@ const ButtonCloseOverlayTrailer = styled.button`
     background-color: #fafafa;
     color: #282828;
   }
+  //
+  //
+  ${mobile({
+    right: "15px",
+    bottom: "15px",
+  })}
+  ${mobileM({ right: "15px", bottom: "15px" })}
+    ${laptop({ right: "15px", bottom: "15px" })}
 `;
 //---------
 
 const ContainerDescript = styled.div`
   width: 30%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
-  ${mobile({ width: "100%", height: "auto" })}
-  ${mobileM({
+  //
+  //
+  ${mobile({
     width: "100%",
-    background: "red",
-    height: "auto",
+    minHeight: "98vh",
+
+    //
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  })}
+  ${mobileM({
+    width: "95%",
+    minHeight: "88vh",
+
+    //
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  })}
+    ${tablet({
+    width: "80%",
+    minHeight: "88vh",
+
+    //
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  })}
+      ${laptop({
+    width: "80%",
+    minHeight: "88vh",
+
+    //
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   })}
 `;
 const MovieTitleModal = styled.h1`
   max-width: 90%;
   min-height: 40%;
   margin-left: 20px;
+  padding: 70px 0 10px 0;
   //
   text-align: left;
-  padding: 70px 0 10px 0;
+
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -122,13 +180,49 @@ const MovieTitleModal = styled.h1`
 
   color: rgba(103, 103, 103, 0.396);
 
-  ${mobile({ maxWidth: "90%" })}
-  ${mobileM({ maxWidth: "90%" })}
+  ${mobile({
+    marginLeft: "0",
+    textAlign: "center",
+    padding: "20px 0 10px 0",
+
+    maxWidth: "250px",
+
+    fontSize: `calc(17px + 1.1vmin)`,
+    lineHeight: ` calc(20px + 1.1vmin)`,
+  })}
+  ${mobileM({
+    marginLeft: "0",
+    textAlign: "center",
+    padding: "20px 0 10px 0",
+
+    maxWidth: "250px",
+
+    fontSize: `calc(17px + 1.1vmin)`,
+    lineHeight: ` calc(20px + 1.1vmin)`,
+  })}
+    ${tablet({
+    marginLeft: "0",
+    textAlign: "center",
+    padding: "20px 0 10px 0",
+
+    maxWidth: "490px",
+
+    fontSize: `calc(17px + 1.1vmin)`,
+    lineHeight: ` calc(20px + 1.1vmin)`,
+  })}
+      ${laptop({
+    marginLeft: "0",
+    textAlign: "center",
+    padding: "20px 0 10px 0",
+    maxWidth: "490px",
+    fontSize: `calc(17px + 1.1vmin)`,
+    lineHeight: ` calc(20px + 1.1vmin)`,
+  })}
 `;
 
 const LargeDescriptAndBtn = styled.div`
   min-height: 60%;
-  margin-left: 20px;
+  padding: 0 0 0 20px;
   // ** sticky
   position: sticky;
   position: -webkit-sticky;
@@ -144,6 +238,19 @@ const LargeDescriptAndBtn = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   flex-direction: column;
+
+  ${mobileM({
+    justifyContent: "center",
+    alignItems: "center",
+  })}
+  ${tablet({
+    justifyContent: "center",
+    alignItems: "center",
+  })}
+  ${laptop({
+    justifyContent: "center",
+    alignItems: "center",
+  })}
 `;
 
 const PModalMovieDescription = styled.p`
@@ -157,24 +264,71 @@ const PModalMovieDescription = styled.p`
   line-height: calc(16px + 1.1vmin);
   font-family: "Poppins-Light";
   color: rgba(142, 182, 203, 0.696);
+
+  //
+  //
+  ${mobile({
+    maxWidth: "90%",
+    margin: "10px 0 0  0px",
+
+    fontSize: `calc(15px + 1vmin)`,
+    lineHeight: `calc(24px + 1vmin)`,
+  })}
+  ${mobileM({
+    maxWidth: "90%",
+    margin: "20px 0 0  0px",
+    fontSize: `calc(12px + 1vmin)`,
+    lineHeight: `calc(22px + 1vmin)`,
+  })}
+   ${tablet({
+    maxWidth: "90%",
+    margin: "20px 0 0  0px",
+    fontSize: `calc(12px + 1vmin)`,
+    lineHeight: `calc(22px + 1vmin)`,
+  })}
+     ${laptop({
+    maxWidth: "70%",
+    margin: "20px 0 0  0px",
+    fontSize: `calc(10px + 1vmin)`,
+    lineHeight: `calc(22px + 1vmin)`,
+  })}
 `;
 //  ** CONTROLS
 //
 const Controls = styled.div`
-  /*  */
-  padding: 30px 0 30px 0;
+  width: 100%;
+  padding: 40px 0 40px 0;
+  gap: 50px;
   display: flex;
-  justify-content: space-around;
+
+  justify-content: center;
   align-items: center;
   flex-direction: row;
-  gap: 50px;
+
+  //
+  //
+  //
+  ${mobile({
+    padding: "35px 0 40px 0",
+    alignItems: "center",
+    gap: "20px",
+  })}
+  ${mobileM({
+    width: "100%",
+    alignItems: "center",
+    gap: "30px",
+  })}
+    ${tablet({
+    gap: "40px",
+
+    alignItems: "center",
+  })}
+      ${laptop({
+    gap: "50px",
+    alignItems: "center",
+  })}
 `;
-const H3 = styled.h3`
-  margin: 20px 0 30px 0;
-  color: rgba(142, 182, 203, 0.416);
-`;
-//
-//
+
 const Button = styled.button`
   margin-top: 15px;
   padding: 12.5px 25px;
@@ -206,27 +360,91 @@ const Button = styled.button`
     color: #b6b6b6;
   }
 
-  ${mobile({ padding: "18.5px 28px", fontSize: `calc(9px + 1.1vmin)` })}
+  ${mobile({
+    fontSize: `calc(8px + 1.1vmin)`,
+    padding: "11.5px 12px",
+  })}
   ${mobileM({
     fontSize: `calc(8px + 1.1vmin)`,
+  })}
+    ${laptop({
+    fontSize: `calc(4px + 1.1vmin)`,
+    padding: "14.5px 16.5px",
   })}
 `;
 /*
 
 
-*/
-// ---- VIDEO
+
+
+
+
+
+
+
+
+
+
+
+
+ ---- VIDEO
+
+
+
+
+
+
+
+
+
+
+
+
+ */
+
 //
 const WrapperVideoTrailerSection = styled.div`
   width: 67%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 60vh;
 
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  flex-direction: column;
 
-  ${mobile({ width: "98%" })};
-  ${mobileM({ width: "97%", height: "30vh" })};
+  ${mobile({
+    width: "97%",
+    minHeight: "40vh",
+
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
+  })};
+  ${mobileM({
+    width: "90%",
+    minHeight: "40vh",
+
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
+  })};
+  ${tablet({
+    width: "90%",
+    minHeight: "40vh",
+    margin: "0 0 20px 0",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
+  })};
+  ${laptop({
+    width: "90%",
+    minHeight: "40vh",
+    margin: "0 0 20px 0",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
+  })};
 `;
 
 //
@@ -234,30 +452,45 @@ const ContainerVideoTrailerSection = styled.div`
   width: 100%;
   height: 70%;
   overflow: hidden;
-  ${mobileM({ height: "100%" })};
-`;
 
-const VideoBoxContainer = styled.div`
-  width: 100%;
-  height: 100%;
-
-  overflow: hidden;
   position: relative;
-  //
   border-radius: 30px;
-
   //
-  background-position: bottom right;
+  background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+
   transition: all 0.8s ease;
 
   &:hover {
     background-position: center right;
   }
 
-  ${mobileM({ borderRadius: "0px" })}
+  ${mobile({
+    height: "70%",
+  })};
+  ${mobileM({ height: "80%" })};
+  ${tablet({
+    height: "80%",
+  })};
+  ${tablet({
+    height: "100%",
+  })};
+  ${laptop({
+    height: "100%",
+  })};
+`;
+
+const VideoBoxContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  ${mobile({
+    borderRadius: "0px",
+  })};
+  ${mobileM({ borderRadius: "0px" })};
+  ${tablet({ borderRadius: "30px" })};
 `;
 
 const OverlayPlayBtnTrailer = styled.div`
@@ -367,8 +600,48 @@ const ButtonPlayTrailerOverlay = styled.button`
   }
 `;
 //
+// ** RELEASE AND LANGUAGE
 //
+const VideoReleaseAndRating = styled.div`
+  width: 100%;
 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+
+  padding: 10px 0;
+  ${mobile({ justifyContent: "center" })};
+  ${mobileM({ padding: "12px 0 0 0", justifyContent: "center" })};
+  ${tablet({ padding: "12px 0 0 0", justifyContent: "center" })};
+  ${laptop({ padding: "12px 0 0 0", justifyContent: "center" })};
+`;
+const Release = styled.h4`
+  margin: 0 10px;
+  font-size: calc(6px + 1.1vmin);
+  line-height: calc(16px + 1.1vmin);
+  font-family: "Poppins-Light";
+  color: rgba(142, 182, 203, 0.696);
+
+  span {
+    font-weight: 200;
+    margin: 0 10px;
+  }
+
+  ${mobile({
+    fontSize: `calc(8px + 1.1vmin)`,
+    lineHeight: ` calc(20px + 1.1vmin)`,
+  })};
+
+  ${mobileM({ fontSize: `calc(7px + 1.1vmin)` })};
+  ${tablet({ fontSize: `calc(8px + 1.1vmin)` })};
+  ${laptop({ fontSize: `calc(10px + 1.1vmin)` })};
+`;
+
+//
+//
+//
+//
 function MovieDetails() {
   //
   const {
@@ -558,26 +831,19 @@ function MovieDetails() {
  The video
 
  */}
-        <WrapperVideoTrailerSection
-          as={motion.div}
-          initial={{
-            y: 200,
-            opacity: 0,
-          }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.08, type: "spring", damping: 12 }}
-        >
-          <ContainerVideoTrailerSection>
-            <VideoBoxContainer
-              style={
-                movieNew?.backdrop_path && {
-                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${movieNew?.backdrop_path})`,
-                }
-                // : {
-                //     backgroundImage: ` linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)),  url(${defaultImg})`,
-                //   }
-              }
-            >
+        <WrapperVideoTrailerSection>
+          <ContainerVideoTrailerSection
+            style={
+              movieNew?.backdrop_path
+                ? {
+                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),  url(${BACKDROP_PATH}${movieNew?.backdrop_path})`,
+                  }
+                : {
+                    backgroundImage: ` linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)),  url(${defaultImg})`,
+                  }
+            }
+          >
+            <VideoBoxContainer>
               <OverlayPlayBtnTrailer
                 visibleBg={isVisible}
                 onClick={handleClickBtnplay}
@@ -599,6 +865,22 @@ function MovieDetails() {
               )}
             </VideoBoxContainer>
           </ContainerVideoTrailerSection>
+
+          {/*
+
+        RELEASE
+
+        */}
+          <VideoReleaseAndRating>
+            <Release>
+              release: <span>{movieNew?.release_date}</span>
+            </Release>
+            <Release>
+              {" "}
+              language:
+              <span>{movieNew?.original_language}</span>
+            </Release>
+          </VideoReleaseAndRating>
         </WrapperVideoTrailerSection>
       </WrapperVidDescript>
     </>

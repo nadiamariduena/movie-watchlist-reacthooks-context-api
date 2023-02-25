@@ -31,6 +31,7 @@ export function MoviessProvider({ children }) {
       //
       const result = await axios.get(`${API_URL}${query}`);
       setMovies(result.data.results);
+      // console.log(movies);
     };
     fetchMovies();
   }, [query]);
@@ -41,6 +42,7 @@ export function MoviessProvider({ children }) {
   useEffect(() => {
     const fetchVideoId = async () => {
       //
+
       if (!selectedMovie) {
         return;
       }
@@ -59,7 +61,7 @@ export function MoviessProvider({ children }) {
   // -------- video size
   // const iframeRef = useRef<HTMLIFrameElement>(null);
   // since we I already have the state in line 20, you can add it inside the url path, the add this value to the new variable, this videoURL variable will carry the data that you will pass in line 134, from there you will send it to the Movie.js component
-  const videoURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://localhost:1535/"
+  const videoURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=https://yada21.netlify.app/"
   frameborder="0"`;
   // // try to publish
   // //
@@ -91,7 +93,7 @@ export function MoviessProvider({ children }) {
         : window.innerWidth > 400
         ? 1.45
         : window.innerWidth > 280
-        ? 1.45
+        ? 1.1
         : 1.1; //totally square for mobile
     const height = iframeRef.current
       ? iframeRef.current.offsetWidth * 0.5625

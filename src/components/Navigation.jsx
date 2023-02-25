@@ -28,10 +28,13 @@ const Nav = styled.div`
   top: 0;
   z-index: 999;
   //
+  ${mobile({
+    flexDirection: "column",
+  })}/*
 
+  */
   /* -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px); */
-
+  backdrop-filter: blur(30px);
   ${mobile({
     background: "rgba(255, 255, 255, 0.45)",
     backdropFilter: "blur(16px)",
@@ -39,31 +42,40 @@ const Nav = styled.div`
   ${mobileM({
     background: "rgba(255, 255, 255, 0.45)",
     backdropFilter: "blur(16px)",
-  })}
+  })} */
 `;
 
 // LEFT
 //
 const Left = styled.div`
-  width: 30%;
+  width: 100%;
   color: #8741125e;
   text-transform: uppercase;
-
-  //
+  ${mobile({
+    display: "flex",
+    justifyContent: "space-around",
+    flexDirection: "row",
+  })}
 `;
 
 const Brand = styled.h3`
   margin-left: 45px;
-  .logo {
-    color: rgba(241, 29, 29);
+  color: rgba(241, 29, 29);
 
-    letter-spacing: -2px;
-    font-size: calc(28px + 1vmin);
-    font-weight: 600;
-    font-family: "Syncopate-Bold";
-  }
-  ${mobile({ marginLeft: "15px" })}
+  letter-spacing: -2px;
+  font-size: calc(28px + 1vmin);
+  font-weight: 600;
+  font-family: "Syncopate-Bold";
+
+  ${mobile({
+    marginLeft: "0px",
+    fontSize: `calc(38px + 1vmin)`,
+  })}
   ${mobileM({ marginLeft: "25px" })}
+`;
+
+const LogoLink = styled(Link)`
+  color: rgba(241, 29, 29);
 `;
 //----------------------
 //
@@ -73,15 +85,21 @@ const Brand = styled.h3`
 
 const Right = styled.div`
   width: 70%;
-
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
   margin: 0 20px;
   color: #ffffff5e;
   //
+  //
+  //
   text-transform: uppercase;
-  ${mobile({ justifyContent: "space-between" })}
+  ${mobile({
+    margin: "0",
+    padding: "10px 0",
+    width: "100%",
+    justifyContent: "center",
+  })}
 `;
 //
 const Ul = styled.ul`
@@ -91,6 +109,12 @@ const Ul = styled.ul`
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
+  ${mobile({
+    gap: "10px",
+    width: "100%",
+
+    justifyContent: "center",
+  })}
 `;
 const Li = styled.li`
   display: inline;
@@ -121,7 +145,9 @@ const NavbarLink = styled(Link)`
     color: #181818;
   } */
 
-  ${mobile({ fontSize: `calc(10px + 1vmin)` })}
+  ${mobile({
+    fontSize: `calc(11px + 1vmin)`,
+  })}
   ${mobileM({ fontSize: `calc(10px + 1vmin)` })}
 `;
 
@@ -147,11 +173,10 @@ const Navigation = () => {
         <Nav>
           <Left>
             <Brand onClick={handleCloseModal}>
-              <Link to="/" className="logo">
-                MUBII:
-              </Link>
+              <LogoLink to="/">MUBII:</LogoLink>
             </Brand>
           </Left>
+
           {/* ---------------- */}
           <Right>
             <Ul className="nav-links">
