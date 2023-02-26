@@ -150,8 +150,8 @@ const ButtonCloseOverlay = styled.button`
   //
   position: fixed;
   bottom: 2.5%;
-  right: 2.5%;
-  z-index: 10;
+  right: 30px;
+  z-index: 990;
 
   width: 45px;
   height: 45px;

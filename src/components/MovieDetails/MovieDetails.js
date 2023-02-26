@@ -90,6 +90,7 @@ const ButtonCloseOverlayTrailer = styled.button`
   position: fixed;
   bottom: 2.5%;
   right: 2.5%;
+  z-index: 999;
 
   width: 45px;
   height: 45px;
@@ -108,8 +109,9 @@ const ButtonCloseOverlayTrailer = styled.button`
   //
   //
   ${mobile({
-    right: "15px",
-    bottom: "15px",
+    margin: "0 auto",
+    right: "10px",
+    bottom: "10px",
   })}
   ${mobileM({ right: "15px", bottom: "15px" })}
     ${laptop({ right: "15px", bottom: "15px" })}
@@ -128,7 +130,6 @@ const ContainerDescript = styled.div`
   ${mobile({
     width: "100%",
     minHeight: "98vh",
-
     //
     display: "flex",
     justifyContent: "center",
@@ -296,7 +297,6 @@ const PModalMovieDescription = styled.p`
 //  ** CONTROLS
 //
 const Controls = styled.div`
-  width: 100%;
   padding: 40px 0 40px 0;
   gap: 50px;
   display: flex;
@@ -310,7 +310,7 @@ const Controls = styled.div`
   //
   ${mobile({
     padding: "35px 0 40px 0",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: "20px",
   })}
   ${mobileM({

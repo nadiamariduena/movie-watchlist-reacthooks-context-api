@@ -1,8 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mobile, mobileM, tablet, laptop } from "../responsive";
 //
+import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineClose } from "react-icons/ai";
+import { motion } from "framer-motion";
+
 //
 import MovieeContext from "../ContextMovieHandler.js";
 
@@ -26,23 +30,11 @@ const Nav = styled.div`
   //
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 990;
   //
   ${mobile({
     flexDirection: "column",
-  })}/*
-
-  */
-  /* -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px);
-  ${mobile({
-    background: "rgba(255, 255, 255, 0.45)",
-    backdropFilter: "blur(16px)",
   })}
-  ${mobileM({
-    background: "rgba(255, 255, 255, 0.45)",
-    backdropFilter: "blur(16px)",
-  })} */
 `;
 
 // LEFT
@@ -51,11 +43,6 @@ const Left = styled.div`
   width: 100%;
   color: #8741125e;
   text-transform: uppercase;
-  ${mobile({
-    display: "flex",
-    justifyContent: "space-around",
-    flexDirection: "row",
-  })}
 `;
 
 const Brand = styled.h3`
@@ -68,7 +55,7 @@ const Brand = styled.h3`
   font-family: "Syncopate-Bold";
 
   ${mobile({
-    marginLeft: "0px",
+    marginLeft: "20px",
     fontSize: `calc(38px + 1vmin)`,
   })}
   ${mobileM({ marginLeft: "25px" })}
@@ -92,6 +79,7 @@ const Right = styled.div`
   color: #ffffff5e;
   //
   //
+
   //
   text-transform: uppercase;
   ${mobile({
@@ -102,55 +90,101 @@ const Right = styled.div`
   })}
 `;
 //
-const Ul = styled.ul`
-  width: 90%;
+
+//
+const HambButton = styled.button`
+  width: 35px;
+  height: 35px;
+  font-size: calc(12px + 1.8vmin);
 
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-end;
-  ${mobile({
-    gap: "10px",
-    width: "100%",
+  justify-content: center;
+  align-items: center;
 
-    justifyContent: "center",
-  })}
+  border: 0;
+
+  color: red;
+  border-radius: 100px;
+  cursor: pointer;
+
+  //
+  z-index: 999;
+  position: fixed;
+  top: 2.5%;
+  right: 30px;
 `;
-const Li = styled.li`
+//
+//
+
+const UlMobile = styled.ul`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  //
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  //
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 998;
+  //
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(56px);
+
+  /*
+
+
+  */
+  ${mobile({})}
+  ${mobileM({})}
+    ${tablet({})}
+    ${laptop({})}
+`;
+const LiMobile = styled.li`
   display: inline;
   list-style: none;
   margin: 0 30px 0 0;
 
   text-decoration: none;
-  ${mobile({ margin: "0 5px 0 0" })}
+  ${mobile({
+    margin: "0 5px 0 0",
+  })}
   ${mobileM({ margin: "0 5px 0 0" })}
 `;
-
-const NavbarLink = styled(Link)`
-  color: rgb(228, 228, 221, 0.9);
-  font-weight: 600;
-
-  font-size: calc(12px + 1vmin);
-  font-family: Arial, Helvetica, sans-serif;
-  text-decoration: none;
-  margin: 10px;
-  text-transform: lowercase;
+//
+const NavbarLinkMobile = styled(Link)`
+  display: flex;
 
   //
-  &:hover,
-  &:focus {
-    color: rgba(228, 228, 221, 4.196);
-  }
-  /* &:active {
-    color: #181818;
-  } */
+  margin: 10px;
+  color: black;
+  color: red;
+  font-weight: 600;
+  font-size: calc(38px + 1vmin);
+  text-decoration: none;
+  text-transform: capitalize;
+  //
 
   ${mobile({
-    fontSize: `calc(11px + 1vmin)`,
+    fontSize: `calc(24px + 1vmin)`,
   })}
-  ${mobileM({ fontSize: `calc(10px + 1vmin)` })}
+  ${mobileM({
+    fontSize: `calc(30px + 1vmin)`,
+  })}
+    ${tablet({
+    fontSize: `calc(40px + 1vmin)`,
+  })}
+    ${laptop({
+    fontSize: `calc(50px + 1vmin)`,
+  })}
 `;
 
+//
 //
 // -------------------------
 const Navigation = () => {
@@ -167,26 +201,82 @@ const Navigation = () => {
     setVideoId();
   };
 
+  // open modalNav
+
+  const [openModalNav, setOpenModalNav] = useState(false);
+
+  const handlerOpenModalNav = (e) => {
+    e.preventDefault();
+    setOpenModalNav(!openModalNav);
+  };
+
   return (
     <>
       <Header>
         <Nav>
           <Left>
-            <Brand onClick={handleCloseModal}>
+            <Brand
+              animate={{ y: 0, opacity: 1 }}
+              initial={{
+                opacity: 0,
+                y: -500,
+              }}
+              transition={{
+                delay: 1.2,
+                type: "spring",
+                duration: 1.8,
+                damping: 12,
+              }}
+              as={motion.div}
+              onClick={handleCloseModal}
+            >
               <LogoLink to="/">MUBII:</LogoLink>
             </Brand>
           </Left>
 
-          {/* ---------------- */}
+          {/* ----------------  */}
           <Right>
-            <Ul className="nav-links">
-              <Li onClick={handleCloseModal}>
-                <NavbarLink to="/watchlist">Watch list</NavbarLink>
-              </Li>
-              <Li onClick={handleCloseModal}>
-                <NavbarLink to="/watched">Watched</NavbarLink>
-              </Li>
-            </Ul>
+            <HambButton
+              animate={{ y: 0, opacity: 1 }}
+              initial={{
+                opacity: 0,
+                y: -500,
+              }}
+              transition={{
+                delay: 1.2,
+                type: "spring",
+                duration: 1.2,
+                damping: 14,
+              }}
+              as={motion.div}
+              onClick={handlerOpenModalNav}
+            >
+              {openModalNav ? <AiOutlineClose /> : <GiHamburgerMenu />}
+            </HambButton>
+
+            {openModalNav && (
+              <UlMobile
+                animate={{ opacity: 1 }}
+                initial={{
+                  // backgroundColor: currentsColorBg,
+
+                  opacity: 0,
+                }}
+                exit={{ opacity: 0 }}
+                as={motion.div}
+                onClick={handlerOpenModalNav}
+              >
+                <LiMobile onClick={handleCloseModal}>
+                  <NavbarLinkMobile to="/watchlist">
+                    Watch list
+                  </NavbarLinkMobile>
+                </LiMobile>
+
+                <LiMobile onClick={handleCloseModal}>
+                  <NavbarLinkMobile to="/watched">Watched</NavbarLinkMobile>
+                </LiMobile>
+              </UlMobile>
+            )}
           </Right>
         </Nav>
       </Header>
