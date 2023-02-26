@@ -1,12 +1,10 @@
-#### 🔴 I'm currently in the process of updating this repository to ensure that all the information and resources contained within it are up-to-date and accurate. This is an ongoing effort, and I'm working hard to make the necessary improvements and modifications as quickly as possible.
+https://movie-search-exercise-mariduena.netlify.app/ 
+
+ 
+
+https://user-images.githubusercontent.com/58809268/221444288-7980b1c3-4462-4eda-bff0-756a796403c7.mp4
 
 
-https://user-images.githubusercontent.com/58809268/219047794-c8011371-3615-4fbd-97a9-00c660a63d7b.mp4
-
-
-
-
-https://user-images.githubusercontent.com/58809268/218341332-37d5f491-3552-4ebc-afc6-9abc47576d90.mp4
 
 <br>
 <br>
@@ -16,11 +14,7 @@ https://user-images.githubusercontent.com/58809268/218341332-37d5f491-3552-4ebc-
 <br>
 <br>
 
-## Preview (old version)
-
-https://movie-search-exercise-mariduena.netlify.app/
-
-
+ 
 #### Branches
 
 <br>
@@ -36,5 +30,20 @@ https://movie-search-exercise-mariduena.netlify.app/
 ##### [3-saving-to-localstorage-access-context-buttons-disbled](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/3-saving-to-localstorage-access-context-buttons-disbled)
 
 ##### [4-counter](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/4-counter)
+
+
+<br>
+<br>
+
+---
+
+<br>
+
+
+## Preview (old version)
+
+https://movie-search-exercise-mariduena.netlify.app/
+
+
 
 ##### ✋ [5- First version 2021](https://github.com/nadiamariduena/movie-watchlist-reacthooks-context-api/tree/default-0-app)
